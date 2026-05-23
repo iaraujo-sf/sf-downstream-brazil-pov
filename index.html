@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salesforce Downstream Oil & Gas Brazil POV</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sf-primary: #0176D3;
+  --sf-dark: #032D60;
+  --sf-light-bg: #F4F6F9;
+  --sf-highlight: #EEF4FF;
+  --sf-success: #2E844A;
+  --sf-warning: #FE9339;
+  --sf-error: #EA001E;
+  --sf-text: #181818;
+  --sf-text-sec: #706E6B;
+  --sf-border: #DDDBDA;
+  --sf-white: #FFFFFF;
+  --sidebar-w: 300px;
+  --topbar-h: 56px;
+  --oil-gold: #f5a623;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--sf-light-bg);
+  color: var(--sf-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: linear-gradient(180deg, var(--sf-dark) 0%, #021b3d 100%);
+  color: #fff;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 24px 20px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+
+.sidebar-header .logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.sidebar-header .logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--sf-primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.sidebar-header h1 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  opacity: 0.95;
+}
+
+.sidebar-header .subtitle {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 12px 0;
+  overflow-y: auto;
+}
+
+.nav-section {
+  margin-bottom: 4px;
+}
+
+.nav-section-title {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.5;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-section-title .chevron {
+  margin-left: auto;
+  transition: transform 0.2s;
+  font-size: 10px;
+}
+
+.nav-section.collapsed .chevron { transform: rotate(-90deg); }
+.nav-section.collapsed .nav-items { display: none; }
+
+.nav-items a {
+  display: block;
+  padding: 7px 20px 7px 32px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: all 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.nav-items a:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+.nav-items a.active {
+  background: rgba(1,118,211,0.2);
+  color: #fff;
+  border-left-color: var(--sf-primary);
+  font-weight: 500;
+}
+
+/* TOPBAR */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-w);
+  right: 0;
+  height: var(--topbar-h);
+  background: var(--sf-white);
+  border-bottom: 1px solid var(--sf-border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 900;
+  gap: 16px;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--sf-text);
+}
+
+.search-container {
+  flex: 1;
+  max-width: 480px;
+  position: relative;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 8px 16px 8px 38px;
+  border: 1px solid var(--sf-border);
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: inherit;
+  background: var(--sf-light-bg);
+  transition: all 0.2s;
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: var(--sf-primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(1,118,211,0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.4;
+  font-size: 14px;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--sf-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  max-height: 400px;
+  overflow-y: auto;
+  display: none;
+  margin-top: 4px;
+  z-index: 1100;
+}
+
+.search-results.visible { display: block; }
+
+.search-result-item {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--sf-light-bg);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.search-result-item:hover { background: var(--sf-highlight); }
+.search-result-item .result-section { font-size: 11px; color: var(--sf-primary); font-weight: 600; }
+.search-result-item .result-text { font-size: 12px; color: var(--sf-text-sec); margin-top: 2px; }
+.search-result-item mark { background: #fff3cd; padding: 1px 2px; border-radius: 2px; }
+
+.topbar-meta {
+  font-size: 11px;
+  color: var(--sf-text-sec);
+  white-space: nowrap;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  margin-left: var(--sidebar-w);
+  margin-top: var(--topbar-h);
+  padding: 32px;
+  min-height: calc(100vh - var(--topbar-h));
+}
+
+.section {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.section.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTION HEADER */
+.section-hero {
+  background: linear-gradient(135deg, var(--sf-dark) 0%, #0a3d6b 100%);
+  color: #fff;
+  padding: 48px 40px;
+  border-radius: 12px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-hero::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(1,118,211,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.section-hero h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-hero p {
+  font-size: 15px;
+  opacity: 0.85;
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
+
+/* CARDS */
+.card {
+  background: var(--sf-white);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+  border: 1px solid var(--sf-border);
+}
+
+.card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--sf-dark);
+}
+
+.card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 16px 0 8px;
+  color: var(--sf-text);
+}
+
+/* METRIC GRID */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  background: var(--sf-white);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--sf-border);
+  text-align: center;
+  border-top: 3px solid var(--sf-primary);
+}
+
+.metric-card .metric-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--sf-dark);
+  margin-bottom: 4px;
+}
+
+.metric-card .metric-label {
+  font-size: 12px;
+  color: var(--sf-text-sec);
+  font-weight: 500;
+}
+
+.metric-card .metric-sub {
+  font-size: 11px;
+  color: var(--sf-primary);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* TABLES */
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table th {
+  background: var(--sf-dark);
+  color: #fff;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--sf-border);
+}
+
+table tr:nth-child(even) { background: var(--sf-light-bg); }
+table tr:hover { background: var(--sf-highlight); }
+
+/* BADGES */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-red { background: #fde8e8; color: var(--sf-error); }
+.badge-orange { background: #fff3e0; color: #e65100; }
+.badge-green { background: #e8f5e9; color: var(--sf-success); }
+.badge-blue { background: var(--sf-highlight); color: var(--sf-primary); }
+
+/* CALLOUT */
+.callout {
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  margin: 16px 0;
+  border-left: 4px solid;
+  font-size: 13px;
+}
+
+.callout-info { background: var(--sf-highlight); border-color: var(--sf-primary); }
+.callout-warning { background: #fff8e1; border-color: var(--sf-warning); }
+.callout-success { background: #e8f5e9; border-color: var(--sf-success); }
+.callout-danger { background: #fde8e8; border-color: var(--sf-error); }
+
+.callout strong { display: block; margin-bottom: 4px; }
+
+/* ARCHITECTURE DIAGRAM */
+.arch-diagram {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  border: 1px solid var(--sf-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin: 20px 0;
+}
+
+.arch-layer {
+  background: var(--sf-white);
+  border: 1px solid var(--sf-border);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.arch-layer-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--sf-white);
+  background: var(--sf-dark);
+  padding: 4px 10px;
+  border-radius: 4px;
+  min-width: 110px;
+  text-align: center;
+}
+
+.arch-layer-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
+.arch-block {
+  background: var(--sf-highlight);
+  border: 1px solid rgba(1,118,211,0.2);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--sf-dark);
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+  margin: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--sf-primary);
+  opacity: 0.3;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 12px 0 24px 20px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 16px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--sf-primary);
+  border: 3px solid var(--sf-light-bg);
+}
+
+.timeline-item h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sf-dark);
+  margin-bottom: 4px;
+}
+
+.timeline-item p { font-size: 13px; color: var(--sf-text-sec); }
+.timeline-item .timeline-meta { font-size: 11px; color: var(--sf-primary); font-weight: 600; }
+
+/* GRID LAYOUTS */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* FLOW DIAGRAM */
+.flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 16px 0;
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--sf-white);
+  border: 1px solid var(--sf-border);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.flow-step .step-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sf-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.flow-arrow {
+  text-align: center;
+  color: var(--sf-primary);
+  font-size: 16px;
+  padding: 2px 0;
+}
+
+/* AGENT CARD */
+.agent-card {
+  background: linear-gradient(135deg, #f0f7ff 0%, #fff 100%);
+  border: 1px solid rgba(1,118,211,0.2);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.agent-card h4 {
+  color: var(--sf-primary);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.agent-card ul {
+  padding-left: 16px;
+  font-size: 13px;
+  color: var(--sf-text-sec);
+}
+
+.agent-card ul li { margin-bottom: 4px; }
+
+/* VALUE PILLARS */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.pillar-card {
+  background: var(--sf-white);
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 1px solid var(--sf-border);
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--sf-primary);
+}
+
+.pillar-card .pillar-num {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--sf-primary);
+  opacity: 0.3;
+  margin-bottom: 8px;
+}
+
+.pillar-card h4 { font-size: 14px; color: var(--sf-dark); margin-bottom: 8px; }
+.pillar-card p { font-size: 12px; color: var(--sf-text-sec); }
+
+/* FOOTER */
+.page-footer {
+  margin-left: var(--sidebar-w);
+  padding: 20px 32px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--sf-text-sec);
+  border-top: 1px solid var(--sf-border);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .topbar { left: 0; }
+  .main-content { margin-left: 0; }
+  .page-footer { margin-left: 0; }
+  .hamburger { display: block; }
+  .two-col, .three-col { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-hero { padding: 32px 24px; }
+  .section-hero h2 { font-size: 22px; }
+}
+
+/* OVERLAY */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+.sidebar-overlay.visible { display: block; }
+
+/* PRINT */
+@media print {
+  .sidebar, .topbar, .hamburger { display: none !important; }
+  .main-content { margin-left: 0; margin-top: 0; }
+  .section { display: block !important; page-break-after: always; }
+}
+
+/* SCROLL */
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+</style>
+</head>
+<body>
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-area">
+      <div class="logo-icon">SF</div>
+      <div>
+        <h1>Downstream O&G</h1>
+        <div class="subtitle">Brazil POV v1.1</div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-nav" id="sidebarNav">
+    <div class="nav-section">
+      <div class="nav-section-title">Introduction <span class="chevron">▾</span></div>
+      <div class="nav-items">
+        <a href="#" data-section="intro" class="active">About This POV</a>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Market Overview <span class="chevron">▾</span></div>
+      <div class="nav-items">
+        <a href="#" data-section="market-overview">Brazilian Fuel Market</a>
+        <a href="#" data-section="market-size">Market Size & Growth</a>
+        <a href="#" data-section="transport-trends">Transportation Trends</a>
+        <a href="#" data-section="biofuels">Biofuels & Ethanol</a>
+        <a href="#" data-section="regulatory">Regulatory Framework</a>
+        <a href="#" data-section="value-chain">Refined Oil Value Chain</a>
+        <a href="#" data-section="refineries">Refineries & Capacity</a>
+        <a href="#" data-section="imports">Import Dependence</a>
+        <a href="#" data-section="consolidation">Consolidation History</a>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Operating Model <span class="chevron">▾</span></div>
+      <div class="nav-items">
+        <a href="#" data-section="five-engines">Five Value Engines</a>
+        <a href="#" data-section="market-scale">Market Scale ($76B)</a>
+        <a href="#" data-section="competitive">Competitive Landscape</a>
+        <a href="#" data-section="strategic-shifts">Strategic Shifts</a>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Pricing Excellence <span class="chevron">▾</span></div>
+      <div class="nav-items">
+        <a href="#" data-section="pricing-why">Why Pricing Is Different</a>
+        <a href="#" data-section="pricing-model">Pricing Operating Model</a>
+        <a href="#" data-section="pricing-gap">The Pricing Gap</a>
+        <a href="#" data-section="pricing-sf">Salesforce Solution</a>
+        <a href="#" data-section="pricing-agent">Agentforce in Action</a>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Logistics Excellence <span class="chevron">▾</span></div>
+      <div class="nav-items">
+        <a href="#" data-section="logistics-why">Why Logistics Matters</a>
+        <a href="#" data-section="logistics-model">Logistics Operating Model</a>
+        <a href="#" data-section="logistics-gap">The Logistics Gap</a>
+        <a href="#" data-section="logistics-sf">Salesforce Solution</a>
+        <a href="#" data-section="logistics-connected">Connected Intelligence</a>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Commercial Excellence <span class="chevron">▾</span></div>
+      <div class="nav-items">
+        <a href="#" data-section="commercial-battlefields">Two Battlefields</a>
+        <a href="#" data-section="commercial-retail">Retail Network Model</a>
+        <a href="#" data-section="commercial-b2b">B2B Sales Machine</a>
+        <a href="#" data-section="commercial-gap">The Commercial Gap</a>
+        <a href="#" data-section="commercial-sf">Salesforce Solutions</a>
+        <a href="#" data-section="commercial-agent">Agentforce in Action</a>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Customer Operations <span class="chevron">▾</span></div>
+      <div class="nav-items">
+        <a href="#" data-section="custops-moat">The Defensive Moat</a>
+        <a href="#" data-section="custops-credit">Credit & Financial</a>
+        <a href="#" data-section="custops-loyalty">Loyalty Ecosystem</a>
+        <a href="#" data-section="custops-fleet">Fleet Management</a>
+        <a href="#" data-section="custops-gap">The Operations Gap</a>
+        <a href="#" data-section="custops-sf">Salesforce Solution</a>
+        <a href="#" data-section="custops-agent">Agentforce in Action</a>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Architecture <span class="chevron">▾</span></div>
+      <div class="nav-items">
+        <a href="#" data-section="arch-platform">Complete Platform</a>
+        <a href="#" data-section="arch-datacloud">Data Cloud Unification</a>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Roadmap & Impact <span class="chevron">▾</span></div>
+      <div class="nav-items">
+        <a href="#" data-section="roadmap">Implementation Phases</a>
+        <a href="#" data-section="impact">Business Impact</a>
+        <a href="#" data-section="why-sf">Why Salesforce</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="hamburger" id="hamburger">☰</button>
+  <div class="search-container">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search topics, metrics, products...">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <div class="topbar-meta">v1.1 • May 2026</div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="main-content" id="mainContent">
+
+<!-- INTRO -->
+<div class="section active" id="sec-intro">
+  <div class="section-hero">
+    <h2>Unlocking Value in Brazil's Downstream Oil & Gas</h2>
+    <p>A Salesforce Vision for Growth, Efficiency, and Customer Engagement in a $76 billion market where decision speed defines margin.</p>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <h3>What This POV Addresses</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:12px;">Brazil's downstream oil & gas sector represents one of the most complex operating environments in the energy industry. This Point of View explores how Salesforce becomes the intelligence and engagement layer that connects five critical value engines.</p>
+      <div class="callout callout-info">
+        <strong>Key Thesis</strong>
+        Profit is moving from volume management to decision orchestration. Salesforce unifies customer, asset, product and market signals into governed actions across pricing, logistics, sales, service and field execution.
+      </div>
+    </div>
+    <div class="card">
+      <h3>Authors</h3>
+      <div style="margin-bottom:16px;">
+        <div style="font-weight:600;font-size:14px;">Mariana Meira</div>
+        <div style="font-size:12px;color:var(--sf-text-sec);">Lead, Account SE • mmeira@salesforce.com</div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <div style="font-weight:600;font-size:14px;">Igor Araujo</div>
+        <div style="font-size:12px;color:var(--sf-text-sec);">Principal, Enterprise Architect • iaraujo@salesforce.com</div>
+      </div>
+      <h3 style="margin-top:20px;">Agenda</h3>
+      <ol style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li>Brazil Downstream Market Dynamics</li>
+        <li>The Five Downstream Value Engines</li>
+        <li>Operating Gaps and Decision Challenges</li>
+        <li>Salesforce as the Intelligence & Engagement Layer</li>
+        <li>Business Engines Enabled by Salesforce</li>
+        <li>Transformation Roadmap and Value Realization</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- MARKET OVERVIEW -->
+<div class="section" id="sec-market-overview">
+  <div class="section-hero">
+    <h2>Brazilian Fuel Market Overview</h2>
+    <p>Multiple players, 155+ Distributors — a complex value chain from production to end consumers across a continental territory.</p>
+  </div>
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-value">155</div><div class="metric-label">Active Distributors</div><div class="metric-sub">with sales in 2024</div></div>
+    <div class="metric-card"><div class="metric-value">~44K</div><div class="metric-label">Gas Stations</div><div class="metric-sub">49% Unbranded</div></div>
+    <div class="metric-card"><div class="metric-value">500</div><div class="metric-label">TRRs</div><div class="metric-sub">Licensed resellers</div></div>
+    <div class="metric-card"><div class="metric-value">299</div><div class="metric-label">Distribution Terminals</div><div class="metric-sub">Storage & blending</div></div>
+  </div>
+  <div class="card">
+    <h3>Value Chain: Production to End User</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Stage</th><th>Players</th><th>Key Activities</th></tr>
+        <tr><td><strong>Production/Import</strong></td><td>17 Refineries (68%), 361 Ethanol Plants (20%), 58 Biodiesel Plants (5%), Importers (7%)</td><td>Refining, blending, importing</td></tr>
+        <tr><td><strong>Distribution</strong></td><td>155 Distributors</td><td>Storage, transportation, biofuel blending, additives</td></tr>
+        <tr><td><strong>Retail</strong></td><td>~44K Stations (51% branded, 49% white-flag)</td><td>Urban/Highway fuel retail, convenience</td></tr>
+        <tr><td><strong>TRR</strong></td><td>500 licensed resellers</td><td>Diesel, Gasoline and Ethanol to end users</td></tr>
+        <tr><td><strong>End Users</strong></td><td>Small/Medium + Large businesses</td><td>Hospitals, malls, logistics, mining, agribusiness, thermal plants</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MARKET SIZE -->
+<div class="section" id="sec-market-size">
+  <div class="section-hero">
+    <h2>Market Size & Growth</h2>
+    <p>A robust market with consistent growth, outpacing GDP for decades. Brazil is the largest refined oil importer in South America.</p>
+  </div>
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-value">133M m³</div><div class="metric-label">Annual Consumption</div><div class="metric-sub">per year</div></div>
+    <div class="metric-card"><div class="metric-value">2.5%</div><div class="metric-label">CAGR 2010-2024</div><div class="metric-sub">G+E+D volume</div></div>
+    <div class="metric-card"><div class="metric-value">US$51bn</div><div class="metric-label">Import Market</div><div class="metric-sub">Largest in S. America</div></div>
+    <div class="metric-card"><div class="metric-value">~12%</div><div class="metric-label">Imported Volume</div><div class="metric-sub">of total consumption</div></div>
+    <div class="metric-card"><div class="metric-value">3.8%</div><div class="metric-label">Biofuel CAGR</div><div class="metric-sub">2010-2024</div></div>
+    <div class="metric-card"><div class="metric-value">58%</div><div class="metric-label">Top 3 Market Share</div><div class="metric-sub">Vibra, Raízen, Ipiranga</div></div>
+  </div>
+  <div class="card">
+    <h3>Key Market Characteristics</h3>
+    <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+      <li>Fuel mix dominated by diesel and gasoline</li>
+      <li>1 gas station per 1,000 vehicles on average</li>
+      <li>Consistently outpaced GDP growth for decades</li>
+      <li>3 distributors representing 58% of the market</li>
+      <li>Strong biofuels component with 3.8% CAGR</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TRANSPORT TRENDS -->
+<div class="section" id="sec-transport-trends">
+  <div class="section-hero">
+    <h2>Transportation Trends as Key Driver</h2>
+    <p>The Brazilian fuel market is supported by strong sector fundamentals and driven by the country's robust transportation needs.</p>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Highway Dependence</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);">65% of freight transported by road. Heavy investment in toll roads vs. railways. Continental distances make fuel logistics critical.</p>
+      <div class="callout callout-warning"><strong>Implication</strong> The current transportation environment will not change in the near future — fuel demand remains structurally supported.</div>
+    </div>
+    <div class="card">
+      <h3>Fleet Growth</h3>
+      <div class="metric-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="metric-card" style="border-top-color:var(--sf-success);"><div class="metric-value">1.3%</div><div class="metric-label">Total Fleet CAGR</div><div class="metric-sub">2014-2024</div></div>
+        <div class="metric-card" style="border-top-color:var(--sf-success);"><div class="metric-value">1.2%</div><div class="metric-label">Light Vehicles CAGR</div><div class="metric-sub">2014-2024</div></div>
+      </div>
+      <p style="font-size:12px;color:var(--sf-text-sec);">Vehicle penetration remains below developed peers — room for growth.</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Limited Electrification Impact</h3>
+    <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+      <li>Brazil has competitive advantages in biofuels</li>
+      <li>Heavy and light EV prices remain high + overtaxed with state reform</li>
+      <li>National charging network underinvested</li>
+      <li>Heavy vehicles: electrification only viable for last mile</li>
+    </ul>
+  </div>
+</div>
+
+<!-- BIOFUELS -->
+<div class="section" id="sec-biofuels">
+  <div class="section-hero">
+    <h2>Biofuels & Ethanol Market</h2>
+    <p>Brazil is the world's second-largest biofuels market, supported by a steadily expanding flex-fuel fleet and rising sales volumes.</p>
+  </div>
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-value">2nd</div><div class="metric-label">Global Biofuels Market</div></div>
+    <div class="metric-card"><div class="metric-value">4.0%</div><div class="metric-label">Biofuel Sales CAGR</div><div class="metric-sub">2017-2024</div></div>
+    <div class="metric-card"><div class="metric-value">80%</div><div class="metric-label">Flex-Fuel Fleet</div><div class="metric-sub">of light vehicles (2023)</div></div>
+    <div class="metric-card"><div class="metric-value">26.7%</div><div class="metric-label">Global Ethanol Share</div><div class="metric-sub">2030 estimate</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Mandates & Policy</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li><strong>Ethanol mandate:</strong> 27% in gasoline (range 22-35%)</li>
+        <li><strong>Biodiesel mandate:</strong> 15% in diesel (up to 20% by 2030)</li>
+        <li>"Fuel of the Future" Law (2024) increased blend levels</li>
+        <li>Expected to increase biofuels demand by 3+ billion liters</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>RenovaBio — Carbon Credits</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);">Producers issue CBIOs (carbon credits) traded on stock exchange. Distributors required to purchase CBIOs to offset CO2 emissions. Volume defined by ANP based on previous year's distribution.</p>
+      <div class="callout callout-success"><strong>Opportunity</strong> CBIO compliance tracking and optimization is a natural Salesforce + Data Cloud use case.</div>
+    </div>
+  </div>
+</div>
+
+<!-- REGULATORY -->
+<div class="section" id="sec-regulatory">
+  <div class="section-hero">
+    <h2>Regulatory Framework</h2>
+    <p>Favorable regulatory developments with important discussions still pending. Stronger regulation supporting formal players.</p>
+  </div>
+  <div class="card">
+    <h3>Key Regulatory Developments</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Reform</th><th>Impact</th></tr>
+        <tr><td>Single-stage taxation (monofasia) — Diesel & Gasoline</td><td>Simplified tax, reduced arbitrage</td></tr>
+        <tr><td>Single-stage PIS/COFINS — Ethanol</td><td>Level playing field</td></tr>
+        <tr><td>Single-stage ICMS — Ethanol</td><td>Cross-state consistency</td></tr>
+        <tr><td>Naphtha Rule</td><td>Closes loophole avoiding fuel import taxes</td></tr>
+        <tr><td>CBIO enforcement</td><td>Disclosure of debtor companies + sales bans</td></tr>
+        <tr><td>Revocation of special tax regimes</td><td>Shutdown of irregular companies</td></tr>
+      </table>
+    </div>
+    <div class="callout callout-success"><strong>Net Effect</strong> Stronger regulation and tax fairness → Margin recovery for incumbents. Formal players benefit from clearer rules.</div>
+  </div>
+</div>
+
+<!-- VALUE CHAIN -->
+<div class="section" id="sec-value-chain">
+  <div class="section-hero">
+    <h2>Refined Oil Value Chain</h2>
+    <p>Even though Brazil is a major oil producer and exporter, it lacks refining capacity. Both private players and Petrobras import refined products.</p>
+  </div>
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-value">75bn L</div><div class="metric-label">Refined in Brazil</div><div class="metric-sub">2024</div></div>
+    <div class="metric-card"><div class="metric-value">15bn L</div><div class="metric-label">Imported</div><div class="metric-sub">2024</div></div>
+    <div class="metric-card"><div class="metric-value">84%</div><div class="metric-label">Domestic Refining</div><div class="metric-sub">5-year average</div></div>
+    <div class="metric-card"><div class="metric-value">8.6%</div><div class="metric-label">Import CAGR</div><div class="metric-sub">2017-2024</div></div>
+  </div>
+  <div class="card">
+    <h3>Key Dynamics</h3>
+    <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+      <li>Large dependence on Petrobras (73% in 2024, down from 85% in 2017)</li>
+      <li>Two privatized refineries: Mataripe and REAM</li>
+      <li>Growing demand for primary infrastructure</li>
+      <li>Increased competition from private refiners and importers</li>
+      <li>Supply optionality increasing for distributors</li>
+    </ul>
+  </div>
+</div>
+
+<!-- REFINERIES -->
+<div class="section" id="sec-refineries">
+  <div class="section-hero">
+    <h2>Refineries & Capacity</h2>
+    <p>Central-West, North and Northeast regions have deficits and require transfers from the South and Southeast or imports.</p>
+  </div>
+  <div class="card">
+    <h3>Brazilian Refineries Capacity Breakdown</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Refinery</th><th>All Products (bn L/yr)</th><th>Gasoline + Diesel (bn L/yr)</th></tr>
+        <tr><td>Replan</td><td>25.2</td><td>16.6</td></tr>
+        <tr><td>Mataripe</td><td>21.9</td><td>7.5</td></tr>
+        <tr><td>Reduc</td><td>14.6</td><td>4.2</td></tr>
+        <tr><td>Revap</td><td>14.6</td><td>6.7</td></tr>
+        <tr><td>Refap</td><td>12.8</td><td>7.8</td></tr>
+        <tr><td>Repar</td><td>12.4</td><td>8.9</td></tr>
+        <tr><td>RPBC</td><td>10.4</td><td>7.6</td></tr>
+        <tr><td>Regap</td><td>9.6</td><td>6.3</td></tr>
+        <tr><td>RNEST</td><td>5.8</td><td>3.2</td></tr>
+        <tr><td>Recap</td><td>3.7</td><td>2.5</td></tr>
+        <tr><td>3R Potiguar</td><td>2.6</td><td>0.1</td></tr>
+        <tr><td>REAM</td><td>2.7</td><td>0.9</td></tr>
+        <tr><td style="font-weight:700;">Total</td><td style="font-weight:700;">139.8</td><td style="font-weight:700;">75.2</td></tr>
+      </table>
+    </div>
+    <div class="callout callout-warning"><strong>Outlook</strong> No material expansions in refining capacity are expected in the coming years. Import dependence will continue growing.</div>
+  </div>
+</div>
+
+<!-- IMPORTS -->
+<div class="section" id="sec-imports">
+  <div class="section-hero">
+    <h2>Import Dependence</h2>
+    <p>Brazil historically bridged the refining gap with imports, mainly from North America and more recently from Russia.</p>
+  </div>
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-value">8.6%</div><div class="metric-label">Import CAGR</div><div class="metric-sub">2017-2024</div></div>
+    <div class="metric-card"><div class="metric-value">+84bn L</div><div class="metric-label">Total Imported</div><div class="metric-sub">Cumulative volume</div></div>
+  </div>
+  <div class="card">
+    <h3>Key Import Dynamics</h3>
+    <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+      <li>Highest concentration of imports in the Northeast region</li>
+      <li>Import sources shifting from North America to Russia</li>
+      <li>Private players increasingly importing directly</li>
+      <li>Import share of consumption growing year over year</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CONSOLIDATION -->
+<div class="section" id="sec-consolidation">
+  <div class="section-hero">
+    <h2>Consolidation History</h2>
+    <p>Reduction in major players driven by M&A activity, with focus on scale and the prevalence of local expertise associated with international brands.</p>
+  </div>
+  <div class="card">
+    <h3>Fuel Market Timeline Evolution</h3>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-meta">1993</div><h4>Market Deregulation Begins</h4><p>Opening of Brazilian fuel market to private players</p></div>
+      <div class="timeline-item"><div class="timeline-meta">1999-2004</div><h4>International Entry</h4><p>Shell, Esso and other international brands enter Brazilian market</p></div>
+      <div class="timeline-item"><div class="timeline-meta">2007-2009</div><h4>First Consolidation Wave</h4><p>M&A activity reduces number of major independent players</p></div>
+      <div class="timeline-item"><div class="timeline-meta">2011</div><h4>Cosan-Shell JV (Raízen)</h4><p>Creation of Raízen combining Shell's fuel distribution with Cosan's ethanol</p></div>
+      <div class="timeline-item"><div class="timeline-meta">2018-2019</div><h4>Vibra Privatization</h4><p>Petrobras sells BR Distribuidora (now Vibra) — Follow-on (Privatization)</p></div>
+      <div class="timeline-item"><div class="timeline-meta">2021</div><h4>Vibra True Corp</h4><p>Vibra completes transition to fully private corporation</p></div>
+    </div>
+    <div class="callout callout-info"><strong>Today</strong> Three giants (Vibra, Raízen, Ipiranga) control ~66% of branded market. Remaining is fiercely contested by agile regional distributors.</div>
+  </div>
+</div>
+
+<!-- FIVE ENGINES -->
+<div class="section" id="sec-five-engines">
+  <div class="section-hero">
+    <h2>The Five Value Engines</h2>
+    <p>The Distributor at the center of the downstream value chain, orchestrating five interconnected business capabilities.</p>
+  </div>
+  <div class="pillar-grid">
+    <div class="pillar-card"><div class="pillar-num">01</div><h4>Supply (Abastecimento)</h4><p>Sourcing from Petrobras, imports, and managing complex contracts to ensure availability and cost competitiveness.</p></div>
+    <div class="pillar-card"><div class="pillar-num">02</div><h4>Pricing (Precificação)</h4><p>Optimizing margins, managing PPI parity, and executing FX hedging strategies in a volatile market.</p></div>
+    <div class="pillar-card"><div class="pillar-num">03</div><h4>Logistics (Logística)</h4><p>Operating bases, pipelines, fleets, and mastering the critical last-mile delivery to thousands of stations.</p></div>
+    <div class="pillar-card"><div class="pillar-num">04</div><h4>Commercial Execution</h4><p>Managing retail networks, large B2B accounts, and driving volume through disciplined sales operations.</p></div>
+    <div class="pillar-card"><div class="pillar-num">05</div><h4>Customer Operations</h4><p>Providing credit, loyalty programs, fleet management, and TRR services to differentiate beyond the commodity.</p></div>
+  </div>
+  <div class="callout callout-info"><strong>Salesforce Role</strong> Unify customer, asset, product and market signals into governed actions across pricing, logistics, sales, service and field execution.</div>
+</div>
+
+<!-- MARKET SCALE -->
+<div class="section" id="sec-market-scale">
+  <div class="section-hero">
+    <h2>A $76B Market Defined by Scale, Volatility, and Fragmentation</h2>
+    <p>Massive market scale meets continental infrastructure challenges and extreme price volatility.</p>
+  </div>
+  <div class="pillar-grid">
+    <div class="pillar-card"><h4>Massive Market Scale</h4><p>~140 billion liters consumed annually. Market value exceeding $76 billion.</p></div>
+    <div class="pillar-card"><h4>Continental Infrastructure</h4><p>42,000+ retail stations and hundreds of bases across 3.27 million square miles.</p></div>
+    <div class="pillar-card"><h4>Extreme Volatility</h4><p>FX fluctuations, oil price swings, and frequently changing local tax regulations.</p></div>
+    <div class="pillar-card"><h4>Fierce Fragmentation</h4><p>Top 3 hold ~55% share. Remaining 45% fiercely contested by agile regional distributors.</p></div>
+  </div>
+</div>
+
+<!-- COMPETITIVE LANDSCAPE -->
+<div class="section" id="sec-competitive">
+  <div class="section-hero">
+    <h2>Competitive Landscape</h2>
+    <p>Three Giants Control >55% of a Highly Fragmented Market</p>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <h3>The Big Three Dominance</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);">Vibra, Raízen, and Ipiranga leverage massive scale, nationwide infrastructure, and strong brand equity — controlling approximately 66% of the branded market.</p>
+    </div>
+    <div class="card">
+      <h3>The "White-Flag" Challenge</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);">Regional distributors and unbranded stations capture ~34% of the market by competing aggressively on price, lower overhead, and hyper-local agility.</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Margin vs. Volume Battle</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);">Market share shifts are hard-fought. Giants focus on premium products, B2B contracts, and convenience retail to protect margins, while regional players constantly pressure base volumes.</p>
+  </div>
+</div>
+
+<!-- STRATEGIC SHIFTS -->
+<div class="section" id="sec-strategic-shifts">
+  <div class="section-hero">
+    <h2>Strategic Shifts</h2>
+    <p>Four shifts are reshaping the profit pool. Profit is moving from volume management to decision orchestration.</p>
+  </div>
+  <div class="pillar-grid" style="grid-template-columns:repeat(2,1fr);">
+    <div class="pillar-card" style="border-top-color:var(--oil-gold);"><div class="pillar-num">01</div><h4>Fuel Mix Divergence</h4><p>Each product requires its own elasticity, inventory and margin playbook. Pricing must operate below national averages.</p></div>
+    <div class="pillar-card" style="border-top-color:var(--sf-success);"><div class="pillar-num">02</div><h4>Biofuel Acceleration</h4><p>Customer segmentation must connect fuel preference, location and offer economics.</p></div>
+    <div class="pillar-card" style="border-top-color:var(--sf-warning);"><div class="pillar-num">03</div><h4>Channel Fragmentation</h4><p>One CRM model must support multiple commercial motions: retail, TRR, fleets, agribusiness, mining.</p></div>
+    <div class="pillar-card" style="border-top-color:var(--sf-error);"><div class="pillar-num">04</div><h4>Logistics as Commercial Weapon</h4><p>Supply-chain events must become customer-facing actions. Delivery reliability influences retention.</p></div>
+  </div>
+</div>
+
+<!-- PRICING WHY -->
+<div class="section" id="sec-pricing-why">
+  <div class="section-hero">
+    <h2>Why Pricing Is Different in Brazil</h2>
+    <p>A multi-variable equation unlike any other market. Pricing is not a commercial function — it's a treasury, tax, and supply function.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Factor</th><th>Impact</th></tr>
+        <tr><td><strong>PPI Abandonment (2022)</strong></td><td>Petrobras no longer follows International Parity Price — creates opacity and unpredictability in cost basis</td></tr>
+        <tr><td><strong>FX Exposure</strong></td><td>BRL/USD volatility directly impacts import costs, with distributors absorbing timing risk</td></tr>
+        <tr><td><strong>Tax Labyrinth</strong></td><td>ICMS monofásico + PIS/COFINS + CIDE + state substituição tributária — each product/state is different</td></tr>
+        <tr><td><strong>Biofuel Mandates</strong></td><td>Ethanol (27%) and Biodiesel (15%) blend ratios shift effective cost per liter</td></tr>
+        <tr><td><strong>Competitive Pressure</strong></td><td>White-flag stations undercut branded networks on price — constant volume vs margin trade-off</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING MODEL -->
+<div class="section" id="sec-pricing-model">
+  <div class="section-hero">
+    <h2>The Pricing Operating Model</h2>
+    <p>Five interconnected layers that determine margin capture — or margin leakage.</p>
+  </div>
+  <div class="pillar-grid" style="grid-template-columns:1fr;">
+    <div class="pillar-card"><div class="pillar-num">1</div><h4>Cost Basis Construction</h4><p>Petrobras gate price (or import landed cost) + biofuel blending cost + freight to terminal + tax burden per state/product</p></div>
+    <div class="pillar-card"><div class="pillar-num">2</div><h4>Market Intelligence</h4><p>Competitor pricing monitoring (ANP data), regional demand elasticity, channel-specific willingness to pay</p></div>
+    <div class="pillar-card"><div class="pillar-num">3</div><h4>Margin Rules Engine</h4><p>Floor margin by product/region/channel, target margin bands by customer tier, escalation triggers</p></div>
+    <div class="pillar-card"><div class="pillar-num">4</div><h4>Dynamic Pricing Execution</h4><p>B2B contract pricing (indexed), spot pricing for TRR, promotional pricing for retail network</p></div>
+    <div class="pillar-card"><div class="pillar-num">5</div><h4>Performance Monitoring</h4><p>Realized margin vs. target (daily), price-volume trade-off analysis, competitor response tracking</p></div>
+  </div>
+</div>
+
+<!-- PRICING GAP -->
+<div class="section" id="sec-pricing-gap">
+  <div class="section-hero">
+    <h2>The Pricing Gap</h2>
+    <p>World-class complexity, spreadsheet-grade tools. Pricing decisions are made with yesterday's data in a market that changes hourly.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Layer</th><th>Current Reality</th><th>Risk</th></tr>
+        <tr><td>Cost Basis Construction</td><td>SAP extract + manual FX lookup + tax team email</td><td><span class="badge badge-orange">MARGIN EROSION</span></td></tr>
+        <tr><td>Market Intelligence</td><td>Manual pump surveys + weekly ANP reports + WhatsApp</td><td><span class="badge badge-orange">BLIND SPOTS</span></td></tr>
+        <tr><td>Margin Rules Engine</td><td>Pricing committee weekly + Excel guardrails</td><td><span class="badge badge-red">MARGIN LEAKAGE</span></td></tr>
+        <tr><td>Dynamic Pricing</td><td>Sales rep discretion + email approval chains</td><td><span class="badge badge-red">SPEED LOSS</span></td></tr>
+        <tr><td>Performance Monitoring</td><td>Monthly P&L + ad-hoc reports</td><td><span class="badge badge-red">LATE DETECTION</span></td></tr>
+      </table>
+    </div>
+    <div class="callout callout-danger"><strong>Core Problem</strong> The gap between cost movement and price adjustment is where margin disappears.</div>
+  </div>
+</div>
+
+<!-- PRICING SF -->
+<div class="section" id="sec-pricing-sf">
+  <div class="section-hero">
+    <h2>Pricing — Salesforce Solution</h2>
+    <p>The Five Pricing Layers mapped to Salesforce capabilities.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Layer</th><th>Salesforce Product</th><th>Capability</th></tr>
+        <tr><td>Cost Basis</td><td><span class="badge badge-blue">Data Cloud + MuleSoft</span></td><td>Real-time SAP cost ingestion + FX feeds + tax engine. Single cost-per-liter view</td></tr>
+        <tr><td>Market Intelligence</td><td><span class="badge badge-blue">Tableau + Data Cloud</span></td><td>ANP data integration, competitor dashboards, AI-detected pricing anomalies</td></tr>
+        <tr><td>Margin Rules</td><td><span class="badge badge-blue">Revenue Cloud + Flow</span></td><td>Automated floor/ceiling guardrails. No deal below threshold without VP override</td></tr>
+        <tr><td>Dynamic Pricing</td><td><span class="badge badge-blue">Revenue Cloud + Agentforce</span></td><td>AI recommends optimal price. Auto-generates indexed contract terms. Sub-hour response</td></tr>
+        <tr><td>Performance</td><td><span class="badge badge-blue">CRM Analytics + Tableau</span></td><td>Daily realized margin dashboards. Automated alerts when margin drifts</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING AGENT -->
+<div class="section" id="sec-pricing-agent">
+  <div class="section-hero">
+    <h2>Pricing — Agentforce in Action</h2>
+    <p>Autonomous Pricing Intelligence: not replacing the committee — giving them real-time ammunition.</p>
+  </div>
+  <div class="agent-card"><h4>Agent 1: Cost Monitor Agent</h4><ul><li>Watches Petrobras gate price changes, FX movements, biofuel spot prices</li><li>Calculates new landed cost within minutes of market move</li><li>Triggers pricing review alert with recommended new price bands</li></ul></div>
+  <div class="agent-card"><h4>Agent 2: Deal Margin Guardian</h4><ul><li>Reviews every B2B deal before approval</li><li>Validates margin against floor rules</li><li>Auto-approves within guardrails, escalates exceptions with context</li></ul></div>
+  <div class="agent-card"><h4>Agent 3: Competitive Response Agent</h4><ul><li>Monitors regional price movements from ANP + field intelligence</li><li>Detects competitor undercuts in specific regions</li><li>Recommends targeted response based on account stickiness</li></ul></div>
+</div>
+
+<!-- LOGISTICS WHY -->
+<div class="section" id="sec-logistics-why">
+  <div class="section-hero">
+    <h2>Why Logistics Matters in Brazil</h2>
+    <p>Continental scale meets operational reality. Logistics cost = 8-12% of total fuel cost. 1% efficiency = R$500M+ industry savings.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Factor</th><th>Brazil Context</th></tr>
+        <tr><td><strong>Continental Distances</strong></td><td>Average delivery route: 300-800km. São Paulo to Manaus: 3,900km by road</td></tr>
+        <tr><td><strong>Modal Dependence</strong></td><td>65% of fuel transported by road (tanker trucks) — highest cost modal</td></tr>
+        <tr><td><strong>Infrastructure Gaps</strong></td><td>Limited pipeline coverage outside Southeast. Rail underinvested</td></tr>
+        <tr><td><strong>Fleet Complexity</strong></td><td>Mix of owned, contracted, and 3rd-party carriers with different SLAs</td></tr>
+        <tr><td><strong>Delivery Precision</strong></td><td>44,000+ stations expect tight delivery windows — stockout = lost sales + churn</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- LOGISTICS MODEL -->
+<div class="section" id="sec-logistics-model">
+  <div class="section-hero">
+    <h2>Logistics Operating Model</h2>
+    <p>From terminal to station — five layers determining cost, reliability, and competitive advantage.</p>
+  </div>
+  <div class="pillar-grid" style="grid-template-columns:1fr;">
+    <div class="pillar-card"><div class="pillar-num">1</div><h4>Network Design & Infrastructure</h4><p>Terminal location strategy, pipeline access contracts, import terminal capacity</p></div>
+    <div class="pillar-card"><div class="pillar-num">2</div><h4>Primary Transport (Terminal-to-Base)</h4><p>Pipeline scheduling, cabotage, rail movements, long-haul road transport</p></div>
+    <div class="pillar-card"><div class="pillar-num">3</div><h4>Secondary Transport (Base-to-Station)</h4><p>Route optimization, fleet mix allocation, compartment optimization</p></div>
+    <div class="pillar-card"><div class="pillar-num">4</div><h4>Last-Mile Execution</h4><p>Delivery scheduling by tank levels, driver safety, proof of delivery, volume reconciliation</p></div>
+    <div class="pillar-card"><div class="pillar-num">5</div><h4>Performance & Cost Management</h4><p>Cost per liter by route/modal/region, fleet utilization, SLA compliance, empty-mile reduction</p></div>
+  </div>
+</div>
+
+<!-- LOGISTICS GAP -->
+<div class="section" id="sec-logistics-gap">
+  <div class="section-hero">
+    <h2>The Logistics Gap</h2>
+    <p>Millions of kilometers managed on calls and spreadsheets. 15-25% empty miles is the industry average.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Layer</th><th>Current Reality</th><th>Risk</th></tr>
+        <tr><td>Network Design</td><td>Annual planning cycle + static models</td><td><span class="badge badge-orange">SUBOPTIMAL CAPEX</span></td></tr>
+        <tr><td>Primary Transport</td><td>TMS disconnected from commercial demand</td><td><span class="badge badge-orange">EXCESS COST</span></td></tr>
+        <tr><td>Secondary Transport</td><td>Manual route planning + driver experience</td><td><span class="badge badge-red">COST LEAKAGE</span></td></tr>
+        <tr><td>Last-Mile Execution</td><td>Phone calls + driver judgment on sequence</td><td><span class="badge badge-red">STOCKOUT RISK</span></td></tr>
+        <tr><td>Cost Management</td><td>Monthly reports + manual freight audit</td><td><span class="badge badge-orange">LATE VISIBILITY</span></td></tr>
+      </table>
+    </div>
+    <div class="callout callout-danger"><strong>Core Problem</strong> Logistics decisions are made independently from commercial priorities. The cheapest delivery may not serve the highest-value customer.</div>
+  </div>
+</div>
+
+<!-- LOGISTICS SF -->
+<div class="section" id="sec-logistics-sf">
+  <div class="section-hero">
+    <h2>Logistics — Salesforce Solution</h2>
+    <p>The Five Logistics Layers mapped to Salesforce capabilities.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Layer</th><th>Salesforce Product</th><th>Capability</th></tr>
+        <tr><td>Network Design</td><td><span class="badge badge-blue">Tableau + Data Cloud</span></td><td>Demand heat maps + infrastructure overlay. AI-driven capacity planning</td></tr>
+        <tr><td>Primary Transport</td><td><span class="badge badge-blue">MuleSoft + Data Cloud</span></td><td>TMS integration. Real-time tracking. Demand-triggered positioning</td></tr>
+        <tr><td>Secondary Transport</td><td><span class="badge badge-blue">Field Service + Agentforce</span></td><td>AI-optimized routing. Dynamic scheduling based on tank telemetry</td></tr>
+        <tr><td>Last-Mile Execution</td><td><span class="badge badge-blue">Field Service + Mobile</span></td><td>Real-time tracking. Proof of delivery. Customer notifications</td></tr>
+        <tr><td>Cost Management</td><td><span class="badge badge-blue">Tableau + CRM Analytics</span></td><td>Cost-per-liter dashboards. Freight audit automation. SLA tracking</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- LOGISTICS CONNECTED -->
+<div class="section" id="sec-logistics-connected">
+  <div class="section-hero">
+    <h2>Connected Intelligence</h2>
+    <p>From reactive delivery to predictive logistics. Shift from "station calls when empty" to "delivery arrives before they know they need it."</p>
+  </div>
+  <div class="card">
+    <h3>Predictive Delivery Flow</h3>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="step-icon">1</div><div>IoT Sensor at Station → Tank level drops below 40%</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="step-icon">2</div><div>Data Cloud ingests telemetry + correlates with historical consumption</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="step-icon">3</div><div>Agentforce predicts stockout in 36h. Checks delivery schedule</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="step-icon">4</div><div>Field Service auto-schedules delivery. Optimizes route with nearby stations</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="step-icon">5</div><div>Experience Cloud notifies dealer: "Delivery confirmed tomorrow 8-10am"</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="step-icon">6</div><div>CRM Analytics updates cost-per-delivery and SLA metrics in real time</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMERCIAL BATTLEFIELDS -->
+<div class="section" id="sec-commercial-battlefields">
+  <div class="section-hero">
+    <h2>Two Commercial Battlefields</h2>
+    <p>Retail (B2C2B) vs. Direct B2B: Two models, one platform.</p>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Retail (B2C2B) — The Branded Network</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li>44,000+ stations — continental scale management</li>
+        <li>49% white-flag — constant conversion battle</li>
+        <li>Complex dealer relationships: financing, training, brand compliance</li>
+        <li>Consumer loyalty programs competing at the pump</li>
+        <li>Convenience retail becoming margin differentiator</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Direct B2B — The Volume Engine</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li><strong>Agribusiness:</strong> Seasonal demand, barter contracts, on-farm delivery</li>
+        <li><strong>Mining & Industry:</strong> Long-term contracts, dedicated storage (PAVs)</li>
+        <li><strong>Transport fleets:</strong> Fleet cards, multi-site delivery</li>
+        <li><strong>Thermal power:</strong> Massive spot volumes during hydro shortage</li>
+        <li><strong>Government:</strong> Tender processes, compliance, payment terms</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- COMMERCIAL RETAIL -->
+<div class="section" id="sec-commercial-retail">
+  <div class="section-hero">
+    <h2>Retail Network Management</h2>
+    <p>The Five Disciplines that drive network growth and retention at scale.</p>
+  </div>
+  <div class="pillar-grid" style="grid-template-columns:1fr;">
+    <div class="pillar-card"><div class="pillar-num">1</div><h4>Network Planning & Expansion</h4><p>Whitespace analysis, competitive mapping, CAPEX prioritization for station upgrades</p></div>
+    <div class="pillar-card"><div class="pillar-num">2</div><h4>Dealer Acquisition & Onboarding</h4><p>Prospect scoring, contract negotiation, onboarding workflow (branding, equipment, training)</p></div>
+    <div class="pillar-card"><div class="pillar-num">3</div><h4>Relationship Management</h4><p>Territory management, visit cadence execution, performance reviews and business plans</p></div>
+    <div class="pillar-card"><div class="pillar-num">4</div><h4>Volume & Margin Management</h4><p>Volume forecasting, incentive programs, product mix optimization</p></div>
+    <div class="pillar-card"><div class="pillar-num">5</div><h4>Retention & Churn Prevention</h4><p>Early warning signals, proactive intervention, contract renewal management</p></div>
+  </div>
+</div>
+
+<!-- COMMERCIAL B2B -->
+<div class="section" id="sec-commercial-b2b">
+  <div class="section-hero">
+    <h2>B2B Sales Machine</h2>
+    <p>The Five Disciplines for complex B2B fuel distribution sales.</p>
+  </div>
+  <div class="pillar-grid" style="grid-template-columns:1fr;">
+    <div class="pillar-card"><div class="pillar-num">1</div><h4>Market Intelligence & Prospecting</h4><p>Sector mapping (harvest calendars, mining CAPEX cycles), account sizing, displacement opportunities</p></div>
+    <div class="pillar-card"><div class="pillar-num">2</div><h4>Complex Sales Execution</h4><p>Multi-stakeholder selling, solution design (logistics + credit + pricing), proposal automation</p></div>
+    <div class="pillar-card"><div class="pillar-num">3</div><h4>Account Development</h4><p>Share-of-wallet growth, cross-sell (fleet cards, carbon credits, EV charging), strategic planning</p></div>
+    <div class="pillar-card"><div class="pillar-num">4</div><h4>Service Delivery Alignment</h4><p>SLA monitoring, dedicated infrastructure (PAVs), proactive issue resolution</p></div>
+    <div class="pillar-card"><div class="pillar-num">5</div><h4>Renewal & Retention</h4><p>Contract lifecycle, price renegotiation triggers, competitor defense</p></div>
+  </div>
+</div>
+
+<!-- COMMERCIAL GAP -->
+<div class="section" id="sec-commercial-gap">
+  <div class="section-hero">
+    <h2>The Commercial Gap</h2>
+    <p>Two worlds that don't talk to each other. Commercial teams operate on instinct without data to scale what the best reps do naturally.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Dimension</th><th>Retail Reality</th><th>B2B Reality</th><th>Risk</th></tr>
+        <tr><td>Customer Data</td><td>Dealer in one system, consumer in another</td><td>Account in SAP, interactions in email</td><td><span class="badge badge-red">NO 360° VIEW</span></td></tr>
+        <tr><td>Pipeline</td><td>Volume forecasts in Excel by territory</td><td>Opportunities in spreadsheets</td><td><span class="badge badge-red">NO PREDICTABILITY</span></td></tr>
+        <tr><td>Activity</td><td>Paper forms or disconnected apps</td><td>Meeting notes in email</td><td><span class="badge badge-orange">NO VISIBILITY</span></td></tr>
+        <tr><td>Performance</td><td>Monthly volume reports from SAP</td><td>Quarterly reviews, incomplete data</td><td><span class="badge badge-orange">LATE REACTION</span></td></tr>
+        <tr><td>Churn Signals</td><td>Discovered when station unbrands</td><td>Discovered when contract is lost</td><td><span class="badge badge-red">PREVENTABLE</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- COMMERCIAL SF -->
+<div class="section" id="sec-commercial-sf">
+  <div class="section-hero">
+    <h2>Commercial — Salesforce Solutions</h2>
+    <p>Sales Cloud + Revenue Cloud + Experience Cloud powering both retail and B2B motions.</p>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Retail Network Platform</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Capability</th><th>Product</th></tr>
+          <tr><td>Dealer 360° Profile</td><td>Sales Cloud</td></tr>
+          <tr><td>Territory Intelligence</td><td>Maps + Tableau</td></tr>
+          <tr><td>Visit Execution</td><td>Sales Cloud Mobile</td></tr>
+          <tr><td>Dealer Portal</td><td>Experience Cloud</td></tr>
+          <tr><td>Churn Prediction</td><td>Einstein + Data Cloud</td></tr>
+          <tr><td>Incentive Management</td><td>Revenue Cloud</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>B2B Growth Engine</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Capability</th><th>Product</th></tr>
+          <tr><td>Account Planning</td><td>Sales Cloud</td></tr>
+          <tr><td>Pipeline Management</td><td>Sales Cloud</td></tr>
+          <tr><td>CPQ & Proposals</td><td>Revenue Cloud</td></tr>
+          <tr><td>Complex Approvals</td><td>Flow + Agentforce</td></tr>
+          <tr><td>Contract Lifecycle</td><td>Revenue Cloud</td></tr>
+          <tr><td>Forecast Accuracy</td><td>Einstein Analytics</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMERCIAL AGENT -->
+<div class="section" id="sec-commercial-agent">
+  <div class="section-hero">
+    <h2>Commercial — Agentforce in Action</h2>
+    <p>Autonomous Commercial Intelligence across retail and B2B channels.</p>
+  </div>
+  <div class="agent-card"><h4>Agent 1: Churn Prevention (Retail)</h4><ul><li>Monitors 44,000 stations daily for early warning signals</li><li>Detects: volume decline >10%, payment delays, reduced product mix</li><li>Auto-triggers intervention: alerts territory manager + recommends action</li></ul></div>
+  <div class="agent-card"><h4>Agent 2: Opportunity Spotter (B2B)</h4><ul><li>Scans market signals: harvest forecasts, mining CAPEX, fleet expansion news</li><li>Creates qualified leads: "Agribusiness X expanding 20% in MT — est. 5M liters/year"</li></ul></div>
+  <div class="agent-card"><h4>Agent 3: Deal Desk</h4><ul><li>Reviews B2B proposals against margin rules, credit limits, logistics feasibility</li><li>Auto-approves standard deals, escalates exceptions with full context</li></ul></div>
+</div>
+
+<!-- CUSTOMER OPS MOAT -->
+<div class="section" id="sec-custops-moat">
+  <div class="section-hero">
+    <h2>The Defensive Moat</h2>
+    <p>Beyond the commodity: four pillars of customer stickiness that create recurring revenue and defensible switching costs.</p>
+  </div>
+  <div class="pillar-grid" style="grid-template-columns:repeat(2,1fr);">
+    <div class="pillar-card"><h4>Credit & Financial Services</h4><p>In a 14% interest rate environment, credit = volume lock-in. Working capital for dealers, flexible payment for B2B.</p></div>
+    <div class="pillar-card"><h4>Loyalty & Rewards</h4><p>40M+ enrolled consumers create recurring traffic + behavioral data. Premmia, Shell Box, Km de Vantagens.</p></div>
+    <div class="pillar-card"><h4>Fleet Management</h4><p>High switching costs for transport companies — fuel + toll + maintenance cards integrated into operational systems.</p></div>
+    <div class="pillar-card"><h4>TRR Operations</h4><p>Last-mile delivery to farms, small industries, generators. Serves fragmented middle-market efficiently.</p></div>
+  </div>
+  <div class="callout callout-info"><strong>Key Insight</strong> Fuel is a commodity. Customer operations transforms it into a relationship business with recurring revenue streams.</div>
+</div>
+
+<!-- CUSTOPS CREDIT -->
+<div class="section" id="sec-custops-credit">
+  <div class="section-hero">
+    <h2>Credit & Financial Services</h2>
+    <p>Credit as a competitive weapon in a high-interest economy.</p>
+  </div>
+  <div class="card">
+    <h3>The Credit Value Chain</h3>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="step-icon">1</div><div><strong>Risk Assessment</strong> — Financial analysis, credit scoring, collateral evaluation</div></div>
+      <div class="flow-step"><div class="step-icon">2</div><div><strong>Limit Setting</strong> — Dynamic limits based on volume, history, market conditions</div></div>
+      <div class="flow-step"><div class="step-icon">3</div><div><strong>Disbursement</strong> — Working capital lines, product financing, investment packages</div></div>
+      <div class="flow-step"><div class="step-icon">4</div><div><strong>Monitoring</strong> — Real-time exposure tracking, early warning signals</div></div>
+      <div class="flow-step"><div class="step-icon">5</div><div><strong>Collection</strong> — Automated dunning, renegotiation, legal escalation</div></div>
+    </div>
+    <h4>Brazil-Specific Complexity</h4>
+    <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+      <li><strong>Dealer credit:</strong> R$1-5M per station tied to exclusivity contracts</li>
+      <li><strong>Seasonal barter:</strong> Grain-for-fuel operations with crop cycle timing</li>
+      <li><strong>Consigned inventory:</strong> Product on dealer premises, distributor's asset until sold</li>
+      <li><strong>Receivables anticipation:</strong> Factoring dealer card receivables at preferential rates</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CUSTOPS LOYALTY -->
+<div class="section" id="sec-custops-loyalty">
+  <div class="section-hero">
+    <h2>Loyalty Ecosystem</h2>
+    <p>Consumer Loyalty in Fuel Retail: Data Is the New Fuel. 40M+ enrolled members across major programs.</p>
+  </div>
+  <div class="card">
+    <h3>Major Loyalty Programs</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Program</th><th>Distributor</th><th>Members</th><th>Mechanism</th></tr>
+        <tr><td>Premmia</td><td>Vibra (BR)</td><td>30M+</td><td>Points → marketplace redemption</td></tr>
+        <tr><td>Shell Box</td><td>Raízen</td><td>15M+</td><td>Cashback + digital payments</td></tr>
+        <tr><td>Km de Vantagens</td><td>Ipiranga</td><td>40M+</td><td>Points → airline miles + partners</td></tr>
+        <tr><td>Abastece Aí</td><td>Vibra</td><td>10M+</td><td>Digital payments + cashback</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOPS FLEET -->
+<div class="section" id="sec-custops-fleet">
+  <div class="section-hero">
+    <h2>Fleet Management</h2>
+    <p>Fleet Cards: The high-switching-cost volume guarantor for transport companies.</p>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <h3>What Fleet Management Includes</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li><strong>Fuel cards</strong> — per-driver controls, real-time authorization</li>
+        <li><strong>Toll integration</strong> — Single card for fuel + tolls</li>
+        <li><strong>Maintenance</strong> — Preventive scheduling tied to mileage</li>
+        <li><strong>Analytics</strong> — Consumption per vehicle, route efficiency</li>
+        <li><strong>Compliance</strong> — ANTT regulatory, environmental reporting</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Why It Creates Lock-In</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li>Integrated into TMS, payroll, cost allocation</li>
+        <li>Driver rules configured per company (limits per day/transaction/product)</li>
+        <li>Migration = reconfiguring 100s-1000s of drivers</li>
+        <li>Volume contracts guarantee minimum monthly purchases</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOPS GAP -->
+<div class="section" id="sec-custops-gap">
+  <div class="section-hero">
+    <h2>The Customer Operations Gap</h2>
+    <p>Four pillars operating in silos. Valuable behavioral data never flows into commercial decisions.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Pillar</th><th>Current Reality</th><th>Risk</th></tr>
+        <tr><td>Credit</td><td>SAP FI + Excel + email approvals. 5-10 day decisions</td><td><span class="badge badge-red">SLOW DECISIONS</span></td></tr>
+        <tr><td>Loyalty</td><td>Separate platform, disconnected from CRM</td><td><span class="badge badge-red">NO PERSONALIZATION</span></td></tr>
+        <tr><td>Fleet</td><td>Dedicated system, limited integration</td><td><span class="badge badge-orange">MISSED CROSS-SELL</span></td></tr>
+        <tr><td>TRR</td><td>Cost center with basic tools</td><td><span class="badge badge-orange">UNDER-MONETIZED</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOPS SF -->
+<div class="section" id="sec-custops-sf">
+  <div class="section-hero">
+    <h2>Customer Operations — Salesforce Solution</h2>
+    <p>Four pillars unified through Data Cloud for connected customer intelligence.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Pillar</th><th>Salesforce Product</th><th>Capability</th></tr>
+        <tr><td>Credit</td><td><span class="badge badge-blue">Financial Services Cloud + Flow</span></td><td>Automated scoring, dynamic limits, approval workflows, portfolio monitoring</td></tr>
+        <tr><td>Loyalty</td><td><span class="badge badge-blue">Marketing Cloud + Data Cloud + Loyalty Mgmt</span></td><td>Unified profiles, AI personalization, real-time triggers, multi-channel</td></tr>
+        <tr><td>Fleet</td><td><span class="badge badge-blue">Service Cloud + Experience Cloud + Data Cloud</span></td><td>Fleet portal, consumption dashboards, predictive maintenance</td></tr>
+        <tr><td>TRR</td><td><span class="badge badge-blue">Field Service + Sales Cloud</span></td><td>Route optimization, microsegmentation, upsell recommendations</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOPS AGENT -->
+<div class="section" id="sec-custops-agent">
+  <div class="section-hero">
+    <h2>Customer Operations — Agentforce</h2>
+    <p>Autonomous agents managing credit risk, loyalty engagement, fleet expansion, and TRR graduation.</p>
+  </div>
+  <div class="agent-card"><h4>Agent 1: Credit Risk Monitor</h4><ul><li>Evaluates portfolio exposure continuously</li><li>Detects: Serasa score drop, payment pattern change, volume decline + high balance</li><li>Recommends: reduce limit, pause orders, trigger collection</li></ul></div>
+  <div class="agent-card"><h4>Agent 2: Loyalty Engagement</h4><ul><li>Identifies members at risk (no visit 30 days, points expiring)</li><li>Generates personalized re-engagement based on behavior</li><li>Delivers via preferred channel, measures and adjusts</li></ul></div>
+  <div class="agent-card"><h4>Agent 3: Fleet Expansion</h4><ul><li>Monitors consumption patterns for growth signals</li><li>Alerts account manager with expansion recommendation</li><li>Auto-generates expanded contract proposal</li></ul></div>
+  <div class="agent-card"><h4>Agent 4: TRR Graduation</h4><ul><li>Identifies TRR customers with consistent growth above threshold</li><li>Recommends "graduation" to direct commercial relationship</li><li>Triggers prospecting with full history and credit profile</li></ul></div>
+</div>
+
+<!-- ARCHITECTURE PLATFORM -->
+<div class="section" id="sec-arch-platform">
+  <div class="section-hero">
+    <h2>Complete Salesforce Architecture</h2>
+    <p>One Platform, Five Engines, Connected Intelligence. SAP stays as system of record. Salesforce becomes the system of intelligence.</p>
+  </div>
+  <div class="arch-diagram">
+    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--sf-primary);">Agentforce</div><div class="arch-layer-content"><div class="arch-block">Supply Agent</div><div class="arch-block">Pricing Agent</div><div class="arch-block">Logistics Agent</div><div class="arch-block">Commercial Agent</div><div class="arch-block">Customer Ops Agent</div></div></div>
+    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--sf-success);">Applications</div><div class="arch-layer-content"><div class="arch-block">Sales Cloud</div><div class="arch-block">Revenue Cloud</div><div class="arch-block">Service Cloud</div><div class="arch-block">Field Service</div><div class="arch-block">Experience Cloud</div><div class="arch-block">Marketing Cloud</div><div class="arch-block">FSC</div><div class="arch-block">Loyalty Mgmt</div></div></div>
+    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--oil-gold);">Intelligence</div><div class="arch-layer-content"><div class="arch-block">Tableau</div><div class="arch-block">CRM Analytics</div><div class="arch-block">Einstein AI</div><div class="arch-block">Predictive Models</div></div></div>
+    <div class="arch-layer"><div class="arch-layer-label" style="background:#6b21a8;">Data Layer</div><div class="arch-layer-content"><div class="arch-block">Data Cloud — Unified Customer</div><div class="arch-block">Supply Signals</div><div class="arch-block">Market Data</div><div class="arch-block">IoT / Telemetry</div></div></div>
+    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--sf-dark);">Integration</div><div class="arch-layer-content"><div class="arch-block">MuleSoft</div><div class="arch-block">SAP ERP</div><div class="arch-block">TMS</div><div class="arch-block">IoT Platform</div><div class="arch-block">ANP/Tax</div><div class="arch-block">Petrobras</div><div class="arch-block">FX Feeds</div></div></div>
+  </div>
+</div>
+
+<!-- ARCHITECTURE DATA CLOUD -->
+<div class="section" id="sec-arch-datacloud">
+  <div class="section-hero">
+    <h2>Data Cloud Unification</h2>
+    <p>One Customer, One Truth, All Signals Connected across credit, loyalty, fleet, and TRR data.</p>
+  </div>
+  <div class="card">
+    <h3>Unified Customer Identity Graph — Use Cases</h3>
+    <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+      <li>Loyalty member declining visit frequency → Trigger personalized win-back offer</li>
+      <li>Fleet customer increasing consumption → Sales alerted to expansion opportunity</li>
+      <li>Dealer credit at 90% + volume growing → Auto-recommend limit increase</li>
+      <li>TRR customer ordering more frequently → Qualify for direct commercial relationship</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div class="section" id="sec-roadmap">
+  <div class="section-hero">
+    <h2>Implementation Roadmap</h2>
+    <p>Quick Wins to Full Transformation — phased approach with measurable ROI at each stage.</p>
+  </div>
+  <div class="card">
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-meta">Phase 1: Foundation (0-6 months)</div><h4>MuleSoft + Data Cloud + Sales Cloud (Dealer 360)</h4><p>Integration layer, customer data unification, retail network management</p><div class="callout callout-success" style="margin-top:8px;"><strong>Quick Win:</strong> Churn prediction reduces dealer losses by 15-20%</div></div>
+      <div class="timeline-item"><div class="timeline-meta">Phase 2: Commercial Acceleration (6-12 months)</div><h4>Revenue Cloud (CPQ) + Experience Cloud + Tableau</h4><p>B2B pricing automation, dealer portal, supply + pricing visibility</p><div class="callout callout-success" style="margin-top:8px;"><strong>Quick Win:</strong> B2B deal cycle reduction from 10 days to 3 days</div></div>
+      <div class="timeline-item"><div class="timeline-meta">Phase 3: Operational Intelligence (12-18 months)</div><h4>Field Service + Loyalty Management + FSC</h4><p>Logistics orchestration, loyalty migration, credit operations</p><div class="callout callout-success" style="margin-top:8px;"><strong>Quick Win:</strong> Predictive delivery reduces stockouts by 30%</div></div>
+      <div class="timeline-item"><div class="timeline-meta">Phase 4: Autonomous Operations (18-24 months)</div><h4>Agentforce Deployment Across All Five Engines</h4><p>Full AI-driven decision automation, end-to-end optimization</p><div class="callout callout-success" style="margin-top:8px;"><strong>Quick Win:</strong> Autonomous agents handle 60% of routine decisions</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACT -->
+<div class="section" id="sec-impact">
+  <div class="section-hero">
+    <h2>Expected Business Impact</h2>
+    <p>The Value of Connected Operations — measurable KPIs across all five engines.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>KPI</th><th>Current State</th><th>With Salesforce</th><th>Impact</th></tr>
+        <tr><td>Dealer Churn Rate</td><td>8-12% annually</td><td>4-6% annually</td><td><span class="badge badge-green">~R$200M retention</span></td></tr>
+        <tr><td>B2B Deal Cycle</td><td>10-15 days</td><td>2-3 days</td><td><span class="badge badge-green">4x velocity</span></td></tr>
+        <tr><td>Pricing Response</td><td>24-48 hours</td><td>&lt; 1 hour</td><td><span class="badge badge-green">Margin protection</span></td></tr>
+        <tr><td>Delivery SLA</td><td>85-90%</td><td>97%+</td><td><span class="badge badge-green">Satisfaction</span></td></tr>
+        <tr><td>Credit Approval</td><td>5-10 days</td><td>Same-day</td><td><span class="badge badge-green">Win before competition</span></td></tr>
+        <tr><td>Loyalty Redemption</td><td>15-20%</td><td>35-45%</td><td><span class="badge badge-green">Engagement 2x</span></td></tr>
+        <tr><td>Commercial Productivity</td><td>8-10/week</td><td>20-25/week</td><td><span class="badge badge-green">2.5x effectiveness</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- WHY SF -->
+<div class="section" id="sec-why-sf">
+  <div class="section-hero">
+    <h2>Why Salesforce</h2>
+    <p>SAP stays as system of record. Salesforce becomes the system of intelligence and engagement — where humans and AI make decisions.</p>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Requirement</th><th>Why Not Just ERP?</th><th>Salesforce Advantage</th></tr>
+        <tr><td><strong>Customer 360°</strong></td><td>ERP is transaction-centric</td><td>Built for relationships, interactions, lifecycle</td></tr>
+        <tr><td><strong>Speed of Change</strong></td><td>ERP changes: expensive, slow, risky</td><td>Low-code platform: weeks not months</td></tr>
+        <tr><td><strong>AI at Scale</strong></td><td>ERP AI limited to structured data</td><td>Einstein + Agentforce: multi-source, autonomous</td></tr>
+        <tr><td><strong>Channel Unification</strong></td><td>ERP doesn't serve portals or mobile</td><td>Experience Cloud, Mobile, Marketing — native</td></tr>
+        <tr><td><strong>Ecosystem</strong></td><td>ERP is closed</td><td>AppExchange + MuleSoft: 1000s of connectors</td></tr>
+        <tr><td><strong>Time to Value</strong></td><td>18-36 months</td><td>Phase 1 live in 6 months with measurable ROI</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  Salesforce Confidential — Internal Use Only | Downstream Oil & Gas Brazil POV v1.1 | May 2026
+</footer>
+
+<script>
+(function() {
+  // Navigation
+  const links = document.querySelectorAll('.nav-items a[data-section]');
+  const sections = document.querySelectorAll('.section');
+
+  function showSection(id) {
+    sections.forEach(s => s.classList.remove('active'));
+    links.forEach(l => l.classList.remove('active'));
+    const target = document.getElementById('sec-' + id);
+    if (target) {
+      target.classList.add('active');
+      const link = document.querySelector(`a[data-section="${id}"]`);
+      if (link) link.classList.add('active');
+    }
+    window.scrollTo(0, 0);
+  }
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      showSection(link.dataset.section);
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('sidebarOverlay').classList.remove('visible');
+    });
+  });
+
+  // Collapsible sections
+  document.querySelectorAll('.nav-section-title').forEach(title => {
+    title.addEventListener('click', () => {
+      title.parentElement.classList.toggle('collapsed');
+    });
+  });
+
+  // Hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('visible');
+  });
+
+  document.getElementById('sidebarOverlay').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('visible');
+  });
+
+  // Search
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+
+  const searchableContent = [];
+  sections.forEach(section => {
+    const id = section.id.replace('sec-', '');
+    const texts = section.querySelectorAll('h2, h3, h4, p, td, li, .metric-value, .metric-label');
+    texts.forEach(el => {
+      if (el.textContent.trim().length > 3) {
+        searchableContent.push({
+          section: id,
+          title: section.querySelector('h2')?.textContent || id,
+          text: el.textContent.trim()
+        });
+      }
+    });
+  });
+
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    if (query.length < 2) {
+      searchResults.classList.remove('visible');
+      return;
+    }
+
+    const results = [];
+    const seen = new Set();
+    searchableContent.forEach(item => {
+      if (item.text.toLowerCase().includes(query) && !seen.has(item.section + item.text.substring(0,50))) {
+        seen.add(item.section + item.text.substring(0,50));
+        results.push(item);
+      }
+    });
+
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div style="padding:12px 16px;font-size:13px;color:var(--sf-text-sec);">No results found</div>';
+    } else {
+      searchResults.innerHTML = results.slice(0, 12).map(r => {
+        const highlighted = r.text.replace(new RegExp(`(${query})`, 'gi'), '<mark>$1</mark>');
+        return `<div class="search-result-item" data-section="${r.section}">
+          <div class="result-section">${r.title}</div>
+          <div class="result-text">${highlighted.substring(0, 120)}${r.text.length > 120 ? '...' : ''}</div>
+        </div>`;
+      }).join('');
+    }
+    searchResults.classList.add('visible');
+  });
+
+  searchResults.addEventListener('click', e => {
+    const item = e.target.closest('.search-result-item');
+    if (item) {
+      showSection(item.dataset.section);
+      searchResults.classList.remove('visible');
+      searchInput.value = '';
+    }
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.search-container')) {
+      searchResults.classList.remove('visible');
+    }
+  });
+
+  // Keyboard shortcut
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>
