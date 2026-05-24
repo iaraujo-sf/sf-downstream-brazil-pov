@@ -1337,14 +1337,82 @@ table tr:hover { background: var(--sf-highlight); }
 <div class="section" id="sec-market-scale">
   <div class="section-hero">
     <h2>A $76B Market Defined by Scale, Volatility, and Fragmentation</h2>
-    <p>Massive market scale meets continental infrastructure challenges and extreme price volatility.</p>
+    <p>Massive market scale meets continental infrastructure challenges and extreme price volatility. Understanding the revenue pools, fuel mix, and player landscape across segments is essential to identify where Salesforce creates value.</p>
   </div>
-  <div class="pillar-grid">
-    <div class="pillar-card"><h4>Massive Market Scale</h4><p>~140 billion liters consumed annually. Market value exceeding $76 billion.</p></div>
-    <div class="pillar-card"><h4>Continental Infrastructure</h4><p>42,000+ retail stations and hundreds of bases across 3.27 million square miles.</p></div>
-    <div class="pillar-card"><h4>Extreme Volatility</h4><p>FX fluctuations, oil price swings, and frequently changing local tax regulations.</p></div>
-    <div class="pillar-card"><h4>Fierce Fragmentation</h4><p>Top 3 hold ~55% share. Remaining 45% fiercely contested by agile regional distributors.</p></div>
+
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-value">$76B+</div><div class="metric-label">Total Market Revenue</div><div class="metric-sub">distribution + retail</div></div>
+    <div class="metric-card"><div class="metric-value">~140B L</div><div class="metric-label">Annual Volume</div><div class="metric-sub">all fuel types</div></div>
+    <div class="metric-card"><div class="metric-value">42,000+</div><div class="metric-label">Retail Stations</div><div class="metric-sub">branded + white-flag</div></div>
+    <div class="metric-card"><div class="metric-value">~5,000</div><div class="metric-label">TRR Operators</div><div class="metric-sub">regional last-mile</div></div>
+    <div class="metric-card"><div class="metric-value">40M+</div><div class="metric-label">Loyalty Members</div><div class="metric-sub">across top programs</div></div>
+    <div class="metric-card"><div class="metric-value">65%</div><div class="metric-label">Road-Based Freight</div><div class="metric-sub">drives diesel demand</div></div>
   </div>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Volume by Fuel Type (billion liters, 2024)</h3>
+      <canvas id="chartFuelVolume"></canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Revenue Pool Breakdown (~$76B)</h3>
+      <canvas id="chartRevenuePool"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Player Landscape by Segment</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">The downstream market is not a single competitive arena — it fragments into distinct segments, each with different players, dynamics, and Salesforce opportunities.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Segment</th><th>Key Players</th><th>Scale</th><th>Dynamics</th></tr>
+        <tr><td><strong>Distribution (Primary)</strong></td><td>Vibra · Raízen · Ipiranga · ALE/Glencore · SIM/Rodoil · 60+ regionals</td><td>~$76B revenue · 133M m³</td><td>Top 3 hold ~58%. Scale = margin power. Regionals compete on agility + local relationships</td></tr>
+        <tr><td><strong>Retail (Stations)</strong></td><td>BR (Vibra) · Shell (Raízen) · Ipiranga · ALE · White-flag independents</td><td>42,000+ stations</td><td>58% branded vs 42% white-flag. Brand switching driven by margin pressure + supply terms</td></tr>
+        <tr><td><strong>B2B / Fleet</strong></td><td>Vibra Fleet · Shell Fleet Solutions · Ipiranga Frotas · Ticket Log · VB · Sem Parar</td><td>~$12B · 2M+ vehicles</td><td>High-value contracts, long cycles (60-90d). Mix of fuel + toll + maintenance bundles</td></tr>
+        <tr><td><strong>TRR (Last-Mile)</strong></td><td>~5,000 independent operators across all states</td><td>~15% of diesel volume</td><td>Buy from distributors, sell to end-consumers (farms, generators, construction). Fragmented, local</td></tr>
+        <tr><td><strong>Agribusiness</strong></td><td>Direct B2B from distributors + TRR network + cooperatives</td><td>~$8B · highly seasonal</td><td>Demand spikes during harvest (safra). Logistics = competitive advantage. Credit exposure high</td></tr>
+        <tr><td><strong>Loyalty Programs</strong></td><td>Premmia (Vibra, 40M) · Shell Box (Raízen) · Km de Vantagens (Ipiranga) · Abastece Aí</td><td>60M+ total members</td><td>Retention weapon. Data goldmine. Shifting from points-only to ecosystem (marketplace, banking)</td></tr>
+        <tr><td><strong>Aviation Fuel</strong></td><td>Vibra (BR Aviation) · Raízen · Air BP</td><td>~$5B · 7B liters</td><td>High-margin, concentrated buyer base (airlines). Airport logistics = barrier to entry</td></tr>
+        <tr><td><strong>Convenience & Non-Fuel</strong></td><td>BR Mania (Vibra) · Shell Select (Raízen) · am/pm (Ipiranga)</td><td>~$3B growing 12% YoY</td><td>Highest-margin segment. Shifting stations from fuel stops to convenience destinations</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Branded vs. White-Flag Station Split</h3>
+      <canvas id="chartStationSplit"></canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Revenue by Segment (% of $76B)</h3>
+      <canvas id="chartSegmentRevenue"></canvas>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>Why Scale Matters — The Margin Equation</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li><strong>Gross margin per liter:</strong> R$0.08–0.15 (distribution) — volume is everything</li>
+        <li><strong>Working capital:</strong> $2-4B tied in fuel inventory at any time for top players</li>
+        <li><strong>Logistics cost:</strong> 3-5% of revenue — optimization = direct margin capture</li>
+        <li><strong>Credit exposure:</strong> $1-2B in dealer receivables — bad debt = existential risk</li>
+        <li><strong>Brand premium:</strong> Branded stations charge R$0.10-0.20/L more — but require investment in image, training, loyalty</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Market Volatility Drivers</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li><strong>Petrobras pricing:</strong> Post-PPI era creates opacity — no formula, no predictability</li>
+        <li><strong>FX exposure:</strong> BRL/USD moves ±15-20% annually, directly hitting import costs</li>
+        <li><strong>Tax reform (2024+):</strong> ICMS monofásico simplifies but redistributes burden across states</li>
+        <li><strong>Ethanol parity:</strong> 70% rule (ethanol vs. gasoline price) shifts consumer behavior daily</li>
+        <li><strong>Seasonal spikes:</strong> Diesel +20% during safra (harvest) in agricultural states</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-warning"><strong>The Core Challenge</strong> In a market where gross margins are measured in centavos per liter, every pricing decision, every delivery route, every credit approval, and every churn signal has material P&L impact. This is why decision orchestration — not just CRM — is the value proposition Salesforce brings to downstream.</div>
 </div>
 
 <!-- COMPETITIVE LANDSCAPE -->
@@ -2647,6 +2715,100 @@ document.addEventListener('DOMContentLoaded', function() {
   Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
   Chart.defaults.font.size = 11;
   Chart.defaults.color = '#706E6B';
+
+  // CHART: Volume by Fuel Type (Horizontal Bar)
+  new Chart(document.getElementById('chartFuelVolume'), {
+    type: 'bar',
+    data: {
+      labels: ['Diesel', 'Gasoline C', 'Hydrated Ethanol', 'Biodiesel', 'LPG', 'Aviation (QAV)', 'Fuel Oil + Others'],
+      datasets: [{
+        label: 'Billion Liters',
+        data: [62, 38, 18, 8.5, 7.2, 7.0, 3.3],
+        backgroundColor: [sfDark, sfBlue, sfSuccess, '#6b21a8', sfGold, '#e97300', '#DDDBDA'],
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => `${ctx.raw}B liters (${Math.round(ctx.raw/1.4)}% of total)` }}
+      },
+      scales: {
+        x: { title: { display: true, text: 'Billion Liters' }, grid: { color: 'rgba(0,0,0,0.04)' }},
+        y: { grid: { display: false }}
+      }
+    }
+  });
+
+  // CHART: Revenue Pool Breakdown (Doughnut)
+  new Chart(document.getElementById('chartRevenuePool'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Diesel (B2B + Retail)', 'Gasoline (Retail)', 'Ethanol (Retail)', 'Aviation Fuel', 'B2B Fleet Services', 'LPG', 'Non-Fuel (Convenience)', 'Biofuel Credits (CBIO)'],
+      datasets: [{
+        data: [35, 18, 8, 5, 4.5, 3, 2, 0.5],
+        backgroundColor: [sfDark, sfBlue, sfSuccess, '#e97300', '#006272', sfGold, '#c62828', '#6b21a8'],
+        borderWidth: 2, borderColor: '#fff'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true, font: { size: 10 } } },
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ~$${ctx.raw}B` }}
+      },
+      cutout: '50%'
+    }
+  });
+
+  // CHART: Branded vs White-Flag (Doughnut)
+  new Chart(document.getElementById('chartStationSplit'), {
+    type: 'doughnut',
+    data: {
+      labels: ['BR / Vibra (8,200)', 'Shell / Raízen (7,800)', 'Ipiranga (7,100)', 'ALE / Glencore (1,300)', 'Other Branded (2,600)', 'White-Flag Independent (15,000+)'],
+      datasets: [{
+        data: [8200, 7800, 7100, 1300, 2600, 15000],
+        backgroundColor: [sfBlue, '#7F77DD', sfSuccess, '#A67C52', sfGold, '#DDDBDA'],
+        borderWidth: 2, borderColor: '#fff'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true, font: { size: 10 } } },
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw.toLocaleString()} stations` }}
+      },
+      cutout: '50%'
+    }
+  });
+
+  // CHART: Revenue by Segment (Horizontal Bar)
+  new Chart(document.getElementById('chartSegmentRevenue'), {
+    type: 'bar',
+    data: {
+      labels: ['Retail (Stations)', 'B2B / Fleet', 'Agribusiness', 'Aviation', 'TRR (Last-Mile)', 'Non-Fuel / Convenience', 'Loyalty Ecosystems'],
+      datasets: [{
+        label: '% of Revenue',
+        data: [45, 22, 12, 8, 6, 4, 3],
+        backgroundColor: [sfBlue, '#006272', sfSuccess, '#e97300', sfGold, '#c62828', '#6b21a8'],
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => `${ctx.raw}% (~$${Math.round(ctx.raw*0.76)}B)` }}
+      },
+      scales: {
+        x: { title: { display: true, text: '% of Total Revenue' }, max: 50, grid: { color: 'rgba(0,0,0,0.04)' }},
+        y: { grid: { display: false }}
+      }
+    }
+  });
 
   // CHART 1: Market Share (Donut)
   new Chart(document.getElementById('chartMarketShare'), {
