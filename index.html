@@ -681,6 +681,144 @@ table tr:hover { background: var(--sf-highlight); }
 .sidebar::-webkit-scrollbar { width: 4px; }
 .sidebar::-webkit-scrollbar-track { background: transparent; }
 .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+/* SF BADGE IN SIDEBAR NAV */
+.nav-items a .sf-badge {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: -2px;
+  opacity: 0.85;
+}
+
+/* PRODUCT LOGO INLINE */
+.product-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.product-logo .p-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.pl-sales { background: #eef6ff; color: #0176D3; }
+.pl-service { background: #e8f5e9; color: #2E844A; }
+.pl-data { background: #f3e8ff; color: #6b21a8; }
+.pl-agentforce { background: #e0f7fa; color: #006272; }
+.pl-mulesoft { background: #e3f2fd; color: #1565c0; }
+.pl-tableau { background: #fef3e2; color: #e97300; }
+.pl-revenue { background: #e8f5e9; color: #1b5e20; }
+.pl-experience { background: #fff3e0; color: #e65100; }
+.pl-field { background: #e8eaf6; color: #283593; }
+.pl-marketing { background: #fff8e1; color: #f57f17; }
+.pl-fsc { background: #e1f5fe; color: #0277bd; }
+.pl-loyalty { background: #fce4ec; color: #c62828; }
+.pl-slack { background: #f3e5f5; color: #611f69; }
+.pl-flow { background: #ede7f6; color: #4527a0; }
+.pl-einstein { background: #e0f2f1; color: #00695c; }
+
+/* ARCHITECTURE ENHANCED */
+.arch-enhanced {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  border: 1px solid var(--sf-border);
+  border-radius: 12px;
+  padding: 28px;
+  margin: 24px 0;
+}
+.arch-enhanced .arch-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--sf-dark);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.arch-enhanced .arch-title::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--sf-primary);
+  border-radius: 2px;
+}
+.arch-row {
+  display: flex;
+  align-items: stretch;
+  gap: 3px;
+  margin-bottom: 3px;
+}
+.arch-row .arch-node {
+  flex: 1;
+  background: var(--sf-white);
+  border: 1px solid var(--sf-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.2s;
+}
+.arch-row .arch-node:hover {
+  border-color: var(--sf-primary);
+  box-shadow: 0 2px 8px rgba(1,118,211,0.15);
+  transform: translateY(-1px);
+}
+.arch-node-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+.arch-connector {
+  text-align: center;
+  color: var(--sf-primary);
+  font-size: 14px;
+  padding: 4px 0;
+  opacity: 0.5;
+}
+
+/* VALUE PROPOSITION */
+.value-prop {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.value-prop-item {
+  background: linear-gradient(135deg, var(--sf-highlight) 0%, #fff 100%);
+  border: 1px solid rgba(1,118,211,0.15);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.value-prop-item .vp-metric {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--sf-primary);
+  margin-bottom: 4px;
+}
+.value-prop-item .vp-label {
+  font-size: 12px;
+  color: var(--sf-text-sec);
+}
+.value-prop-item .vp-detail {
+  font-size: 11px;
+  color: var(--sf-text);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(1,118,211,0.1);
+}
 </style>
 </head>
 <body>
@@ -731,8 +869,8 @@ table tr:hover { background: var(--sf-highlight); }
         <a href="#" data-section="pricing-why">Why Pricing Is Different</a>
         <a href="#" data-section="pricing-model">Pricing Operating Model</a>
         <a href="#" data-section="pricing-gap">The Pricing Gap</a>
-        <a href="#" data-section="pricing-sf">Salesforce Solution</a>
-        <a href="#" data-section="pricing-agent">Agentforce in Action</a>
+        <a href="#" data-section="pricing-sf"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Salesforce Solution</a>
+        <a href="#" data-section="pricing-agent"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M12 7v4l3 2" stroke="#006272" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="5" stroke="#006272" stroke-width="1.5" fill="none"/></svg>Agentforce in Action</a>
       </div>
     </div>
     <div class="nav-section">
@@ -741,8 +879,8 @@ table tr:hover { background: var(--sf-highlight); }
         <a href="#" data-section="logistics-why">Why Logistics Matters</a>
         <a href="#" data-section="logistics-model">Logistics Operating Model</a>
         <a href="#" data-section="logistics-gap">The Logistics Gap</a>
-        <a href="#" data-section="logistics-sf">Salesforce Solution</a>
-        <a href="#" data-section="logistics-connected">Connected Intelligence</a>
+        <a href="#" data-section="logistics-sf"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Salesforce Solution</a>
+        <a href="#" data-section="logistics-connected"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Connected Intelligence</a>
       </div>
     </div>
     <div class="nav-section">
@@ -752,8 +890,8 @@ table tr:hover { background: var(--sf-highlight); }
         <a href="#" data-section="commercial-retail">Retail Network Model</a>
         <a href="#" data-section="commercial-b2b">B2B Sales Machine</a>
         <a href="#" data-section="commercial-gap">The Commercial Gap</a>
-        <a href="#" data-section="commercial-sf">Salesforce Solutions</a>
-        <a href="#" data-section="commercial-agent">Agentforce in Action</a>
+        <a href="#" data-section="commercial-sf"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Salesforce Solutions</a>
+        <a href="#" data-section="commercial-agent"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Agentforce in Action</a>
       </div>
     </div>
     <div class="nav-section">
@@ -764,15 +902,15 @@ table tr:hover { background: var(--sf-highlight); }
         <a href="#" data-section="custops-loyalty">Loyalty Ecosystem</a>
         <a href="#" data-section="custops-fleet">Fleet Management</a>
         <a href="#" data-section="custops-gap">The Operations Gap</a>
-        <a href="#" data-section="custops-sf">Salesforce Solution</a>
-        <a href="#" data-section="custops-agent">Agentforce in Action</a>
+        <a href="#" data-section="custops-sf"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Salesforce Solution</a>
+        <a href="#" data-section="custops-agent"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Agentforce in Action</a>
       </div>
     </div>
     <div class="nav-section">
       <div class="nav-section-title">Architecture <span class="chevron">▾</span></div>
       <div class="nav-items">
-        <a href="#" data-section="arch-platform">Complete Platform</a>
-        <a href="#" data-section="arch-datacloud">Data Cloud Unification</a>
+        <a href="#" data-section="arch-platform"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Complete Platform</a>
+        <a href="#" data-section="arch-datacloud"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Data Cloud Unification</a>
       </div>
     </div>
     <div class="nav-section">
@@ -780,7 +918,7 @@ table tr:hover { background: var(--sf-highlight); }
       <div class="nav-items">
         <a href="#" data-section="roadmap">Implementation Phases</a>
         <a href="#" data-section="impact">Business Impact</a>
-        <a href="#" data-section="why-sf">Why Salesforce</a>
+        <a href="#" data-section="why-sf"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Why Salesforce</a>
       </div>
     </div>
   </div>
@@ -1235,32 +1373,113 @@ table tr:hover { background: var(--sf-highlight); }
 <!-- PRICING SF -->
 <div class="section" id="sec-pricing-sf">
   <div class="section-hero">
-    <h2>Pricing — Salesforce Solution</h2>
-    <p>The Five Pricing Layers mapped to Salesforce capabilities.</p>
+    <h2>Pricing — Salesforce Solution Architecture</h2>
+    <p>Five pricing layers mapped to Salesforce capabilities — from cost visibility to autonomous margin protection. Transforms a spreadsheet-driven process into real-time, AI-powered pricing intelligence.</p>
   </div>
+
+  <div class="value-prop">
+    <div class="value-prop-item"><div class="vp-metric">&lt;1h</div><div class="vp-label">Pricing Response Time</div><div class="vp-detail">From 24-48h delay to sub-hour response to market movements</div></div>
+    <div class="value-prop-item"><div class="vp-metric">R$50M+</div><div class="vp-label">Annual Margin Protection</div><div class="vp-detail">Automated guardrails prevent deals below floor without VP override</div></div>
+    <div class="value-prop-item"><div class="vp-metric">100%</div><div class="vp-label">Deal Margin Visibility</div><div class="vp-detail">Every B2B deal validated against margin rules before approval</div></div>
+    <div class="value-prop-item"><div class="vp-metric">Real-time</div><div class="vp-label">Cost-per-Liter View</div><div class="vp-detail">Continuous ingestion of Petrobras gate, FX, biofuel spot, and tax feeds</div></div>
+  </div>
+
+  <div class="arch-enhanced">
+    <div class="arch-title">Technical Architecture — Pricing Intelligence Platform</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #006272;"><div class="arch-node-label">AI Layer</div><span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span><br><small style="color:var(--sf-text-sec);">Autonomous pricing recommendations + deal approval</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #1b5e20;"><div class="arch-node-label">Applications</div><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span> <span class="product-logo pl-flow"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#4527a0"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Flow</span><br><small style="color:var(--sf-text-sec);">CPQ guardrails · indexed contracts · approval orchestration</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #e97300;"><div class="arch-node-label">Intelligence</div><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span> <span class="product-logo pl-einstein"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>CRM Analytics</span><br><small style="color:var(--sf-text-sec);">Margin dashboards · anomaly detection · competitor analysis</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #6b21a8;"><div class="arch-node-label">Data</div><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span><br><small style="color:var(--sf-text-sec);">Unified cost model · market signals · competitor intelligence</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #1565c0;"><div class="arch-node-label">Integration</div><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span><br><small style="color:var(--sf-text-sec);">SAP ERP · Petrobras gate · FX feeds · ANP · tax engine (SEFAZ)</small></div>
+    </div>
+  </div>
+
   <div class="card">
+    <h3>Five Pricing Layers — Detailed Product Mapping</h3>
     <div class="table-wrap">
       <table>
-        <tr><th>Layer</th><th>Salesforce Product</th><th>Capability</th></tr>
-        <tr><td>Cost Basis</td><td><span class="badge badge-blue">Data Cloud + MuleSoft</span></td><td>Real-time SAP cost ingestion + FX feeds + tax engine. Single cost-per-liter view</td></tr>
-        <tr><td>Market Intelligence</td><td><span class="badge badge-blue">Tableau + Data Cloud</span></td><td>ANP data integration, competitor dashboards, AI-detected pricing anomalies</td></tr>
-        <tr><td>Margin Rules</td><td><span class="badge badge-blue">Revenue Cloud + Flow</span></td><td>Automated floor/ceiling guardrails. No deal below threshold without VP override</td></tr>
-        <tr><td>Dynamic Pricing</td><td><span class="badge badge-blue">Revenue Cloud + Agentforce</span></td><td>AI recommends optimal price. Auto-generates indexed contract terms. Sub-hour response</td></tr>
-        <tr><td>Performance</td><td><span class="badge badge-blue">CRM Analytics + Tableau</span></td><td>Daily realized margin dashboards. Automated alerts when margin drifts</td></tr>
+        <tr><th>Layer</th><th>Salesforce Products</th><th>Business Capability</th><th>Business Impact</th></tr>
+        <tr><td><strong>Cost Basis</strong></td><td><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span> <span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span></td><td>Real-time SAP cost ingestion + FX feeds + tax engine integration. Single cost-per-liter view updated continuously across all states and products</td><td>Eliminates 24-48h delay in cost visibility</td></tr>
+        <tr><td><strong>Market Intelligence</strong></td><td><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span> <span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span></td><td>ANP data integration, competitor monitoring dashboards, regional elasticity models, AI-detected pricing anomalies per micro-region</td><td>Detects competitor undercuts same-day vs. weekly</td></tr>
+        <tr><td><strong>Margin Rules</strong></td><td><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span> <span class="product-logo pl-flow"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#4527a0"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Flow</span></td><td>Automated floor/ceiling guardrails per product/region/channel. Escalation triggers when margin drops below threshold. No deal closes below floor without VP override</td><td>Zero deals approved below margin floor</td></tr>
+        <tr><td><strong>Dynamic Pricing</strong></td><td><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span> <span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span></td><td>AI recommends optimal price per B2B opportunity. Auto-generates indexed contract terms (Petrobras + FX + freight). Sub-hour response time for complex proposals</td><td>B2B deal cycle from 10 days → 2-3 days</td></tr>
+        <tr><td><strong>Performance</strong></td><td><span class="product-logo pl-einstein"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>CRM Analytics</span> <span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span></td><td>Daily realized margin dashboards. Automated alerts when margin drifts. Price-volume elasticity tracking across 27 states with regional sensitivity</td><td>Problems detected daily vs. monthly P&L</td></tr>
       </table>
     </div>
   </div>
+
+  <div class="callout callout-info"><strong>Integration Highlight — MuleSoft as the Pricing Data Bus</strong> MuleSoft provides the real-time integration backbone connecting SAP (cost of goods), Petrobras gate price API, B3/Bloomberg (FX rates), SEFAZ (state tax engines), and ANP (regulatory data). All feeds converge in Data Cloud to create a single, continuously-updated cost-per-liter model that powers every pricing decision in Revenue Cloud.</div>
 </div>
 
 <!-- PRICING AGENT -->
 <div class="section" id="sec-pricing-agent">
   <div class="section-hero">
     <h2>Pricing — Agentforce in Action</h2>
-    <p>Autonomous Pricing Intelligence: not replacing the committee — giving them real-time ammunition.</p>
+    <p>Autonomous Pricing Intelligence: not replacing the committee — giving them real-time ammunition instead of last week's spreadsheet.</p>
   </div>
-  <div class="agent-card"><h4>Agent 1: Cost Monitor Agent</h4><ul><li>Watches Petrobras gate price changes, FX movements, biofuel spot prices</li><li>Calculates new landed cost within minutes of market move</li><li>Triggers pricing review alert with recommended new price bands</li></ul></div>
-  <div class="agent-card"><h4>Agent 2: Deal Margin Guardian</h4><ul><li>Reviews every B2B deal before approval</li><li>Validates margin against floor rules</li><li>Auto-approves within guardrails, escalates exceptions with context</li></ul></div>
-  <div class="agent-card"><h4>Agent 3: Competitive Response Agent</h4><ul><li>Monitors regional price movements from ANP + field intelligence</li><li>Detects competitor undercuts in specific regions</li><li>Recommends targeted response based on account stickiness</li></ul></div>
+
+  <div class="callout callout-info" style="margin-bottom:24px;"><strong><span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span> — How It Works</strong> Agentforce agents operate autonomously within defined guardrails. They monitor data streams, apply business rules, and take action (or escalate) without human intervention. Each agent below has a specific trigger, reasoning logic, and action boundary.</div>
+
+  <div class="agent-card">
+    <h4>Agent 1: Cost Monitor Agent</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span> <span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> Petrobras gate price change, BRL/USD movement &gt;0.5%, biofuel spot price shift</li>
+      <li><strong>Reasoning:</strong> Calculates new landed cost per product/state within minutes of market move</li>
+      <li><strong>Action:</strong> Triggers pricing review alert to commercial team with recommended new price bands + impact simulation</li>
+      <li><strong>Business Value:</strong> Eliminates the 24-48h blind spot between cost movement and price adjustment where margin disappears</li>
+    </ul>
+  </div>
+
+  <div class="agent-card">
+    <h4>Agent 2: Deal Margin Guardian</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span> <span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> Every B2B deal submitted for approval in Sales Cloud pipeline</li>
+      <li><strong>Reasoning:</strong> Validates margin against floor rules by product/region/channel/customer tier</li>
+      <li><strong>Action:</strong> Auto-approves deals within guardrails (80% of volume). Escalates exceptions with full context: margin analysis, competitor comparison, strategic value assessment</li>
+      <li><strong>Business Value:</strong> Zero deals slip through below floor margin. VP approves exceptions in minutes with full context vs. days of email chains</li>
+    </ul>
+  </div>
+
+  <div class="agent-card">
+    <h4>Agent 3: Competitive Response Agent</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span> <span class="product-logo pl-einstein"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Einstein AI</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> Regional price movements detected from ANP data + field intelligence inputs</li>
+      <li><strong>Reasoning:</strong> Detects when competitor undercuts in specific micro-regions. Correlates with account stickiness scores and contract renewal dates</li>
+      <li><strong>Action:</strong> Recommends targeted response (match, hold, or differentiate) with ROI simulation per scenario</li>
+      <li><strong>Business Value:</strong> Same-day competitive response vs. discovering price war damage in monthly P&L review</li>
+    </ul>
+  </div>
+
+  <div class="arch-enhanced">
+    <div class="arch-title">Agent Orchestration Flow — Pricing Decision in Real-Time</div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="step-icon" style="background:#1565c0;">M</div><div><strong>MuleSoft</strong> — Detects Petrobras gate price change (API polling every 5 min)</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="step-icon" style="background:#6b21a8;">D</div><div><strong>Data Cloud</strong> — Recalculates landed cost per product/state/tax regime instantly</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="step-icon" style="background:#006272;">A</div><div><strong>Agentforce (Cost Monitor)</strong> — Generates new price bands + margin impact per customer tier</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="step-icon" style="background:#1b5e20;">R</div><div><strong>Revenue Cloud</strong> — Updates guardrails. Auto-adjusts indexed contracts. Flags at-risk deals</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="step-icon" style="background:#e97300;">T</div><div><strong>Tableau</strong> — Live margin dashboard reflects new position. Alerts pricing committee</div></div>
+    </div>
+  </div>
 </div>
 
 <!-- LOGISTICS WHY -->
@@ -1322,45 +1541,104 @@ table tr:hover { background: var(--sf-highlight); }
 <!-- LOGISTICS SF -->
 <div class="section" id="sec-logistics-sf">
   <div class="section-hero">
-    <h2>Logistics — Salesforce Solution</h2>
-    <p>The Five Logistics Layers mapped to Salesforce capabilities.</p>
+    <h2>Logistics — Salesforce Solution Architecture</h2>
+    <p>Five logistics layers mapped to Salesforce capabilities — connecting physical supply chain assets to commercial decision-making for intelligent, predictive delivery operations.</p>
   </div>
+
+  <div class="value-prop">
+    <div class="value-prop-item"><div class="vp-metric">97%+</div><div class="vp-label">Delivery SLA</div><div class="vp-detail">From 85-90% to industry-leading reliability with predictive scheduling</div></div>
+    <div class="value-prop-item"><div class="vp-metric">-30%</div><div class="vp-label">Stockout Reduction</div><div class="vp-detail">Tank telemetry + AI prediction eliminates reactive delivery runs</div></div>
+    <div class="value-prop-item"><div class="vp-metric">-15%</div><div class="vp-label">Empty Miles</div><div class="vp-detail">AI-optimized routing clusters nearby stations in single delivery runs</div></div>
+    <div class="value-prop-item"><div class="vp-metric">Real-time</div><div class="vp-label">Cost-per-Liter</div><div class="vp-detail">Freight audit automation replaces monthly manual reconciliation</div></div>
+  </div>
+
+  <div class="arch-enhanced">
+    <div class="arch-title">Technical Architecture — Connected Logistics Platform</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #006272;"><div class="arch-node-label">Intelligence</div><span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span><br><small style="color:var(--sf-text-sec);">Predictive delivery scheduling · route optimization · stockout prevention</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="flex:1.2;border-top:3px solid #283593;"><div class="arch-node-label">Execution</div><span class="product-logo pl-field"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service</span><br><small style="color:var(--sf-text-sec);">Scheduling · dispatch · mobile execution · proof of delivery</small></div>
+      <div class="arch-node" style="flex:0.8;border-top:3px solid #e65100;"><div class="arch-node-label">Portal</div><span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span><br><small style="color:var(--sf-text-sec);">Dealer notifications · delivery tracking · SLA visibility</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #6b21a8;"><div class="arch-node-label">Data Foundation</div><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span> <span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span><br><small style="color:var(--sf-text-sec);">Tank telemetry · fleet GPS · demand patterns · infrastructure capacity</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #1565c0;"><div class="arch-node-label">Integration Bus</div><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span><br><small style="color:var(--sf-text-sec);">TMS · IoT platform · SAP MM/WM · carrier EDI · GPS trackers · SEFAZ NF-e</small></div>
+    </div>
+  </div>
+
   <div class="card">
+    <h3>Five Logistics Layers — Detailed Product Mapping</h3>
     <div class="table-wrap">
       <table>
-        <tr><th>Layer</th><th>Salesforce Product</th><th>Capability</th></tr>
-        <tr><td>Network Design</td><td><span class="badge badge-blue">Tableau + Data Cloud</span></td><td>Demand heat maps + infrastructure overlay. AI-driven capacity planning</td></tr>
-        <tr><td>Primary Transport</td><td><span class="badge badge-blue">MuleSoft + Data Cloud</span></td><td>TMS integration. Real-time tracking. Demand-triggered positioning</td></tr>
-        <tr><td>Secondary Transport</td><td><span class="badge badge-blue">Field Service + Agentforce</span></td><td>AI-optimized routing. Dynamic scheduling based on tank telemetry</td></tr>
-        <tr><td>Last-Mile Execution</td><td><span class="badge badge-blue">Field Service + Mobile</span></td><td>Real-time tracking. Proof of delivery. Customer notifications</td></tr>
-        <tr><td>Cost Management</td><td><span class="badge badge-blue">Tableau + CRM Analytics</span></td><td>Cost-per-liter dashboards. Freight audit automation. SLA tracking</td></tr>
+        <tr><th>Layer</th><th>Salesforce Products</th><th>Business Capability</th><th>Impact</th></tr>
+        <tr><td><strong>Network Design</strong></td><td><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span> <span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span></td><td>Demand heat maps overlaid with infrastructure. AI-driven capacity planning and investment case generation for terminal expansion</td><td>CAPEX decisions backed by live demand data</td></tr>
+        <tr><td><strong>Primary Transport</strong></td><td><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span> <span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span></td><td>TMS integration for pipeline/vessel/rail scheduling. Real-time tracking with demand-triggered positioning recommendations between bases</td><td>Eliminates over/under positioning</td></tr>
+        <tr><td><strong>Secondary Transport</strong></td><td><span class="product-logo pl-field"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service</span> <span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span></td><td>AI-optimized routing based on tank telemetry. Dynamic scheduling that clusters nearby stations. Fleet allocation by commercial priority</td><td>-15% empty miles, -25% emergency runs</td></tr>
+        <tr><td><strong>Last-Mile Execution</strong></td><td><span class="product-logo pl-field"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service Mobile</span></td><td>Real-time delivery tracking, automated proof of delivery with volume reconciliation, driver task management, customer notifications via Experience Cloud</td><td>97%+ SLA compliance</td></tr>
+        <tr><td><strong>Cost Management</strong></td><td><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span> <span class="product-logo pl-einstein"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>CRM Analytics</span></td><td>Cost-per-liter dashboards by route/region/customer. Automated freight audit. SLA compliance tracking with penalty management</td><td>Cost overruns detected in real-time vs. monthly</td></tr>
       </table>
     </div>
   </div>
+
+  <div class="callout callout-success"><strong>Key Differentiator</strong> Unlike standalone TMS/WMS tools, Salesforce Field Service + Data Cloud connects delivery decisions to commercial value. The system knows which station generates the most margin, which customer is at churn risk, and prioritizes accordingly — not just cheapest route.</div>
 </div>
 
 <!-- LOGISTICS CONNECTED -->
 <div class="section" id="sec-logistics-connected">
   <div class="section-hero">
-    <h2>Connected Intelligence</h2>
-    <p>From reactive delivery to predictive logistics. Shift from "station calls when empty" to "delivery arrives before they know they need it."</p>
+    <h2>Connected Intelligence — Predictive Logistics</h2>
+    <p>From reactive delivery to predictive logistics. Shift from "station calls when empty" to "delivery arrives before they know they need it." End-to-end autonomous logistics orchestration.</p>
   </div>
+
   <div class="card">
-    <h3>Predictive Delivery Flow</h3>
+    <h3>Scenario: Station Tank Telemetry → Autonomous Delivery Scheduling</h3>
     <div class="flow-steps">
-      <div class="flow-step"><div class="step-icon">1</div><div>IoT Sensor at Station → Tank level drops below 40%</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#1565c0;">1</div><div><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span> IoT Sensor at Station → Tank level drops below 40%. Telemetry streamed via MuleSoft integration hub.</div></div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="step-icon">2</div><div>Data Cloud ingests telemetry + correlates with historical consumption</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#6b21a8;">2</div><div><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span> Ingests telemetry + correlates with historical consumption pattern, weather, and local events (holidays, harvest peaks).</div></div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="step-icon">3</div><div>Agentforce predicts stockout in 36h. Checks delivery schedule</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#006272;">3</div><div><span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span> Predicts stockout in 36 hours. Checks existing delivery schedule. Evaluates priority based on station margin contribution and churn risk.</div></div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="step-icon">4</div><div>Field Service auto-schedules delivery. Optimizes route with nearby stations</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#283593;">4</div><div><span class="product-logo pl-field"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service</span> Auto-schedules delivery. Optimizes route by clustering nearby stations needing replenishment. Assigns to available fleet considering compartment optimization.</div></div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="step-icon">5</div><div>Experience Cloud notifies dealer: "Delivery confirmed tomorrow 8-10am"</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#e65100;">5</div><div><span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span> Dealer Portal notifies station: "Delivery confirmed for tomorrow 8-10am — 15,000L diesel + 8,000L gasoline." Real-time tracking enabled.</div></div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="step-icon">6</div><div>CRM Analytics updates cost-per-delivery and SLA metrics in real time</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#e97300;">6</div><div><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span> Updates cost-per-delivery and SLA metrics in real time. Fleet utilization dashboard reflects new assignment. Empty-mile KPI recalculated.</div></div>
     </div>
   </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>Before: Reactive Logistics</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li>Station calls dispatcher when tank is low</li>
+        <li>Dispatcher manually checks available trucks</li>
+        <li>Route planned by driver experience</li>
+        <li>No visibility into other stations on the route</li>
+        <li>Emergency runs at 2x cost when stockout imminent</li>
+        <li>Monthly cost reconciliation in spreadsheet</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>After: Predictive Connected Logistics</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li>AI predicts need 36h before station knows</li>
+        <li>System auto-schedules based on fleet availability + capacity</li>
+        <li>Route optimized for cluster efficiency</li>
+        <li>Priority weighted by margin contribution + churn risk</li>
+        <li>Zero emergency runs — always ahead of demand</li>
+        <li>Real-time cost tracking per delivery, per liter, per route</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-info"><strong>The MuleSoft Integration Layer</strong> MuleSoft connects the physical and digital supply chain: TMS (route scheduling, freight costs), IoT/telemetry platforms (tank levels, GPS tracking), SAP MM/WM (inventory at terminals), ANP systems (nota fiscal eletrônica), and third-party carriers (EDI for contracted fleet). This unified data bus enables Field Service and Agentforce to make decisions that were previously impossible due to fragmented data.</div>
 </div>
 
 <!-- COMMERCIAL BATTLEFIELDS -->
@@ -1446,35 +1724,59 @@ table tr:hover { background: var(--sf-highlight); }
 <!-- COMMERCIAL SF -->
 <div class="section" id="sec-commercial-sf">
   <div class="section-hero">
-    <h2>Commercial — Salesforce Solutions</h2>
-    <p>Sales Cloud + Revenue Cloud + Experience Cloud powering both retail and B2B motions.</p>
+    <h2>Commercial — Salesforce Solution Architecture</h2>
+    <p>One platform serving two battlefields: Sales Cloud + Revenue Cloud + Experience Cloud powering both retail network management and complex B2B growth in a single, connected ecosystem.</p>
   </div>
+
+  <div class="value-prop">
+    <div class="value-prop-item"><div class="vp-metric">4x</div><div class="vp-label">B2B Deal Velocity</div><div class="vp-detail">From 10-15 days cycle to 2-3 days with automated CPQ and AI approvals</div></div>
+    <div class="value-prop-item"><div class="vp-metric">-50%</div><div class="vp-label">Dealer Churn</div><div class="vp-detail">AI predicts at-risk stations 60 days before unbrand event</div></div>
+    <div class="value-prop-item"><div class="vp-metric">2.5x</div><div class="vp-label">Rep Productivity</div><div class="vp-detail">From 8-10 to 20-25 meaningful interactions per week</div></div>
+    <div class="value-prop-item"><div class="vp-metric">360°</div><div class="vp-label">Unified View</div><div class="vp-detail">Dealer + consumer + fleet data converge in one actionable profile</div></div>
+  </div>
+
+  <div class="arch-enhanced">
+    <div class="arch-title">Technical Architecture — Dual Commercial Platform</div>
+    <div class="arch-row">
+      <div class="arch-node" style="flex:1;border-top:3px solid #0176D3;"><div class="arch-node-label">Retail Network</div><span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span> <span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span><br><small style="color:var(--sf-text-sec);">Dealer 360° · visit execution · churn prediction · dealer portal</small></div>
+      <div class="arch-node" style="flex:1;border-top:3px solid #1b5e20;"><div class="arch-node-label">B2B Engine</div><span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span> <span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span><br><small style="color:var(--sf-text-sec);">Pipeline · CPQ · contract lifecycle · forecast AI</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #e97300;"><div class="arch-node-label">Intelligence</div><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span> <span class="product-logo pl-einstein"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Einstein AI</span><br><small style="color:var(--sf-text-sec);">Territory intelligence · geo-visualization · churn models · forecast accuracy</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #6b21a8;"><div class="arch-node-label">Data Foundation</div><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span><br><small style="color:var(--sf-text-sec);">Unified dealer + consumer + fleet + credit profiles · SAP volume data · market signals</small></div>
+    </div>
+  </div>
+
   <div class="two-col">
     <div class="card">
-      <h3>Retail Network Platform</h3>
+      <h3><span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span> Retail Network Platform</h3>
       <div class="table-wrap">
         <table>
-          <tr><th>Capability</th><th>Product</th></tr>
-          <tr><td>Dealer 360° Profile</td><td>Sales Cloud</td></tr>
-          <tr><td>Territory Intelligence</td><td>Maps + Tableau</td></tr>
-          <tr><td>Visit Execution</td><td>Sales Cloud Mobile</td></tr>
-          <tr><td>Dealer Portal</td><td>Experience Cloud</td></tr>
-          <tr><td>Churn Prediction</td><td>Einstein + Data Cloud</td></tr>
-          <tr><td>Incentive Management</td><td>Revenue Cloud</td></tr>
+          <tr><th>Capability</th><th>Product</th><th>What It Does</th></tr>
+          <tr><td>Dealer 360° Profile</td><td><span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></td><td>Unified view: contract, volume, financials, visits, cases, loyalty performance — one screen</td></tr>
+          <tr><td>Territory Intelligence</td><td><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau + Maps</span></td><td>Geo-visualization of network, whitespace, competitor proximity, risk zones</td></tr>
+          <tr><td>Visit Execution</td><td><span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Mobile</span></td><td>Structured visit plans, offline-capable checklists, photo capture, GPS confirmation</td></tr>
+          <tr><td>Dealer Portal</td><td><span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span></td><td>Self-service: order tracking, financial statements, marketing materials, support cases</td></tr>
+          <tr><td>Churn Prediction</td><td><span class="product-logo pl-einstein"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Einstein + Data Cloud</span></td><td>AI model trained on historical churn patterns (volume drop + payment delay + low engagement)</td></tr>
+          <tr><td>Incentive Management</td><td><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span></td><td>Automated volume rebate calculations, tiered incentive programs, transparent dealer dashboards</td></tr>
         </table>
       </div>
     </div>
     <div class="card">
-      <h3>B2B Growth Engine</h3>
+      <h3><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span> B2B Growth Engine</h3>
       <div class="table-wrap">
         <table>
-          <tr><th>Capability</th><th>Product</th></tr>
-          <tr><td>Account Planning</td><td>Sales Cloud</td></tr>
-          <tr><td>Pipeline Management</td><td>Sales Cloud</td></tr>
-          <tr><td>CPQ & Proposals</td><td>Revenue Cloud</td></tr>
-          <tr><td>Complex Approvals</td><td>Flow + Agentforce</td></tr>
-          <tr><td>Contract Lifecycle</td><td>Revenue Cloud</td></tr>
-          <tr><td>Forecast Accuracy</td><td>Einstein Analytics</td></tr>
+          <tr><th>Capability</th><th>Product</th><th>What It Does</th></tr>
+          <tr><td>Account Planning</td><td><span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></td><td>Strategic account plans with share-of-wallet, growth targets, stakeholder mapping</td></tr>
+          <tr><td>Pipeline Management</td><td><span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></td><td>Stage-gated opportunity process with probability-weighted forecasting</td></tr>
+          <tr><td>CPQ & Proposals</td><td><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span></td><td>Dynamic pricing within guardrails, auto-generated proposals with indexed contract terms</td></tr>
+          <tr><td>Complex Approvals</td><td><span class="product-logo pl-flow"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#4527a0"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Flow</span> <span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span></td><td>Multi-level deal approval with margin validation, escalation, and audit trail</td></tr>
+          <tr><td>Contract Lifecycle</td><td><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span></td><td>Renewal alerts, price adjustment triggers, automated amendment workflows</td></tr>
+          <tr><td>Forecast Accuracy</td><td><span class="product-logo pl-einstein"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Einstein Analytics</span></td><td>AI-powered forecast with consumption patterns, seasonality, and macro signals</td></tr>
         </table>
       </div>
     </div>
@@ -1485,11 +1787,43 @@ table tr:hover { background: var(--sf-highlight); }
 <div class="section" id="sec-commercial-agent">
   <div class="section-hero">
     <h2>Commercial — Agentforce in Action</h2>
-    <p>Autonomous Commercial Intelligence across retail and B2B channels.</p>
+    <p>Autonomous Commercial Intelligence operating 24/7 across retail network and B2B channels — detecting signals, qualifying opportunities, and protecting the portfolio.</p>
   </div>
-  <div class="agent-card"><h4>Agent 1: Churn Prevention (Retail)</h4><ul><li>Monitors 44,000 stations daily for early warning signals</li><li>Detects: volume decline >10%, payment delays, reduced product mix</li><li>Auto-triggers intervention: alerts territory manager + recommends action</li></ul></div>
-  <div class="agent-card"><h4>Agent 2: Opportunity Spotter (B2B)</h4><ul><li>Scans market signals: harvest forecasts, mining CAPEX, fleet expansion news</li><li>Creates qualified leads: "Agribusiness X expanding 20% in MT — est. 5M liters/year"</li></ul></div>
-  <div class="agent-card"><h4>Agent 3: Deal Desk</h4><ul><li>Reviews B2B proposals against margin rules, credit limits, logistics feasibility</li><li>Auto-approves standard deals, escalates exceptions with full context</li></ul></div>
+
+  <div class="callout callout-info" style="margin-bottom:24px;"><strong><span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span> — Commercial AI at Scale</strong> These agents analyze 44,000+ stations and thousands of B2B accounts continuously — performing the equivalent of 500+ human analysts scanning data every day. They surface only the signals that require human judgment.</div>
+
+  <div class="agent-card">
+    <h4>Agent 1: Churn Prevention Agent (Retail)</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span> <span class="product-logo pl-einstein"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Einstein AI</span> <span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> Monitors 44,000 stations daily for early warning composite signals</li>
+      <li><strong>Detection Pattern:</strong> Volume decline &gt;10% (3-week rolling) + payment delays + reduced product mix + low engagement score</li>
+      <li><strong>Action:</strong> Auto-triggers intervention — alerts territory manager with recommended specific action based on pattern match (historical success rate per intervention type)</li>
+      <li><strong>Business Value:</strong> Detects churn risk 60 days before unbrand event. Each retained station = R$2-5M in protected annual volume</li>
+    </ul>
+  </div>
+
+  <div class="agent-card">
+    <h4>Agent 2: Opportunity Spotter Agent (B2B)</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span> <span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> Market signals ingested via Data Cloud — harvest forecasts, mining CAPEX announcements, fleet expansion news, new industrial permits</li>
+      <li><strong>Reasoning:</strong> Correlates market events with account profiles to size demand potential and probability of conversion</li>
+      <li><strong>Action:</strong> Creates qualified leads with full context: "Agribusiness X expanding 20% in MT — estimated 5M liters/year diesel. Competitor contract expires Q3."</li>
+      <li><strong>Business Value:</strong> Reps spend zero time on prospecting research — focus 100% on relationship building and closing</li>
+    </ul>
+  </div>
+
+  <div class="agent-card">
+    <h4>Agent 3: Deal Desk Agent</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span> <span class="product-logo pl-flow"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#4527a0"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Flow</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> B2B proposal submitted for approval in Revenue Cloud pipeline</li>
+      <li><strong>Reasoning:</strong> Reviews against margin rules, credit limits, logistics feasibility (can we actually deliver?), and strategic account value</li>
+      <li><strong>Action:</strong> Auto-approves standard deals within policy (80% volume). Escalates exceptions with full context: margin analysis, competitor comparison, strategic value assessment</li>
+      <li><strong>Business Value:</strong> Deal cycle from 10-15 days to 2-3 days. Standard deals close same-day. No human bottleneck for routine approvals</li>
+    </ul>
+  </div>
 </div>
 
 <!-- CUSTOMER OPS MOAT -->
@@ -1603,63 +1937,196 @@ table tr:hover { background: var(--sf-highlight); }
 <!-- CUSTOPS SF -->
 <div class="section" id="sec-custops-sf">
   <div class="section-hero">
-    <h2>Customer Operations — Salesforce Solution</h2>
-    <p>Four pillars unified through Data Cloud for connected customer intelligence.</p>
+    <h2>Customer Operations — Salesforce Solution Architecture</h2>
+    <p>Four pillars unified through Data Cloud for connected customer intelligence. Transform siloed operations into a relationship platform that creates recurring revenue and defensible switching costs.</p>
   </div>
+
+  <div class="value-prop">
+    <div class="value-prop-item"><div class="vp-metric">Same-day</div><div class="vp-label">Credit Approval</div><div class="vp-detail">From 5-10 days to automated same-day decisions with AI scoring</div></div>
+    <div class="value-prop-item"><div class="vp-metric">2x</div><div class="vp-label">Loyalty Engagement</div><div class="vp-detail">Redemption rates from 15-20% to 35-45% via AI personalization</div></div>
+    <div class="value-prop-item"><div class="vp-metric">360°</div><div class="vp-label">Unified Identity</div><div class="vp-detail">Credit + loyalty + fleet + TRR data unified in single customer profile</div></div>
+    <div class="value-prop-item"><div class="vp-metric">R$200M+</div><div class="vp-label">Revenue Protection</div><div class="vp-detail">Connected operations create stickiness that prevents commodity switching</div></div>
+  </div>
+
+  <div class="arch-enhanced">
+    <div class="arch-title">Technical Architecture — Customer Operations Platform</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #0277bd;"><div class="arch-node-label">Credit</div><span class="product-logo pl-fsc"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#0277bd"/><path d="M7 12h10M7 8h6M7 16h8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Financial Services Cloud</span><br><small style="color:var(--sf-text-sec);">AI scoring · dynamic limits · portfolio monitoring</small></div>
+      <div class="arch-node" style="border-top:3px solid #f57f17;"><div class="arch-node-label">Loyalty</div><span class="product-logo pl-marketing"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f57f17"/><path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5z" fill="#fff"/></svg>Marketing Cloud</span> <span class="product-logo pl-loyalty"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#c62828"/><path d="M12 8l1 2h2l-1.5 1.5.5 2.5-2-1.5-2 1.5.5-2.5L9 10h2z" fill="#fff"/></svg>Loyalty Mgmt</span><br><small style="color:var(--sf-text-sec);">Personalization · multi-channel · real-time triggers</small></div>
+    </div>
+    <div class="arch-row" style="margin-top:3px;">
+      <div class="arch-node" style="border-top:3px solid #2E844A;"><div class="arch-node-label">Fleet</div><span class="product-logo pl-service"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2E844A"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Service Cloud</span> <span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span><br><small style="color:var(--sf-text-sec);">Fleet portal · consumption dashboards · predictive maintenance</small></div>
+      <div class="arch-node" style="border-top:3px solid #283593;"><div class="arch-node-label">TRR</div><span class="product-logo pl-field"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service</span> <span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span><br><small style="color:var(--sf-text-sec);">Route optimization · microsegmentation · graduation logic</small></div>
+    </div>
+    <div class="arch-connector">↕</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #6b21a8;"><div class="arch-node-label">Unified Identity</div><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span><br><small style="color:var(--sf-text-sec);">One customer → all signals: credit behavior + loyalty engagement + fleet consumption + TRR history</small></div>
+    </div>
+  </div>
+
   <div class="card">
+    <h3>Four Pillars — Detailed Product Mapping</h3>
     <div class="table-wrap">
       <table>
-        <tr><th>Pillar</th><th>Salesforce Product</th><th>Capability</th></tr>
-        <tr><td>Credit</td><td><span class="badge badge-blue">Financial Services Cloud + Flow</span></td><td>Automated scoring, dynamic limits, approval workflows, portfolio monitoring</td></tr>
-        <tr><td>Loyalty</td><td><span class="badge badge-blue">Marketing Cloud + Data Cloud + Loyalty Mgmt</span></td><td>Unified profiles, AI personalization, real-time triggers, multi-channel</td></tr>
-        <tr><td>Fleet</td><td><span class="badge badge-blue">Service Cloud + Experience Cloud + Data Cloud</span></td><td>Fleet portal, consumption dashboards, predictive maintenance</td></tr>
-        <tr><td>TRR</td><td><span class="badge badge-blue">Field Service + Sales Cloud</span></td><td>Route optimization, microsegmentation, upsell recommendations</td></tr>
+        <tr><th>Pillar</th><th>Salesforce Products</th><th>Capability</th><th>Business Impact</th></tr>
+        <tr><td><strong>Credit</strong></td><td><span class="product-logo pl-fsc"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#0277bd"/><path d="M7 12h10M7 8h6M7 16h8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>FSC</span> <span class="product-logo pl-flow"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#4527a0"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Flow</span></td><td>Automated credit scoring (Serasa + internal data), dynamic limit setting, multi-level approval workflows, portfolio exposure monitoring, automated collection triggers</td><td>Same-day decisions vs. 5-10 days</td></tr>
+        <tr><td><strong>Loyalty</strong></td><td><span class="product-logo pl-marketing"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f57f17"/><path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5z" fill="#fff"/></svg>Marketing Cloud</span> <span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span> <span class="product-logo pl-loyalty"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#c62828"/><path d="M12 8l1 2h2l-1.5 1.5.5 2.5-2-1.5-2 1.5.5-2.5L9 10h2z" fill="#fff"/></svg>Loyalty Mgmt</span></td><td>Unified 40M+ member profiles across programs. AI-driven personalized offers based on behavior (frequency, product, location, time). Real-time triggers via preferred channel (app push, SMS, email)</td><td>Redemption 2x = engagement 2x</td></tr>
+        <tr><td><strong>Fleet</strong></td><td><span class="product-logo pl-service"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2E844A"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Service Cloud</span> <span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span></td><td>Self-service fleet portal with per-driver controls, consumption analytics, predictive maintenance scheduling tied to mileage patterns, integrated toll + fuel card management</td><td>High switching costs = volume guarantee</td></tr>
+        <tr><td><strong>TRR</strong></td><td><span class="product-logo pl-field"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service</span> <span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></td><td>AI-optimized delivery routes for fragmented last-mile market. Customer microsegmentation by growth potential. Automatic "graduation" path when TRR customer reaches commercial threshold</td><td>Serve fragmented market profitably</td></tr>
       </table>
     </div>
   </div>
+
+  <div class="callout callout-success"><strong>The Unified Identity Graph — Cross-Pillar Intelligence</strong> Data Cloud unifies all four pillars into a single customer identity. This enables cross-pillar insights that are impossible in siloed systems: a loyal consumer who also manages a fleet account, a dealer whose credit behavior correlates with churn risk, a TRR customer growing fast enough to become a direct B2B account. Each signal from one pillar enriches decisions in all others.</div>
 </div>
 
 <!-- CUSTOPS AGENT -->
 <div class="section" id="sec-custops-agent">
   <div class="section-hero">
-    <h2>Customer Operations — Agentforce</h2>
-    <p>Autonomous agents managing credit risk, loyalty engagement, fleet expansion, and TRR graduation.</p>
+    <h2>Customer Operations — Agentforce in Action</h2>
+    <p>Four autonomous agents managing credit risk, loyalty engagement, fleet expansion, and TRR graduation — operating continuously across the entire customer portfolio.</p>
   </div>
-  <div class="agent-card"><h4>Agent 1: Credit Risk Monitor</h4><ul><li>Evaluates portfolio exposure continuously</li><li>Detects: Serasa score drop, payment pattern change, volume decline + high balance</li><li>Recommends: reduce limit, pause orders, trigger collection</li></ul></div>
-  <div class="agent-card"><h4>Agent 2: Loyalty Engagement</h4><ul><li>Identifies members at risk (no visit 30 days, points expiring)</li><li>Generates personalized re-engagement based on behavior</li><li>Delivers via preferred channel, measures and adjusts</li></ul></div>
-  <div class="agent-card"><h4>Agent 3: Fleet Expansion</h4><ul><li>Monitors consumption patterns for growth signals</li><li>Alerts account manager with expansion recommendation</li><li>Auto-generates expanded contract proposal</li></ul></div>
-  <div class="agent-card"><h4>Agent 4: TRR Graduation</h4><ul><li>Identifies TRR customers with consistent growth above threshold</li><li>Recommends "graduation" to direct commercial relationship</li><li>Triggers prospecting with full history and credit profile</li></ul></div>
+
+  <div class="callout callout-info" style="margin-bottom:24px;"><strong><span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span> — Portfolio-Wide Intelligence</strong> These agents operate across the entire customer base simultaneously — monitoring credit exposure on thousands of accounts, engagement patterns on 40M+ loyalty members, consumption trends across fleet customers, and growth trajectories in TRR. Each agent has clear decision boundaries and escalation paths.</div>
+
+  <div class="agent-card">
+    <h4>Agent 1: Credit Risk Monitor</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-fsc"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#0277bd"/><path d="M7 12h10M7 8h6M7 16h8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>FSC</span> <span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> Continuous portfolio monitoring — Serasa bureau updates, payment pattern changes, volume decline + high credit balance correlation</li>
+      <li><strong>Reasoning:</strong> Evaluates composite risk score combining external bureau data + internal behavioral signals + market conditions</li>
+      <li><strong>Action:</strong> Recommends graduated response: reduce limit, pause future orders, trigger proactive collection — all with audit trail in FSC</li>
+      <li><strong>Business Value:</strong> Reduces bad debt exposure by detecting risk signals weeks before they become defaults. Protects R$100M+ credit portfolio</li>
+    </ul>
+  </div>
+
+  <div class="agent-card">
+    <h4>Agent 2: Loyalty Engagement Agent</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-marketing"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f57f17"/><path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5z" fill="#fff"/></svg>Marketing Cloud</span> <span class="product-logo pl-loyalty"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#c62828"/><path d="M12 8l1 2h2l-1.5 1.5.5 2.5-2-1.5-2 1.5.5-2.5L9 10h2z" fill="#fff"/></svg>Loyalty Mgmt</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> Member at risk signals — no station visit in 30 days, points expiring within 7 days, reduced transaction frequency</li>
+      <li><strong>Reasoning:</strong> Generates personalized re-engagement strategy based on behavioral history (preferred station, products, timing, channel responsiveness)</li>
+      <li><strong>Action:</strong> Delivers tailored offer via preferred channel (app push, SMS, email). Measures response, adjusts approach if first attempt fails</li>
+      <li><strong>Business Value:</strong> Doubles redemption rates to 35-45%. Each engaged member = higher visit frequency = more fuel volume + convenience store revenue</li>
+    </ul>
+  </div>
+
+  <div class="agent-card">
+    <h4>Agent 3: Fleet Expansion Agent</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-service"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2E844A"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Service Cloud</span> <span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> Consumption patterns showing sustained growth — new driver cards being requested, more stations being used, higher monthly volume</li>
+      <li><strong>Reasoning:</strong> Correlates fleet growth signals with contract terms, current discount tier, and competitor vulnerability window</li>
+      <li><strong>Action:</strong> Alerts account manager with specific expansion recommendation + auto-generates upgraded contract proposal in Revenue Cloud</li>
+      <li><strong>Business Value:</strong> Captures organic growth at the moment it happens instead of discovering it at annual review. Locks expansion before competitor offers arrive</li>
+    </ul>
+  </div>
+
+  <div class="agent-card">
+    <h4>Agent 4: TRR Graduation Agent</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="product-logo pl-field"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service</span> <span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></div>
+    <ul>
+      <li><strong>Trigger:</strong> TRR customer with consistent volume growth above commercial threshold for 3+ consecutive months</li>
+      <li><strong>Reasoning:</strong> Evaluates: Is this customer better served as direct commercial? What's the margin delta? What volume justifies dedicated attention?</li>
+      <li><strong>Action:</strong> Recommends "graduation" to direct commercial relationship. Triggers B2B prospecting workflow with full history, credit profile, and consumption forecast attached</li>
+      <li><strong>Business Value:</strong> Transforms low-margin TRR delivery into high-margin B2B relationship. Natural pipeline generation from existing customer base with zero acquisition cost</li>
+    </ul>
+  </div>
 </div>
 
 <!-- ARCHITECTURE PLATFORM -->
 <div class="section" id="sec-arch-platform">
   <div class="section-hero">
     <h2>Complete Salesforce Architecture</h2>
-    <p>One Platform, Five Engines, Connected Intelligence. SAP stays as system of record. Salesforce becomes the system of intelligence.</p>
+    <p>One Platform, Five Engines, Connected Intelligence. SAP stays as system of record for transactions. Salesforce becomes the system of intelligence, engagement, and autonomous decision-making.</p>
   </div>
+
+  <div class="callout callout-info" style="margin-bottom:24px;"><strong>Architecture Principle</strong> SAP manages the transaction (order, invoice, payment). Salesforce manages the decision (which customer, what price, when to deliver, how to engage). MuleSoft bridges both worlds in real-time. Data Cloud unifies all signals into actionable intelligence. Agentforce automates routine decisions within defined guardrails.</div>
+
   <div class="arch-diagram">
-    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--sf-primary);">Agentforce</div><div class="arch-layer-content"><div class="arch-block">Supply Agent</div><div class="arch-block">Pricing Agent</div><div class="arch-block">Logistics Agent</div><div class="arch-block">Commercial Agent</div><div class="arch-block">Customer Ops Agent</div></div></div>
-    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--sf-success);">Applications</div><div class="arch-layer-content"><div class="arch-block">Sales Cloud</div><div class="arch-block">Revenue Cloud</div><div class="arch-block">Service Cloud</div><div class="arch-block">Field Service</div><div class="arch-block">Experience Cloud</div><div class="arch-block">Marketing Cloud</div><div class="arch-block">FSC</div><div class="arch-block">Loyalty Mgmt</div></div></div>
-    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--oil-gold);">Intelligence</div><div class="arch-layer-content"><div class="arch-block">Tableau</div><div class="arch-block">CRM Analytics</div><div class="arch-block">Einstein AI</div><div class="arch-block">Predictive Models</div></div></div>
-    <div class="arch-layer"><div class="arch-layer-label" style="background:#6b21a8;">Data Layer</div><div class="arch-layer-content"><div class="arch-block">Data Cloud — Unified Customer</div><div class="arch-block">Supply Signals</div><div class="arch-block">Market Data</div><div class="arch-block">IoT / Telemetry</div></div></div>
-    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--sf-dark);">Integration</div><div class="arch-layer-content"><div class="arch-block">MuleSoft</div><div class="arch-block">SAP ERP</div><div class="arch-block">TMS</div><div class="arch-block">IoT Platform</div><div class="arch-block">ANP/Tax</div><div class="arch-block">Petrobras</div><div class="arch-block">FX Feeds</div></div></div>
+    <div class="arch-layer"><div class="arch-layer-label" style="background:#006272;">Agentforce</div><div class="arch-layer-content"><div class="arch-block"><span class="product-logo pl-agentforce" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2" stroke="#fff" stroke-width="2" fill="none"/></svg>Supply Agent</span></div><div class="arch-block"><span class="product-logo pl-agentforce" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2" stroke="#fff" stroke-width="2" fill="none"/></svg>Pricing Agent</span></div><div class="arch-block"><span class="product-logo pl-agentforce" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2" stroke="#fff" stroke-width="2" fill="none"/></svg>Logistics Agent</span></div><div class="arch-block"><span class="product-logo pl-agentforce" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2" stroke="#fff" stroke-width="2" fill="none"/></svg>Commercial Agent</span></div><div class="arch-block"><span class="product-logo pl-agentforce" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2" stroke="#fff" stroke-width="2" fill="none"/></svg>Customer Ops Agent</span></div></div></div>
+    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--sf-success);">Applications</div><div class="arch-layer-content"><div class="arch-block" style="border-color:rgba(1,118,211,0.3);"><span class="product-logo pl-sales" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>Sales Cloud</span></div><div class="arch-block" style="border-color:rgba(27,94,32,0.3);"><span class="product-logo pl-revenue" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none"/></svg>Revenue Cloud</span></div><div class="arch-block" style="border-color:rgba(46,132,74,0.3);"><span class="product-logo pl-service" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#2E844A"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2"/></svg>Service Cloud</span></div><div class="arch-block" style="border-color:rgba(40,53,147,0.3);"><span class="product-logo pl-field" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service</span></div><div class="arch-block" style="border-color:rgba(230,81,0,0.3);"><span class="product-logo pl-experience" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/></svg>Experience Cloud</span></div><div class="arch-block" style="border-color:rgba(245,127,23,0.3);"><span class="product-logo pl-marketing" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f57f17"/><path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5" fill="#fff"/></svg>Marketing Cloud</span></div><div class="arch-block" style="border-color:rgba(2,119,189,0.3);"><span class="product-logo pl-fsc" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><rect x="2" y="2" width="20" height="20" rx="4" fill="#0277bd"/><path d="M7 12h10" stroke="#fff" stroke-width="1.5"/></svg>FSC</span></div><div class="arch-block" style="border-color:rgba(198,40,40,0.3);"><span class="product-logo pl-loyalty" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#c62828"/><path d="M12 8l1 2h2l-1.5 1.5.5 2.5-2-1.5" fill="#fff"/></svg>Loyalty Mgmt</span></div></div></div>
+    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--oil-gold);">Intelligence</div><div class="arch-layer-content"><div class="arch-block"><span class="product-logo pl-tableau" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/></svg>Tableau</span></div><div class="arch-block"><span class="product-logo pl-einstein" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2"/></svg>CRM Analytics</span></div><div class="arch-block">Einstein AI</div><div class="arch-block">Predictive Models</div></div></div>
+    <div class="arch-layer"><div class="arch-layer-label" style="background:#6b21a8;">Data Layer</div><div class="arch-layer-content"><div class="arch-block" style="flex:2;border-color:rgba(107,33,168,0.3);"><span class="product-logo pl-data" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/></svg>Data Cloud — Unified Customer</span></div><div class="arch-block">Supply Signals</div><div class="arch-block">Market Data</div><div class="arch-block">IoT / Telemetry</div></div></div>
+    <div class="arch-layer"><div class="arch-layer-label" style="background:var(--sf-dark);">Integration</div><div class="arch-layer-content"><div class="arch-block" style="border-color:rgba(21,101,192,0.3);"><span class="product-logo pl-mulesoft" style="padding:2px 6px;font-size:10px;"><svg class="p-icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/></svg>MuleSoft</span></div><div class="arch-block">SAP ERP</div><div class="arch-block">TMS</div><div class="arch-block">IoT Platform</div><div class="arch-block">ANP/Tax</div><div class="arch-block">Petrobras</div><div class="arch-block">FX Feeds</div></div></div>
+  </div>
+
+  <div class="card">
+    <h3>Platform Capabilities by Business Engine</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Engine</th><th>Primary Products</th><th>Key Agents</th><th>Data Sources (via MuleSoft)</th></tr>
+        <tr><td><strong>Pricing</strong></td><td>Revenue Cloud, Data Cloud, Tableau</td><td>Cost Monitor, Margin Guardian, Competitive Response</td><td>SAP, Petrobras API, B3/FX, ANP, SEFAZ</td></tr>
+        <tr><td><strong>Logistics</strong></td><td>Field Service, Data Cloud, Agentforce</td><td>Predictive Delivery, Route Optimizer, SLA Monitor</td><td>TMS, IoT/Telemetry, GPS, SAP MM</td></tr>
+        <tr><td><strong>Commercial</strong></td><td>Sales Cloud, Revenue Cloud, Experience Cloud</td><td>Churn Prevention, Opportunity Spotter, Deal Desk</td><td>SAP SD, Market signals, Bureau data</td></tr>
+        <tr><td><strong>Customer Ops</strong></td><td>FSC, Marketing Cloud, Service Cloud, Loyalty</td><td>Credit Risk, Loyalty Engagement, Fleet Expansion, TRR Graduation</td><td>Serasa, Payment systems, Loyalty platforms, Fleet cards</td></tr>
+        <tr><td><strong>Supply</strong></td><td>Data Cloud, Tableau, Agentforce</td><td>Demand Forecaster, Inventory Optimizer</td><td>SAP PP, Weather APIs, Consumption telemetry</td></tr>
+      </table>
+    </div>
   </div>
 </div>
 
 <!-- ARCHITECTURE DATA CLOUD -->
 <div class="section" id="sec-arch-datacloud">
   <div class="section-hero">
-    <h2>Data Cloud Unification</h2>
-    <p>One Customer, One Truth, All Signals Connected across credit, loyalty, fleet, and TRR data.</p>
+    <h2>Data Cloud — Unified Intelligence Layer</h2>
+    <p>One Customer, One Truth, All Signals Connected. Data Cloud resolves identity across systems, harmonizes data from 15+ sources, and powers every AI decision and agent action in the platform.</p>
   </div>
+
+  <div class="arch-enhanced">
+    <div class="arch-title">Data Cloud Architecture — The Intelligence Backbone</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #006272;flex:1;"><div class="arch-node-label">Consumers</div><span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agents</span> <span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span> <span class="product-logo pl-einstein"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00695c"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Einstein</span></div>
+    </div>
+    <div class="arch-connector">↕ queries & triggers</div>
+    <div class="arch-row">
+      <div class="arch-node" style="border-top:3px solid #6b21a8;"><div class="arch-node-label">Data Cloud Core</div><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span><br><small style="color:var(--sf-text-sec);"><strong>Identity Resolution</strong> · Data Harmonization · Calculated Insights · Segmentation · Real-time Streaming</small></div>
+    </div>
+    <div class="arch-connector">↕ ingestion & streaming</div>
+    <div class="arch-row">
+      <div class="arch-node" style="flex:1;border-top:2px solid var(--sf-border);"><div class="arch-node-label">CRM Data</div><small>Sales Cloud · Service Cloud · FSC · Marketing Cloud</small></div>
+      <div class="arch-node" style="flex:1;border-top:2px solid var(--sf-border);"><div class="arch-node-label">Operational Data</div><small>SAP (orders, inventory) · TMS · Fleet cards · Loyalty platform</small></div>
+      <div class="arch-node" style="flex:1;border-top:2px solid var(--sf-border);"><div class="arch-node-label">External Signals</div><small>IoT telemetry · ANP data · Petrobras API · Serasa · Market feeds</small></div>
+    </div>
+  </div>
+
   <div class="card">
-    <h3>Unified Customer Identity Graph — Use Cases</h3>
-    <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
-      <li>Loyalty member declining visit frequency → Trigger personalized win-back offer</li>
-      <li>Fleet customer increasing consumption → Sales alerted to expansion opportunity</li>
-      <li>Dealer credit at 90% + volume growing → Auto-recommend limit increase</li>
-      <li>TRR customer ordering more frequently → Qualify for direct commercial relationship</li>
-    </ul>
+    <h3>Unified Customer Identity Graph — Cross-System Intelligence</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Signal (Source A)</th><th>+ Correlated With (Source B)</th><th>→ Action Triggered</th><th>Agent</th></tr>
+        <tr><td>Loyalty member declining visit frequency</td><td>No station within 5km of new address (Data Cloud geo)</td><td>Trigger personalized win-back offer at nearest station</td><td>Loyalty Engagement</td></tr>
+        <tr><td>Fleet customer increasing consumption +20%</td><td>No matching contract expansion in Revenue Cloud</td><td>Alert account manager + auto-generate expansion proposal</td><td>Fleet Expansion</td></tr>
+        <tr><td>Dealer credit at 90% utilization</td><td>Volume growing steadily + on-time payments</td><td>Auto-recommend limit increase to support growth</td><td>Credit Risk Monitor</td></tr>
+        <tr><td>TRR customer ordering 3x more frequently</td><td>Volume exceeds commercial threshold for 3 months</td><td>Qualify for direct B2B relationship + trigger prospecting</td><td>TRR Graduation</td></tr>
+        <tr><td>Station tank dropping faster than model predicts</td><td>Local event detected (holiday, harvest weekend)</td><td>Preemptive delivery scheduling before standard threshold</td><td>Predictive Delivery</td></tr>
+        <tr><td>B2B customer volume declining 15%</td><td>Competitor price undercut detected in same region (ANP)</td><td>Alert commercial team with retention recommendation</td><td>Churn Prevention</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>Data Cloud Capabilities Used</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li><strong>Identity Resolution</strong> — Resolves same customer across SAP (account #), loyalty (CPF), fleet card (driver ID), and CRM (SF ID)</li>
+        <li><strong>Data Harmonization</strong> — Normalizes 15+ source formats into unified model (DMO)</li>
+        <li><strong>Calculated Insights</strong> — Real-time KPIs: churn score, growth velocity, margin contribution</li>
+        <li><strong>Segmentation</strong> — Dynamic segments that feed Marketing Cloud journeys and agent triggers</li>
+        <li><strong>Streaming</strong> — IoT telemetry and market price feeds ingested in real-time, not batch</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Without Data Cloud (Current State)</h3>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li>Same customer exists in 5+ systems with different IDs</li>
+        <li>Credit team doesn't see loyalty behavior</li>
+        <li>Commercial team doesn't see fleet growth signals</li>
+        <li>Logistics team doesn't know which customers are highest value</li>
+        <li>Churn signals from one system never reach the team that could act</li>
+        <li>Reports run monthly on stale data — decisions always lag reality</li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -1713,19 +2180,41 @@ table tr:hover { background: var(--sf-highlight); }
 <div class="section" id="sec-why-sf">
   <div class="section-hero">
     <h2>Why Salesforce</h2>
-    <p>SAP stays as system of record. Salesforce becomes the system of intelligence and engagement — where humans and AI make decisions.</p>
+    <p>SAP stays as system of record for transactions. Salesforce becomes the system of intelligence and engagement — where humans and AI make decisions that drive revenue, retention, and margin.</p>
   </div>
+
+  <div class="callout callout-info" style="margin-bottom:24px;"><strong>The Core Question Answered</strong> "Why can't we just extend SAP?" — Because the decision layer (who to serve, what price to offer, when to deliver, how to engage) requires fundamentally different architecture than the transaction layer (order, invoice, payment). Salesforce + MuleSoft + Data Cloud complements SAP, it doesn't replace it.</div>
+
   <div class="card">
+    <h3>Platform Comparison — ERP vs. Salesforce</h3>
     <div class="table-wrap">
       <table>
         <tr><th>Requirement</th><th>Why Not Just ERP?</th><th>Salesforce Advantage</th></tr>
-        <tr><td><strong>Customer 360°</strong></td><td>ERP is transaction-centric</td><td>Built for relationships, interactions, lifecycle</td></tr>
-        <tr><td><strong>Speed of Change</strong></td><td>ERP changes: expensive, slow, risky</td><td>Low-code platform: weeks not months</td></tr>
-        <tr><td><strong>AI at Scale</strong></td><td>ERP AI limited to structured data</td><td>Einstein + Agentforce: multi-source, autonomous</td></tr>
-        <tr><td><strong>Channel Unification</strong></td><td>ERP doesn't serve portals or mobile</td><td>Experience Cloud, Mobile, Marketing — native</td></tr>
-        <tr><td><strong>Ecosystem</strong></td><td>ERP is closed</td><td>AppExchange + MuleSoft: 1000s of connectors</td></tr>
-        <tr><td><strong>Time to Value</strong></td><td>18-36 months</td><td>Phase 1 live in 6 months with measurable ROI</td></tr>
+        <tr><td><strong>Customer 360°</strong></td><td>ERP is transaction-centric — knows what was ordered, not why</td><td><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data Cloud</span> Built for relationships, interactions, lifecycle across all touchpoints</td></tr>
+        <tr><td><strong>Speed of Change</strong></td><td>ERP changes: expensive ($500K+), slow (6-12 months), risky (core system)</td><td><span class="product-logo pl-flow"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#4527a0"/><path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Flow</span> Low-code platform: weeks not months. Business users can adapt without IT</td></tr>
+        <tr><td><strong>AI at Scale</strong></td><td>ERP AI limited to structured transactional data</td><td><span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span> Multi-source, autonomous agents operating on structured + unstructured data</td></tr>
+        <tr><td><strong>Channel Unification</strong></td><td>ERP doesn't serve portals, mobile apps, or marketing channels</td><td><span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span> <span class="product-logo pl-marketing"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f57f17"/><path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5z" fill="#fff"/></svg>Marketing Cloud</span> Portals, mobile, omnichannel — native, not bolted on</td></tr>
+        <tr><td><strong>Ecosystem</strong></td><td>ERP is closed — every integration is custom development</td><td><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span> 1,000+ pre-built connectors + AppExchange marketplace</td></tr>
+        <tr><td><strong>Time to Value</strong></td><td>18-36 months for meaningful business impact</td><td>Phase 1 live in 6 months with measurable ROI — churn reduction, deal velocity, margin protection from day one</td></tr>
       </table>
+    </div>
+  </div>
+
+  <div class="pillar-grid" style="grid-template-columns:repeat(3,1fr);">
+    <div class="pillar-card" style="border-top-color:#0176D3;">
+      <h4>System of Record</h4>
+      <p style="font-size:16px;font-weight:700;color:var(--sf-dark);margin-bottom:8px;">SAP</p>
+      <p>Transactions, inventory, financials, compliance. Stays exactly where it is.</p>
+    </div>
+    <div class="pillar-card" style="border-top-color:#1565c0;">
+      <h4>System of Integration</h4>
+      <p style="font-size:16px;font-weight:700;color:var(--sf-dark);margin-bottom:8px;"><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span></p>
+      <p>Real-time data bus connecting all systems. APIs, events, and orchestration.</p>
+    </div>
+    <div class="pillar-card" style="border-top-color:#006272;">
+      <h4>System of Intelligence</h4>
+      <p style="font-size:16px;font-weight:700;color:var(--sf-dark);margin-bottom:8px;">Salesforce</p>
+      <p>Decisions, engagement, AI. Where humans and agents collaborate on what matters.</p>
     </div>
   </div>
 </div>
