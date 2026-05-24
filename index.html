@@ -819,6 +819,143 @@ table tr:hover { background: var(--sf-highlight); }
   padding-top: 8px;
   border-top: 1px solid rgba(1,118,211,0.1);
 }
+
+/* DARK MODE */
+[data-theme="dark"] {
+  --sf-light-bg: #1a1a2e;
+  --sf-white: #16213e;
+  --sf-text: #e0e0e0;
+  --sf-text-sec: #a0a0a0;
+  --sf-border: #2a2a4a;
+  --sf-highlight: rgba(1,118,211,0.15);
+  --sf-dark: #e0e0e0;
+}
+[data-theme="dark"] body { background: #0f0f23; }
+[data-theme="dark"] .topbar { background: #16213e; border-color: #2a2a4a; }
+[data-theme="dark"] .sidebar { background: linear-gradient(180deg, #0a0a1a 0%, #0f0f23 100%); }
+[data-theme="dark"] table th { background: #1a1a3e; }
+[data-theme="dark"] table tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+[data-theme="dark"] table tr:hover { background: rgba(1,118,211,0.1); }
+[data-theme="dark"] .section-hero { background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 100%); }
+[data-theme="dark"] .callout-info { background: rgba(1,118,211,0.1); }
+[data-theme="dark"] .callout-success { background: rgba(46,132,74,0.1); }
+[data-theme="dark"] .callout-danger { background: rgba(234,0,30,0.1); }
+[data-theme="dark"] .callout-warning { background: rgba(254,147,57,0.1); }
+[data-theme="dark"] .metric-card { background: #16213e; }
+[data-theme="dark"] .pillar-card { background: #16213e; }
+[data-theme="dark"] .arch-enhanced { background: #0f0f23; border-color: #2a2a4a; }
+[data-theme="dark"] .arch-node { background: #16213e; }
+[data-theme="dark"] canvas { filter: brightness(0.9); }
+
+/* DARK MODE TOGGLE */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--sf-border);
+  border-radius: 20px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+  color: var(--sf-text);
+}
+.theme-toggle:hover { background: var(--sf-highlight); }
+
+/* BACK TO TOP */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--sf-primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  z-index: 800;
+}
+.back-to-top.visible { opacity: 1; transform: translateY(0); }
+.back-to-top:hover { background: var(--sf-dark); transform: translateY(-2px); }
+
+/* COPY BUTTON */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: 1px solid var(--sf-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 10px;
+  color: var(--sf-text-sec);
+  cursor: pointer;
+  transition: all 0.15s;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.copy-btn:hover { background: var(--sf-highlight); color: var(--sf-primary); border-color: var(--sf-primary); }
+.copy-btn.copied { background: #e8f5e9; color: var(--sf-success); border-color: var(--sf-success); }
+
+/* MINI TOC */
+.mini-toc {
+  background: var(--sf-highlight);
+  border: 1px solid rgba(1,118,211,0.15);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  font-size: 12px;
+}
+.mini-toc summary {
+  font-weight: 600;
+  color: var(--sf-primary);
+  cursor: pointer;
+  font-size: 12px;
+}
+.mini-toc ul {
+  margin-top: 8px;
+  padding-left: 16px;
+  list-style: none;
+}
+.mini-toc li { margin-bottom: 4px; }
+.mini-toc a {
+  color: var(--sf-text-sec);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.mini-toc a:hover { color: var(--sf-primary); }
+
+/* BREADCRUMB */
+.breadcrumb {
+  font-size: 11px;
+  color: var(--sf-text-sec);
+  margin-bottom: 8px;
+  padding: 6px 0;
+}
+.breadcrumb span { opacity: 0.5; margin: 0 6px; }
+
+/* PRINT STYLES */
+@media print {
+  .sidebar, .topbar, .hamburger, .back-to-top, .copy-btn, .theme-toggle, .mini-toc, .search-container, #toggleNavBtn, .sidebar-overlay { display: none !important; }
+  .main-content { margin-left: 0 !important; margin-top: 0 !important; padding: 0 !important; }
+  .section { display: block !important; page-break-inside: avoid; margin-bottom: 24px; }
+  .section-hero { background: #032D60 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .card { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
+  table { font-size: 11px; }
+  table th { background: #032D60 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  canvas { max-height: 200px; }
+  .page-footer { position: fixed; bottom: 0; width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -952,7 +1089,11 @@ table tr:hover { background: var(--sf-highlight); }
     <div class="search-results" id="searchResults"></div>
   </div>
   <div class="topbar-meta">v1.1 • May 2026</div>
+  <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
 </header>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
 
 <!-- MAIN CONTENT -->
 <main class="main-content" id="mainContent">
@@ -3405,6 +3546,98 @@ table tr:hover { background: var(--sf-highlight); }
       e.preventDefault();
       searchInput.focus();
     }
+  });
+
+  // DARK MODE TOGGLE
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('pov-theme');
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeToggle.textContent = '☀️';
+  }
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      themeToggle.textContent = '🌙';
+      localStorage.setItem('pov-theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeToggle.textContent = '☀️';
+      localStorage.setItem('pov-theme', 'dark');
+    }
+  });
+
+  // BACK TO TOP
+  const backToTop = document.getElementById('backToTop');
+  const mainContent = document.getElementById('mainContent');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // COPY TO CLIPBOARD — adds copy buttons to Discovery Questions & Objection Responses
+  function addCopyButtons() {
+    const tables = document.querySelectorAll('table');
+    tables.forEach(table => {
+      const headers = Array.from(table.querySelectorAll('th')).map(th => th.textContent.toLowerCase());
+      const copyColIdx = headers.findIndex(h =>
+        h.includes('discovery question') || h.includes('response framework') ||
+        h.includes('conversation starter') || h.includes('selling angle') ||
+        h.includes('our counter')
+      );
+      if (copyColIdx === -1) return;
+      table.querySelectorAll('tbody tr, tr:not(:first-child)').forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells[copyColIdx]) {
+          const cell = cells[copyColIdx];
+          if (cell.querySelector('.copy-btn')) return;
+          const btn = document.createElement('button');
+          btn.className = 'copy-btn';
+          btn.innerHTML = '📋 Copy';
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const text = cell.textContent.replace(' 📋 Copy', '').replace(' ✓ Copied', '').trim();
+            navigator.clipboard.writeText(text).then(() => {
+              btn.innerHTML = '✓ Copied';
+              btn.classList.add('copied');
+              setTimeout(() => { btn.innerHTML = '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+            });
+          });
+          cell.appendChild(btn);
+        }
+      });
+    });
+  }
+  addCopyButtons();
+
+  // MINI-TOC — auto-generates for dense sections
+  const tocSections = ['sec-why-sf-ae', 'sec-why-sf-se', 'sec-why-sf-ea'];
+  tocSections.forEach(secId => {
+    const section = document.getElementById(secId);
+    if (!section) return;
+    const headings = section.querySelectorAll('h3, h4');
+    if (headings.length < 3) return;
+    const toc = document.createElement('details');
+    toc.className = 'mini-toc';
+    toc.open = true;
+    const summary = document.createElement('summary');
+    summary.textContent = 'Quick Navigation';
+    toc.appendChild(summary);
+    const ul = document.createElement('ul');
+    headings.forEach((h, i) => {
+      const id = secId + '-h' + i;
+      h.id = id;
+      const li = document.createElement('li');
+      const indent = h.tagName === 'H4' ? '└ ' : '';
+      li.innerHTML = indent + '<a href="#' + id + '">' + h.textContent + '</a>';
+      ul.appendChild(li);
+    });
+    toc.appendChild(ul);
+    const hero = section.querySelector('.section-hero');
+    if (hero) hero.after(toc);
   });
 })();
 </script>
