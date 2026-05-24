@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salesforce Downstream Oil & Gas Brazil POV</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
 :root {
   --sf-primary: #0176D3;
@@ -637,6 +638,38 @@ table tr:hover { background: var(--sf-highlight); }
 
 .sidebar-overlay.visible { display: block; }
 
+/* CHARTS */
+.chart-container {
+  position: relative;
+  background: var(--sf-white);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--sf-border);
+  margin-bottom: 24px;
+}
+
+.chart-container h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sf-dark);
+  margin-bottom: 16px;
+}
+
+.chart-container canvas {
+  max-height: 320px;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .chart-row { grid-template-columns: 1fr; }
+}
+
 /* PRINT */
 @media print {
   .sidebar, .topbar, .hamburger { display: none !important; }
@@ -849,6 +882,16 @@ table tr:hover { background: var(--sf-highlight); }
     <div class="metric-card"><div class="metric-value">3.8%</div><div class="metric-label">Biofuel CAGR</div><div class="metric-sub">2010-2024</div></div>
     <div class="metric-card"><div class="metric-value">58%</div><div class="metric-label">Top 3 Market Share</div><div class="metric-sub">Vibra, Raízen, Ipiranga</div></div>
   </div>
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Market Share by Distributor</h3>
+      <canvas id="chartMarketShare"></canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Fuel Consumption Growth (bn liters, G+E+D)</h3>
+      <canvas id="chartConsumptionGrowth"></canvas>
+    </div>
+  </div>
   <div class="card">
     <h3>Key Market Characteristics</h3>
     <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
@@ -881,6 +924,10 @@ table tr:hover { background: var(--sf-highlight); }
       </div>
       <p style="font-size:12px;color:var(--sf-text-sec);">Vehicle penetration remains below developed peers — room for growth.</p>
     </div>
+  </div>
+  <div class="chart-container">
+    <h3>Brazilian Vehicle Fleet Evolution (million units, 2014-2024)</h3>
+    <canvas id="chartFleetEvolution"></canvas>
   </div>
   <div class="card">
     <h3>Limited Electrification Impact</h3>
@@ -919,6 +966,16 @@ table tr:hover { background: var(--sf-highlight); }
       <h3>RenovaBio — Carbon Credits</h3>
       <p style="font-size:13px;color:var(--sf-text-sec);">Producers issue CBIOs (carbon credits) traded on stock exchange. Distributors required to purchase CBIOs to offset CO2 emissions. Volume defined by ANP based on previous year's distribution.</p>
       <div class="callout callout-success"><strong>Opportunity</strong> CBIO compliance tracking and optimization is a natural Salesforce + Data Cloud use case.</div>
+    </div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Biofuel Sales Growth (billion liters)</h3>
+      <canvas id="chartBiofuelGrowth"></canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Global Ethanol Production Share 2030E</h3>
+      <canvas id="chartEthanolShare"></canvas>
     </div>
   </div>
 </div>
@@ -967,6 +1024,10 @@ table tr:hover { background: var(--sf-highlight); }
       <li>Increased competition from private refiners and importers</li>
       <li>Supply optionality increasing for distributors</li>
     </ul>
+  </div>
+  <div class="chart-container">
+    <h3>Domestic Refining vs. Imports — Petrobras Share Declining (bn liters)</h3>
+    <canvas id="chartRefiningVsImports"></canvas>
   </div>
 </div>
 
@@ -1018,6 +1079,10 @@ table tr:hover { background: var(--sf-highlight); }
       <li>Private players increasingly importing directly</li>
       <li>Import share of consumption growing year over year</li>
     </ul>
+  </div>
+  <div class="chart-container">
+    <h3>Refined Oil Import Volume Evolution (bn liters)</h3>
+    <canvas id="chartImportEvolution"></canvas>
   </div>
 </div>
 
@@ -1086,6 +1151,10 @@ table tr:hover { background: var(--sf-highlight); }
       <h3>The "White-Flag" Challenge</h3>
       <p style="font-size:13px;color:var(--sf-text-sec);">Regional distributors and unbranded stations capture ~34% of the market by competing aggressively on price, lower overhead, and hyper-local agility.</p>
     </div>
+  </div>
+  <div class="chart-container">
+    <h3>Distributor Market Share — Volume (%, 2024)</h3>
+    <canvas id="chartDistributorShare"></canvas>
   </div>
   <div class="card">
     <h3>Margin vs. Volume Battle</h3>
@@ -1608,6 +1677,10 @@ table tr:hover { background: var(--sf-highlight); }
       <div class="timeline-item"><div class="timeline-meta">Phase 4: Autonomous Operations (18-24 months)</div><h4>Agentforce Deployment Across All Five Engines</h4><p>Full AI-driven decision automation, end-to-end optimization</p><div class="callout callout-success" style="margin-top:8px;"><strong>Quick Win:</strong> Autonomous agents handle 60% of routine decisions</div></div>
     </div>
   </div>
+  <div class="chart-container">
+    <h3>Transformation Roadmap — Phase Duration & Value Realization</h3>
+    <canvas id="chartRoadmap"></canvas>
+  </div>
 </div>
 
 <!-- IMPACT -->
@@ -1629,6 +1702,10 @@ table tr:hover { background: var(--sf-highlight); }
         <tr><td>Commercial Productivity</td><td>8-10/week</td><td>20-25/week</td><td><span class="badge badge-green">2.5x effectiveness</span></td></tr>
       </table>
     </div>
+  </div>
+  <div class="chart-container">
+    <h3>KPI Improvement — Current vs. With Salesforce</h3>
+    <canvas id="chartKPIComparison"></canvas>
   </div>
 </div>
 
@@ -1777,6 +1854,249 @@ table tr:hover { background: var(--sf-highlight); }
     }
   });
 })();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sfBlue = '#0176D3';
+  const sfDark = '#032D60';
+  const sfSuccess = '#2E844A';
+  const sfWarning = '#FE9339';
+  const sfError = '#EA001E';
+  const sfGold = '#f5a623';
+
+  Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.color = '#706E6B';
+
+  // CHART 1: Market Share (Donut)
+  new Chart(document.getElementById('chartMarketShare'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Vibra (BR)', 'Raízen (Shell)', 'Ipiranga (Ultra)', 'Others (Regional + White-flag)'],
+      datasets: [{
+        data: [23, 20, 15, 42],
+        backgroundColor: [sfBlue, sfDark, sfSuccess, '#DDDBDA'],
+        borderWidth: 2, borderColor: '#fff'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true } },
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw}% market share` }}
+      },
+      cutout: '55%'
+    }
+  });
+
+  // CHART 2: Fuel Consumption Growth (Line)
+  new Chart(document.getElementById('chartConsumptionGrowth'), {
+    type: 'line',
+    data: {
+      labels: ['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
+      datasets: [{
+        label: 'Total Volume (bn liters)',
+        data: [105, 103, 101, 106, 110, 112, 104, 108, 115, 120, 133],
+        borderColor: sfBlue, backgroundColor: 'rgba(1,118,211,0.08)',
+        fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: sfBlue
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false },
+        tooltip: { callbacks: { label: ctx => `${ctx.raw} bn liters` }}
+      },
+      scales: {
+        y: { beginAtZero: false, grid: { color: 'rgba(0,0,0,0.04)' }},
+        x: { grid: { display: false }}
+      }
+    }
+  });
+
+  // CHART 3: Fleet Evolution (Grouped Bar)
+  new Chart(document.getElementById('chartFleetEvolution'), {
+    type: 'bar',
+    data: {
+      labels: ['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
+      datasets: [
+        { label: 'Total Fleet (M)', data: [36,37,38,39,40,40,40,43,44,45,47], backgroundColor: sfDark },
+        { label: 'Light Vehicles (M)', data: [36,37,38,39,40,40,37,40,45,46,48], backgroundColor: sfBlue }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom', labels: { usePointStyle: true } }},
+      scales: {
+        y: { beginAtZero: false, title: { display: true, text: 'Million units' }, grid: { color: 'rgba(0,0,0,0.04)' }},
+        x: { grid: { display: false }}
+      }
+    }
+  });
+
+  // CHART 4: Biofuel Sales Growth (Line + Bar)
+  new Chart(document.getElementById('chartBiofuelGrowth'), {
+    type: 'bar',
+    data: {
+      labels: ['2017','2018','2019','2020','2021','2022','2023','2024'],
+      datasets: [
+        { label: 'Ethanol (bn L)', data: [21.4, 22.8, 24.1, 20.9, 22.5, 24.8, 26.2, 28.1], backgroundColor: sfSuccess },
+        { label: 'Biodiesel (bn L)', data: [4.3, 5.4, 5.9, 6.1, 6.7, 7.3, 7.8, 8.5], backgroundColor: sfGold }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom', labels: { usePointStyle: true } }},
+      scales: {
+        x: { stacked: true, grid: { display: false }},
+        y: { stacked: true, title: { display: true, text: 'Billion liters' }, grid: { color: 'rgba(0,0,0,0.04)' }}
+      }
+    }
+  });
+
+  // CHART 5: Global Ethanol Production Share (Doughnut)
+  new Chart(document.getElementById('chartEthanolShare'), {
+    type: 'doughnut',
+    data: {
+      labels: ['USA','Brazil','EU','China','India','Canada','Thailand','Argentina','Others'],
+      datasets: [{
+        data: [44.7, 26.7, 8.7, 5.2, 4.9, 1.7, 1.6, 1.0, 5.5],
+        backgroundColor: ['#1a365d','#0176D3','#2E844A','#EA001E','#FE9339','#6b21a8','#f5a623','#0ea5e9','#DDDBDA'],
+        borderWidth: 1, borderColor: '#fff'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'right', labels: { padding: 8, usePointStyle: true, font: { size: 10 } }},
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw}%` }}
+      },
+      cutout: '50%'
+    }
+  });
+
+  // CHART 6: Domestic Refining vs Imports (Stacked Bar)
+  new Chart(document.getElementById('chartRefiningVsImports'), {
+    type: 'bar',
+    data: {
+      labels: ['2017','2018','2019','2020','2021','2022','2023','2024'],
+      datasets: [
+        { label: 'Petrobras Refining', data: [70.3, 66.3, 66.8, 63.9, 69.7, 65.1, 66.6, 66.1], backgroundColor: sfDark },
+        { label: 'Other Domestic', data: [12.4, 11.9, 12.4, 13.2, 14.2, 23.2, 25.0, 24.5], backgroundColor: sfBlue },
+        { label: 'Imports', data: [16.6, 14.0, 16.6, 16.2, 14.3, 22.9, 24.7, 24.4], backgroundColor: sfWarning }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom', labels: { usePointStyle: true } }},
+      scales: {
+        x: { stacked: true, grid: { display: false }},
+        y: { stacked: true, title: { display: true, text: 'Billion liters' }, grid: { color: 'rgba(0,0,0,0.04)' }}
+      }
+    }
+  });
+
+  // CHART 7: Import Evolution (Line + Area)
+  new Chart(document.getElementById('chartImportEvolution'), {
+    type: 'line',
+    data: {
+      labels: ['2017','2018','2019','2020','2021','2022','2023','2024'],
+      datasets: [{
+        label: 'Imported Volume (bn liters)',
+        data: [6.8, 7.2, 8.5, 8.1, 9.4, 11.2, 13.8, 15.0],
+        borderColor: sfError, backgroundColor: 'rgba(234,0,30,0.08)',
+        fill: true, tension: 0.3, pointRadius: 5, pointBackgroundColor: sfError
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => `${ctx.raw} bn liters (CAGR 8.6%)` }}
+      },
+      scales: {
+        y: { beginAtZero: true, title: { display: true, text: 'Billion liters' }, grid: { color: 'rgba(0,0,0,0.04)' }},
+        x: { grid: { display: false }}
+      }
+    }
+  });
+
+  // CHART 8: Distributor Share (Horizontal Bar)
+  new Chart(document.getElementById('chartDistributorShare'), {
+    type: 'bar',
+    data: {
+      labels: ['Vibra (BR)', 'Raízen (Shell)', 'Ipiranga (Ultra)', 'Ativa/Zema', 'SIM/Rodoil', 'Others'],
+      datasets: [{
+        label: 'Market Share %',
+        data: [23, 20, 15, 5, 3, 34],
+        backgroundColor: [sfBlue, sfDark, sfSuccess, sfGold, '#6b21a8', '#DDDBDA'],
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => `${ctx.raw}% of total volume` }}
+      },
+      scales: {
+        x: { title: { display: true, text: '% Market Share' }, grid: { color: 'rgba(0,0,0,0.04)' }},
+        y: { grid: { display: false }}
+      }
+    }
+  });
+
+  // CHART 9: KPI Before/After (Grouped Bar - normalized %)
+  new Chart(document.getElementById('chartKPIComparison'), {
+    type: 'bar',
+    data: {
+      labels: ['Dealer Churn\n(%)', 'Deal Cycle\n(days)', 'Pricing\nResponse (h)', 'Delivery\nSLA (%)', 'Credit\nApproval (d)', 'Loyalty\nRedemption (%)', 'Productivity\n(interactions/wk)'],
+      datasets: [
+        { label: 'Current State', data: [10, 12.5, 36, 87.5, 7.5, 17.5, 9], backgroundColor: 'rgba(234,0,30,0.7)', borderRadius: 4 },
+        { label: 'With Salesforce', data: [5, 2.5, 1, 97, 0.5, 40, 22.5], backgroundColor: 'rgba(46,132,74,0.8)', borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom', labels: { usePointStyle: true } }},
+      scales: {
+        x: { grid: { display: false }},
+        y: { grid: { color: 'rgba(0,0,0,0.04)' }}
+      }
+    }
+  });
+
+  // CHART 10: Roadmap Gantt (Horizontal Stacked Bar)
+  new Chart(document.getElementById('chartRoadmap'), {
+    type: 'bar',
+    data: {
+      labels: ['Phase 1: Foundation', 'Phase 2: Commercial', 'Phase 3: Operational', 'Phase 4: Autonomous'],
+      datasets: [
+        { label: 'Start (months)', data: [0, 6, 12, 18], backgroundColor: 'transparent', borderWidth: 0 },
+        { label: 'Duration (months)', data: [6, 6, 6, 6], backgroundColor: [sfBlue, sfSuccess, sfGold, '#6b21a8'], borderRadius: 4 }
+      ]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: {
+          label: function(ctx) {
+            if (ctx.datasetIndex === 0) return '';
+            const starts = [0,6,12,18];
+            const s = starts[ctx.dataIndex];
+            return `Month ${s} → ${s+6}`;
+          }
+        }}
+      },
+      scales: {
+        x: { stacked: true, title: { display: true, text: 'Months' }, max: 24, grid: { color: 'rgba(0,0,0,0.04)' }},
+        y: { stacked: true, grid: { display: false }}
+      }
+    }
+  });
+});
 </script>
 </body>
 </html>
