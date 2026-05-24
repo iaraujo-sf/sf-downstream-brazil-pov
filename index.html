@@ -1082,6 +1082,76 @@ table tr:hover { background: var(--sf-highlight); }
   margin-top: 4px;
 }
 
+/* PERSONA LENS */
+.persona-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--sf-highlight);
+  border-bottom: 1px solid rgba(1,118,211,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-wrap: wrap;
+}
+.persona-bar .persona-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sf-text-sec);
+  margin-right: 4px;
+}
+.persona-chip {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid var(--sf-border);
+  background: var(--sf-white);
+  color: var(--sf-text-sec);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.persona-chip:hover { border-color: var(--sf-primary); color: var(--sf-primary); }
+.persona-chip.active {
+  background: var(--sf-primary);
+  color: #fff;
+  border-color: var(--sf-primary);
+}
+[data-theme="dark"] .persona-bar { background: rgba(1,118,211,0.08); }
+[data-theme="dark"] .persona-chip { background: #16213e; border-color: #2a2a4a; }
+[data-theme="dark"] .persona-chip.active { background: var(--sf-primary); }
+
+/* Persona lens effect on table rows */
+tr.persona-highlight { background: rgba(1,118,211,0.08) !important; position: relative; }
+tr.persona-highlight td:first-child::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--sf-primary);
+}
+tr.persona-dim { opacity: 0.35; }
+.card.persona-dim { opacity: 0.35; transition: opacity 0.3s; }
+.card.persona-dim:hover { opacity: 1; }
+.card.persona-highlight { border-left: 3px solid var(--sf-primary); transition: border-color 0.3s; }
+.persona-active-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--sf-primary);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
 /* QR CODE MODAL */
 .qr-modal {
   position: fixed;
@@ -1125,7 +1195,7 @@ table tr:hover { background: var(--sf-highlight); }
 .topbar-tools button:hover { background: var(--sf-highlight); border-color: var(--sf-primary); color: var(--sf-primary); }
 
 @media print {
-  .sidebar, .topbar, .hamburger, .back-to-top, .copy-btn, .theme-toggle, .mini-toc, .search-container, #toggleNavBtn, .sidebar-overlay, .meeting-mode-bar, .meeting-panel, .meeting-overlay, .qr-modal, .section-note-toggle, .section-note-area, .topbar-tools { display: none !important; }
+  .sidebar, .topbar, .hamburger, .back-to-top, .copy-btn, .theme-toggle, .mini-toc, .search-container, #toggleNavBtn, .sidebar-overlay, .meeting-mode-bar, .meeting-panel, .meeting-overlay, .qr-modal, .section-note-toggle, .section-note-area, .topbar-tools, .persona-bar { display: none !important; }
   .main-content { margin-left: 0 !important; margin-top: 0 !important; padding: 0 !important; }
   .section { display: block !important; page-break-inside: avoid; margin-bottom: 24px; }
   .section-hero { background: #032D60 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -1307,6 +1377,18 @@ table tr:hover { background: var(--sf-highlight); }
 
 <!-- MAIN CONTENT -->
 <main class="main-content" id="mainContent">
+
+<!-- PERSONA LENS BAR -->
+<div class="persona-bar" id="personaBar">
+  <span class="persona-label">👤 Talking to:</span>
+  <button class="persona-chip" data-persona="ceo">CEO</button>
+  <button class="persona-chip" data-persona="cfo">CFO</button>
+  <button class="persona-chip" data-persona="cto">CTO / CIO</button>
+  <button class="persona-chip" data-persona="vp-commercial">VP Commercial</button>
+  <button class="persona-chip" data-persona="vp-operations">VP Operations</button>
+  <button class="persona-chip" data-persona="vp-it">IT / Architecture</button>
+  <button class="persona-chip active" data-persona="all">All</button>
+</div>
 
 <!-- INTRO -->
 <div class="section active" id="sec-intro">
@@ -3994,6 +4076,97 @@ table tr:hover { background: var(--sf-highlight); }
   qrOverlay.addEventListener('click', () => {
     qrModal.classList.remove('active');
     qrOverlay.classList.remove('active');
+  });
+
+  // PERSONA LENS
+  const personaChips = document.querySelectorAll('.persona-chip');
+  let activePersona = 'all';
+
+  // Keyword mapping: what content is relevant to each persona
+  const personaKeywords = {
+    'ceo': ['market share', 'consolidation', 'digital transformation', 'competitive', 'growth', 'strategy', 'revenue', 'acquisition', 'market scale', 'brand', 'retention rate'],
+    'cfo': ['margin', 'cost', 'roi', 'tco', 'revenue', 'pricing', 'governance', 'audit', 'compliance', 'financial', 'budget', 'leakage', 'guardrail', 'floor', 'p&l', 'time to value'],
+    'cto': ['integration', 'api', 'mulesoft', 'architecture', 'platform', 'data cloud', 'scalab', 'security', 'release', 'upgrade', 'shield', 'hyperforce', 'technical debt', 'event-driven'],
+    'vp-commercial': ['pipeline', 'deal', 'churn', 'sales', 'opportunity', 'win rate', 'territory', 'commercial', 'cpq', 'proposal', 'b2b', 'dealer', 'retention', 'revenue cloud'],
+    'vp-operations': ['logistics', 'delivery', 'fleet', 'route', 'sla', 'operational', 'supply', 'predictive delivery', 'tank', 'forecast', 'efficiency', 'field service'],
+    'vp-it': ['architecture', 'integration', 'data model', 'api', 'governance', 'adr', 'composable', 'event-driven', 'mulesoft', 'shield', 'lgpd', 'compliance', 'sefaz', 'anp']
+  };
+
+  // Section relevance mapping
+  const personaSections = {
+    'ceo': ['intro', 'market-overview', 'market-scale', 'competitive', 'strategic-shifts', 'consolidation', 'why-sf', 'why-sf-validation'],
+    'cfo': ['intro', 'pricing-why', 'pricing-model', 'pricing-gap', 'pricing-sf', 'impact', 'why-sf', 'why-sf-ae', 'why-sf-objections'],
+    'cto': ['intro', 'arch-platform', 'arch-datacloud', 'arch-agentforce', 'why-sf', 'why-sf-se', 'why-sf-ea', 'why-sf-compete'],
+    'vp-commercial': ['intro', 'commercial-why', 'commercial-model', 'commercial-gap', 'commercial-sf', 'commercial-agent', 'pricing-why', 'why-sf', 'why-sf-ae', 'impact'],
+    'vp-operations': ['intro', 'logistics-why', 'logistics-model', 'logistics-gap', 'logistics-sf', 'logistics-agent', 'custops-why', 'custops-model', 'custops-gap', 'custops-sf', 'why-sf'],
+    'vp-it': ['intro', 'arch-platform', 'arch-datacloud', 'arch-agentforce', 'why-sf', 'why-sf-se', 'why-sf-ea', 'why-sf-compete', 'why-sf-validation']
+  };
+
+  function applyPersonaLens(persona) {
+    activePersona = persona;
+    // Reset all
+    document.querySelectorAll('.persona-highlight, .persona-dim').forEach(el => {
+      el.classList.remove('persona-highlight', 'persona-dim');
+    });
+    document.querySelectorAll('.persona-active-badge').forEach(b => b.remove());
+
+    if (persona === 'all') return;
+
+    const keywords = personaKeywords[persona] || [];
+    const relevantSections = personaSections[persona] || [];
+
+    // Highlight relevant nav items
+    links.forEach(link => {
+      const secId = link.dataset.section;
+      if (relevantSections.includes(secId)) {
+        link.style.opacity = '1';
+        link.style.fontWeight = '500';
+      } else {
+        link.style.opacity = '0.4';
+        link.style.fontWeight = '';
+      }
+    });
+
+    // Apply to visible section's table rows
+    const activeSection = document.querySelector('.section.active');
+    if (!activeSection) return;
+
+    activeSection.querySelectorAll('table').forEach(table => {
+      const rows = table.querySelectorAll('tr');
+      rows.forEach((row, idx) => {
+        if (idx === 0) return; // skip header
+        const text = row.textContent.toLowerCase();
+        const isRelevant = keywords.some(kw => text.includes(kw));
+        if (isRelevant) row.classList.add('persona-highlight');
+        else row.classList.add('persona-dim');
+      });
+    });
+
+    // Apply to cards
+    activeSection.querySelectorAll('.card').forEach(card => {
+      const text = card.textContent.toLowerCase();
+      const isRelevant = keywords.some(kw => text.includes(kw));
+      if (isRelevant) card.classList.add('persona-highlight');
+      else card.classList.add('persona-dim');
+    });
+  }
+
+  personaChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      personaChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      applyPersonaLens(chip.dataset.persona);
+    });
+  });
+
+  // Re-apply lens when section changes
+  const observer = new MutationObserver(() => {
+    if (activePersona !== 'all') {
+      setTimeout(() => applyPersonaLens(activePersona), 50);
+    }
+  });
+  sections.forEach(sec => {
+    observer.observe(sec, { attributes: true, attributeFilter: ['class'] });
   });
 })();
 </script>
