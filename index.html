@@ -1153,6 +1153,28 @@ tr.persona-dim { opacity: 0.35; }
   vertical-align: middle;
 }
 
+/* READING PROGRESS BAR */
+.reading-progress {
+  position: fixed;
+  top: var(--topbar-h);
+  left: var(--sidebar-w);
+  right: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 899;
+  pointer-events: none;
+}
+.reading-progress .progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--sf-primary), #36b3f0);
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+@media (max-width: 768px) {
+  .reading-progress { left: 0; }
+}
+
 /* HELP MODAL */
 .help-modal {
   position: fixed;
@@ -1263,7 +1285,7 @@ tr.persona-dim { opacity: 0.35; }
 .topbar-tools button:hover { background: var(--sf-highlight); border-color: var(--sf-primary); color: var(--sf-primary); }
 
 @media print {
-  .sidebar, .topbar, .hamburger, .back-to-top, .copy-btn, .theme-toggle, .mini-toc, .search-container, #toggleNavBtn, .sidebar-overlay, .meeting-mode-bar, .meeting-panel, .meeting-overlay, .qr-modal, .section-note-toggle, .section-note-area, .topbar-tools, .persona-bar { display: none !important; }
+  .sidebar, .topbar, .hamburger, .back-to-top, .copy-btn, .theme-toggle, .mini-toc, .search-container, #toggleNavBtn, .sidebar-overlay, .meeting-mode-bar, .meeting-panel, .meeting-overlay, .qr-modal, .section-note-toggle, .section-note-area, .topbar-tools, .persona-bar, .reading-progress { display: none !important; }
   .main-content { margin-left: 0 !important; margin-top: 0 !important; padding: 0 !important; }
   .section { display: block !important; page-break-inside: avoid; margin-bottom: 24px; }
   .section-hero { background: #032D60 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -1419,6 +1441,9 @@ tr.persona-dim { opacity: 0.35; }
     <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
   </div>
 </header>
+
+<!-- READING PROGRESS BAR -->
+<div class="reading-progress" id="readingProgress"><div class="progress-fill" id="progressFill"></div></div>
 
 <!-- MEETING MODE BAR -->
 <div class="meeting-mode-bar" id="meetingBar">
@@ -3875,7 +3900,20 @@ tr.persona-dim { opacity: 0.35; }
       if (link) link.classList.add('active');
     }
     window.scrollTo(0, 0);
+    history.replaceState(null, '', '#' + id);
   }
+
+  // Deep-link: load section from URL hash
+  const initialHash = window.location.hash.replace('#', '');
+  if (initialHash && document.getElementById('sec-' + initialHash)) {
+    showSection(initialHash);
+  }
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById('sec-' + hash)) {
+      showSection(hash);
+    }
+  });
 
   links.forEach(link => {
     link.addEventListener('click', e => {
@@ -3884,6 +3922,19 @@ tr.persona-dim { opacity: 0.35; }
       document.getElementById('sidebar').classList.remove('open');
       document.getElementById('sidebarOverlay').classList.remove('visible');
     });
+  });
+
+  // READING PROGRESS BAR
+  const progressFill = document.getElementById('progressFill');
+  window.addEventListener('scroll', () => {
+    const activeSection = document.querySelector('.section.active');
+    if (!activeSection) return;
+    const rect = activeSection.getBoundingClientRect();
+    const sectionHeight = activeSection.scrollHeight - window.innerHeight;
+    if (sectionHeight <= 0) { progressFill.style.width = '100%'; return; }
+    const scrolled = Math.max(0, -rect.top);
+    const pct = Math.min(100, (scrolled / sectionHeight) * 100);
+    progressFill.style.width = pct + '%';
   });
 
   // Collapsible sections
