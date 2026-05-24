@@ -833,6 +833,9 @@ table tr:hover { background: var(--sf-highlight); }
       <div class="subtitle">Brazil POV v1.1 · May 2026</div>
     </div>
   </div>
+  <div style="padding:8px 16px 4px;display:flex;justify-content:flex-end;">
+    <button id="toggleNavBtn" style="font-size:11px;color:var(--sf-text-sec);background:none;border:1px solid var(--sf-border);border-radius:4px;padding:4px 10px;cursor:pointer;transition:background 0.15s;" title="Collapse / Expand all menu sections">Collapse All</button>
+  </div>
   <div class="sidebar-nav" id="sidebarNav">
     <div class="nav-section">
       <div class="nav-section-title">Introduction <span class="chevron">▾</span></div>
@@ -3306,6 +3309,19 @@ table tr:hover { background: var(--sf-highlight); }
     title.addEventListener('click', () => {
       title.parentElement.classList.toggle('collapsed');
     });
+  });
+
+  // Collapse/Expand All toggle
+  const toggleBtn = document.getElementById('toggleNavBtn');
+  let allCollapsed = false;
+  toggleBtn.addEventListener('click', () => {
+    const navSections = document.querySelectorAll('.nav-section');
+    allCollapsed = !allCollapsed;
+    navSections.forEach(s => {
+      if (allCollapsed) s.classList.add('collapsed');
+      else s.classList.remove('collapsed');
+    });
+    toggleBtn.textContent = allCollapsed ? 'Expand All' : 'Collapse All';
   });
 
   // Hamburger
