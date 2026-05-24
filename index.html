@@ -3662,17 +3662,23 @@ table tr:hover { background: var(--sf-highlight); }
     });
   });
 
-  // Collapse/Expand All toggle
+  // Collapse/Expand All toggle + remember preference
   const toggleBtn = document.getElementById('toggleNavBtn');
-  let allCollapsed = false;
+  const navSections = document.querySelectorAll('.nav-section');
+  let allCollapsed = localStorage.getItem('pov-nav-collapsed') !== 'false'; // default: collapsed
+  // Apply initial state
+  if (allCollapsed) {
+    navSections.forEach(s => s.classList.add('collapsed'));
+    toggleBtn.textContent = 'Expand All';
+  }
   toggleBtn.addEventListener('click', () => {
-    const navSections = document.querySelectorAll('.nav-section');
     allCollapsed = !allCollapsed;
     navSections.forEach(s => {
       if (allCollapsed) s.classList.add('collapsed');
       else s.classList.remove('collapsed');
     });
     toggleBtn.textContent = allCollapsed ? 'Expand All' : 'Collapse All';
+    localStorage.setItem('pov-nav-collapsed', allCollapsed);
   });
 
   // Hamburger
