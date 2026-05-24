@@ -1152,6 +1152,73 @@ tr.persona-dim { opacity: 0.35; }
   vertical-align: middle;
 }
 
+/* HELP MODAL */
+.help-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--sf-white);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  z-index: 3000;
+  max-width: 640px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: none;
+}
+.help-modal.active { display: block; }
+.help-modal h3 { font-size: 18px; margin-bottom: 20px; color: var(--sf-dark); }
+.help-feature {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--sf-border);
+}
+.help-feature:last-child { border-bottom: none; }
+.help-feature .help-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+}
+.help-feature .help-text h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sf-dark);
+  margin-bottom: 2px;
+}
+.help-feature .help-text p {
+  font-size: 12px;
+  color: var(--sf-text-sec);
+  line-height: 1.5;
+}
+.help-modal .help-close {
+  margin-top: 20px;
+  width: 100%;
+  background: var(--sf-primary);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.help-modal .help-close:hover { background: #015bb5; }
+.help-shortcut {
+  display: inline-block;
+  background: var(--sf-light-bg);
+  border: 1px solid var(--sf-border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 11px;
+  font-family: monospace;
+  color: var(--sf-text-sec);
+}
+
 /* QR CODE MODAL */
 .qr-modal {
   position: fixed;
@@ -1339,6 +1406,7 @@ tr.persona-dim { opacity: 0.35; }
   </div>
   <div class="topbar-meta">v1.1 • May 2026</div>
   <div class="topbar-tools">
+    <button id="helpBtn" title="Help — Feature Guide">❓ Help</button>
     <button id="meetingModeBtn" title="Prepare for Meeting">📋 Meeting</button>
     <button id="qrBtn" title="Generate QR Code">📱 QR</button>
     <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
@@ -1361,6 +1429,76 @@ tr.persona-dim { opacity: 0.35; }
     <button class="btn-secondary" id="meetingCancel">Cancel</button>
     <button class="btn-primary" id="meetingStart">Start Meeting Mode</button>
   </div>
+</div>
+
+<!-- HELP MODAL -->
+<div class="meeting-overlay" id="helpOverlay"></div>
+<div class="help-modal" id="helpModal">
+  <h3>❓ Feature Guide</h3>
+  <div class="help-feature">
+    <div class="help-icon">👤</div>
+    <div class="help-text">
+      <h4>Persona Lens</h4>
+      <p>Select who you're talking to (CEO, CFO, CTO, etc.) and the content adapts — relevant rows and cards are highlighted, less relevant content fades. Hover faded content to read it. Click "All" to reset.</p>
+    </div>
+  </div>
+  <div class="help-feature">
+    <div class="help-icon">📋</div>
+    <div class="help-text">
+      <h4>Meeting Mode</h4>
+      <p>Pick which sections to show before a call. Unselected sections disappear from navigation. A blue bar confirms you're in meeting mode. Click "Exit" to restore everything.</p>
+    </div>
+  </div>
+  <div class="help-feature">
+    <div class="help-icon">📝</div>
+    <div class="help-text">
+      <h4>Section Notes</h4>
+      <p>Every section has an "Add Note" button. Write client-specific context or talking points. Notes are saved in your browser (localStorage) — private to you, persistent across visits.</p>
+    </div>
+  </div>
+  <div class="help-feature">
+    <div class="help-icon">📋</div>
+    <div class="help-text">
+      <h4>Copy to Clipboard</h4>
+      <p>Discovery questions, objection responses, and selling angles have a "Copy" button. One click copies the text ready to paste into Slack, email, or prep notes.</p>
+    </div>
+  </div>
+  <div class="help-feature">
+    <div class="help-icon">🌙</div>
+    <div class="help-text">
+      <h4>Dark Mode</h4>
+      <p>Toggle between light and dark themes. Your preference is remembered. Use dark mode for presenting in dimly lit rooms or reducing eye strain.</p>
+    </div>
+  </div>
+  <div class="help-feature">
+    <div class="help-icon">📱</div>
+    <div class="help-text">
+      <h4>QR Code</h4>
+      <p>Generate a scannable QR code of this page's URL. Project it during in-person meetings so attendees can access from their phones instantly.</p>
+    </div>
+  </div>
+  <div class="help-feature">
+    <div class="help-icon">🔍</div>
+    <div class="help-text">
+      <h4>Search</h4>
+      <p>Full-text search across all sections. Use the search bar or press <span class="help-shortcut">⌘K</span> / <span class="help-shortcut">Ctrl+K</span> to focus it instantly.</p>
+    </div>
+  </div>
+  <div class="help-feature">
+    <div class="help-icon">🖨️</div>
+    <div class="help-text">
+      <h4>Print / PDF</h4>
+      <p>Press <span class="help-shortcut">⌘P</span> / <span class="help-shortcut">Ctrl+P</span> for a print-optimized layout. All UI controls are hidden, sections display in sequence. Works great for generating PDFs of specific sections.</p>
+    </div>
+  </div>
+  <div class="help-feature">
+    <div class="help-icon">▾</div>
+    <div class="help-text">
+      <h4>Collapse / Expand Menu</h4>
+      <p>Click "Expand All" or "Collapse All" at the top of the sidebar to toggle all menu groups at once. Your preference is remembered between visits.</p>
+    </div>
+  </div>
+  <button class="help-close" id="helpClose">Got it</button>
 </div>
 
 <!-- QR CODE MODAL -->
@@ -4031,6 +4169,23 @@ tr.persona-dim { opacity: 0.35; }
     document.querySelector('.topbar').style.top = '';
     document.querySelector('.main-content').style.marginTop = '';
     links.forEach(link => { link.style.display = ''; });
+  });
+
+  // HELP MODAL
+  const helpBtn = document.getElementById('helpBtn');
+  const helpModal = document.getElementById('helpModal');
+  const helpOverlay = document.getElementById('helpOverlay');
+  helpBtn.addEventListener('click', () => {
+    helpModal.classList.add('active');
+    helpOverlay.classList.add('active');
+  });
+  document.getElementById('helpClose').addEventListener('click', () => {
+    helpModal.classList.remove('active');
+    helpOverlay.classList.remove('active');
+  });
+  helpOverlay.addEventListener('click', () => {
+    helpModal.classList.remove('active');
+    helpOverlay.classList.remove('active');
   });
 
   // QR CODE GENERATOR
