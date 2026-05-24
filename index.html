@@ -2906,11 +2906,35 @@ table tr:hover { background: var(--sf-highlight); }
 <div class="section" id="sec-why-sf">
   <div class="section-hero">
     <h2>Why Salesforce</h2>
-    <p>SAP stays as system of record for transactions. Salesforce becomes the system of intelligence and engagement — where humans and AI make decisions that drive revenue, retention, and margin.</p>
+    <p>SAP stays as system of record for transactions. Salesforce becomes the system of intelligence and engagement — where humans and AI make decisions that drive revenue, retention, and margin. This section equips Account Executives, Solution Engineers, and Enterprise Architects with the arguments, data, and architecture rationale to defend and sell the Salesforce platform in downstream Oil & Gas.</p>
   </div>
 
   <div class="callout callout-info" style="margin-bottom:24px;"><strong>The Core Question Answered</strong> "Why can't we just extend SAP?" — Because the decision layer (who to serve, what price to offer, when to deliver, how to engage) requires fundamentally different architecture than the transaction layer (order, invoice, payment). Salesforce + MuleSoft + Data 360 complements SAP, it doesn't replace it.</div>
 
+  <!-- ARCHITECTURE POSITIONING -->
+  <div class="card">
+    <h3>Architecture Positioning — Three Systems, One Customer</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">The modern downstream stack is not about replacing ERP. It's about surrounding ERP with intelligence, integration, and engagement layers that SAP was never designed to deliver.</p>
+    <div class="pillar-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="pillar-card" style="border-top-color:#0176D3;">
+        <h4>System of Record</h4>
+        <p style="font-size:16px;font-weight:700;color:var(--sf-dark);margin-bottom:8px;">SAP</p>
+        <p>Transactions, inventory, financials, compliance. Stays exactly where it is. Not threatened, not replaced.</p>
+      </div>
+      <div class="pillar-card" style="border-top-color:#1565c0;">
+        <h4>System of Integration</h4>
+        <p style="font-size:16px;font-weight:700;color:var(--sf-dark);margin-bottom:8px;"><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span></p>
+        <p>Real-time data bus connecting all systems. APIs, events, and orchestration. The connective tissue.</p>
+      </div>
+      <div class="pillar-card" style="border-top-color:#006272;">
+        <h4>System of Intelligence & Engagement</h4>
+        <p style="font-size:16px;font-weight:700;color:var(--sf-dark);margin-bottom:8px;">Salesforce</p>
+        <p>Decisions, engagement, AI. Where humans and agents collaborate on revenue, retention, and margin.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLATFORM COMPARISON -->
   <div class="card">
     <h3>Platform Comparison — ERP vs. Salesforce</h3>
     <div class="table-wrap">
@@ -2922,25 +2946,261 @@ table tr:hover { background: var(--sf-highlight); }
         <tr><td><strong>Channel Unification</strong></td><td>ERP doesn't serve portals, mobile apps, or marketing channels</td><td><span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span> <span class="product-logo pl-marketing"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f57f17"/><path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5z" fill="#fff"/></svg>Marketing Cloud</span> Portals, mobile, omnichannel — native, not bolted on</td></tr>
         <tr><td><strong>Ecosystem</strong></td><td>ERP is closed — every integration is custom development</td><td><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span> 1,000+ pre-built connectors + AppExchange marketplace</td></tr>
         <tr><td><strong>Time to Value</strong></td><td>18-36 months for meaningful business impact</td><td>Phase 1 live in 6 months with measurable ROI — churn reduction, deal velocity, margin protection from day one</td></tr>
+        <tr><td><strong>Total Cost of Ownership</strong></td><td>ERP customization compounds: each change adds $200-500K and creates upgrade dependencies</td><td>3 releases/year included. No upgrade tax. Configuration, not code. Admin-maintained, not consultant-dependent</td></tr>
+        <tr><td><strong>Innovation Velocity</strong></td><td>SAP major version cycles: 5-7 years. Features require upgrade projects</td><td>3 mandatory releases/year (Spring, Summer, Winter). AI features auto-delivered. No upgrade project required</td></tr>
       </table>
     </div>
   </div>
 
-  <div class="pillar-grid" style="grid-template-columns:repeat(3,1fr);">
-    <div class="pillar-card" style="border-top-color:#0176D3;">
-      <h4>System of Record</h4>
-      <p style="font-size:16px;font-weight:700;color:var(--sf-dark);margin-bottom:8px;">SAP</p>
-      <p>Transactions, inventory, financials, compliance. Stays exactly where it is.</p>
+  <!-- AE SECTION -->
+  <div class="card" style="border-top:4px solid var(--sf-blue);">
+    <h3>🎯 For the Account Executive — Business Value & Deal Strategy</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Your job is to create urgency, quantify the cost of inaction, and position Salesforce as the platform that bridges the gap between where the client is today and where they need to be. Here's your ammunition.</p>
+
+    <h4 style="margin-top:20px;">The Cost of Inaction — Quantified</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Pain Point</th><th>Annual Cost of Doing Nothing</th><th>How Salesforce Fixes It</th><th>Discovery Question</th></tr>
+        <tr><td><strong>Churn Blindness</strong></td><td>R$200-500M/year in lost volume. Average distributor loses 8-12% of branded stations annually. Each station = ~2M liters/year</td><td>Einstein Prediction: 85% recall at 60-day advance warning. Agentforce triggers retention playbook automatically</td><td>"How many stations did you lose last year? When did you know they were leaving — before or after?"</td></tr>
+        <tr><td><strong>Margin Leakage</strong></td><td>R$50-150M/year per major distributor. 1 centavo/L error × 5B liters = R$50M. Most have 5-10 centavos of leakage across portfolio</td><td>Revenue Cloud guardrails + Agentforce margin monitoring. Zero deals below floor without VP override + full audit trail</td><td>"What's your average realized margin vs. target margin? If you can't answer in 30 seconds, that's the problem."</td></tr>
+        <tr><td><strong>Logistics Inefficiency</strong></td><td>R$100-300M/year. 15-20% of deliveries are reactive (emergency). Each emergency = 3x cost of planned. Route optimization alone = 8-12% savings</td><td>Predictive Delivery agent anticipates demand. Route Optimizer recomposes routes real-time. SLA monitoring across fleet</td><td>"What percentage of your deliveries are reactive — called by the dealer because they're running low? What does that cost you vs. proactive delivery?"</td></tr>
+        <tr><td><strong>Deal Cycle Time</strong></td><td>R$80-200M in delayed revenue. B2B deal cycle averaging 10-15 days in an industry where competitors are getting to 3 days. Each lost week = competitor pre-empts</td><td>CPQ with indexed pricing + Agentforce Deal Desk auto-approving 80% of standard deals. Proposal generation in hours, not days</td><td>"How long from handshake to signed contract for a new B2B client? What's your competitor doing in that same window?"</td></tr>
+        <tr><td><strong>Customer Experience Gap</strong></td><td>15-25% lower NPS vs. best-in-class. Dealer satisfaction directly correlates with contract renewal and volume commitment. Every 10pts NPS = ~5% volume retention</td><td>Experience Cloud portals + Service Cloud + Agentforce service agents. Self-service for 80% of queries. Proactive communication</td><td>"If I'm one of your 6,000 dealers and I need an answer on Monday morning — how long until I get it? And how does that compare to your competitor's portal?"</td></tr>
+      </table>
     </div>
-    <div class="pillar-card" style="border-top-color:#1565c0;">
-      <h4>System of Integration</h4>
-      <p style="font-size:16px;font-weight:700;color:var(--sf-dark);margin-bottom:8px;"><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span></p>
-      <p>Real-time data bus connecting all systems. APIs, events, and orchestration.</p>
+
+    <h4 style="margin-top:20px;">Executive Messaging by Persona</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>C-Level</th><th>Their Priority</th><th>Salesforce Message</th><th>Metric They Care About</th></tr>
+        <tr><td><strong>CEO</strong></td><td>Market share in consolidation wave + digital transformation as competitive moat</td><td>"The distributors that win the next 5 years will be the ones that turn data into decisions faster than anyone else. Salesforce is how you become that company."</td><td>Market share %, customer retention rate, revenue per station</td></tr>
+        <tr><td><strong>CFO</strong></td><td>Margin protection + governance + ROI accountability</td><td>"Every pricing decision auditable. Every deal within guardrails. Every margin dollar accounted for. And measurable ROI in Q1 — not year 3."</td><td>Margin realization %, TCO vs. custom dev, audit compliance</td></tr>
+        <tr><td><strong>CTO/CIO</strong></td><td>Reduce technical debt + modernize without disrupting SAP core</td><td>"We don't touch SAP. MuleSoft connects it. Salesforce extends it. You get modern capabilities without risking your core — and 3 releases/year with zero upgrade projects."</td><td>Integration complexity, time-to-deploy, maintenance burden, FTE reduction</td></tr>
+        <tr><td><strong>VP Commercial</strong></td><td>Revenue growth + deal velocity + competitive response speed</td><td>"Your team spends 60% of their time on admin and 40% selling. We flip that ratio — and give them AI that sells with them, not just reports after them."</td><td>Win rate, deal cycle time, revenue/rep, pipeline conversion</td></tr>
+        <tr><td><strong>VP Operations/Supply</strong></td><td>Logistics cost reduction + SLA improvement + predictability</td><td>"Predictive delivery means you know what your dealer needs before they call. Route optimization means doing it with fewer trucks and less fuel."</td><td>Cost/liter delivered, SLA compliance %, emergency delivery %, fleet utilization</td></tr>
+      </table>
     </div>
-    <div class="pillar-card" style="border-top-color:#006272;">
-      <h4>System of Intelligence</h4>
-      <p style="font-size:16px;font-weight:700;color:var(--sf-dark);margin-bottom:8px;">Salesforce</p>
-      <p>Decisions, engagement, AI. Where humans and agents collaborate on what matters.</p>
+
+    <h4 style="margin-top:20px;">Deal Sizing — Typical Multi-Cloud Architecture</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Cloud/Product</th><th>Use Case in Downstream</th><th>Typical ARR Range (Major Distributor)</th><th>Expansion Trigger</th></tr>
+        <tr><td><strong>Sales Cloud</strong></td><td>B2B pipeline, territory management, dealer relationships, opportunity tracking</td><td>$500K - $1.5M</td><td>Field force enablement, partner portal</td></tr>
+        <tr><td><strong>Revenue Cloud (CPQ)</strong></td><td>Indexed pricing, margin guardrails, contract lifecycle, approval automation</td><td>$800K - $2M</td><td>Complex pricing scenarios, multi-product bundles</td></tr>
+        <tr><td><strong>Service Cloud</strong></td><td>Dealer support, case management, SLA tracking, knowledge base</td><td>$400K - $1M</td><td>Field service (FSL), omnichannel</td></tr>
+        <tr><td><strong>Data Cloud / Data 360</strong></td><td>Customer 360, unified cost model, market signals, identity resolution</td><td>$600K - $1.5M</td><td>Segmentation, predictive models, data marketplace</td></tr>
+        <tr><td><strong>MuleSoft</strong></td><td>SAP integration, FX feeds, ANP, SEFAZ, telemetry, IoT</td><td>$800K - $2.5M</td><td>New system onboarding, API economy, partner integration</td></tr>
+        <tr><td><strong>Tableau</strong></td><td>Margin dashboards, competitive intelligence, executive reporting, embedded analytics</td><td>$300K - $800K</td><td>Self-service analytics, embedded in portals</td></tr>
+        <tr><td><strong>Marketing Cloud</strong></td><td>B2C loyalty campaigns, dealer communication journeys, event-driven marketing</td><td>$400K - $1.2M</td><td>Loyalty program, app engagement, personalization</td></tr>
+        <tr><td><strong>Experience Cloud</strong></td><td>Dealer portal, B2B self-service, partner community, knowledge hub</td><td>$300K - $700K</td><td>Mobile app, self-service expansion</td></tr>
+        <tr><td><strong>Agentforce</strong></td><td>Autonomous agents: pricing, churn, delivery prediction, deal desk, support</td><td>$500K - $2M</td><td>More agent use cases, higher autonomy levels</td></tr>
+      </table>
+    </div>
+    <div class="callout callout-success"><strong>Total Addressable Deal Size</strong> A top-5 Brazilian distributor (Vibra, Ipiranga, Raízen, Alesat, Rede) represents a $4-12M ARR opportunity across the full platform. Land strategy: start with Pricing (Revenue Cloud + Data 360 + MuleSoft) — immediate ROI, CFO sponsorship, expands naturally into Commercial and Operations engines.</div>
+  </div>
+
+  <!-- SE SECTION -->
+  <div class="card" style="border-top:4px solid #006272;">
+    <h3>🔧 For the Solution Engineer — Technical Differentiation & Demo Strategy</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Your job is to prove that Salesforce can technically deliver what the AE promised — and to demonstrate capabilities that competitors can't replicate. Here's what makes us architecturally superior in downstream.</p>
+
+    <h4 style="margin-top:20px;">Technical Differentiators — What Only Salesforce Can Do</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Capability</th><th>Why It Matters in Downstream</th><th>How to Demo It</th><th>Competitor Gap</th></tr>
+        <tr><td><strong>Data Cloud Real-Time Unification</strong></td><td>60B+ liters/year flowing through systems. Need unified customer profile combining SAP transactions + CRM interactions + IoT telemetry + external market data — in milliseconds</td><td>Show Data Cloud ingesting a simulated SAP delivery event → instant profile update → Einstein score recalculation → Agentforce alert. End-to-end in &lt;5 seconds</td><td>SAP CDP is batch (24h). Oracle Unity requires separate license + integration project. Microsoft has no equivalent real-time identity resolution at this scale</td></tr>
+        <tr><td><strong>Agentforce Autonomous Agents</strong></td><td>12 agents operating 24/7 on pricing, logistics, and commercial decisions. Not chatbots — autonomous decision-makers with guardrails, escalation, and audit trail</td><td>Build a Pricing Agent live: define topic, connect to Data Cloud, set guardrails, show autonomous action + escalation path. 20-minute demo that SAP can't replicate</td><td>SAP Joule is a copilot (suggestions only, no autonomous action). Microsoft Copilot requires custom orchestration. No competitor has agent-to-agent communication native</td></tr>
+        <tr><td><strong>MuleSoft Anypoint + Composable APIs</strong></td><td>Downstream has 15-25 integration points (SAP, TMS, WMS, ANP, SEFAZ, banks, IoT). MuleSoft creates reusable APIs that accelerate every subsequent project</td><td>Show Anypoint Exchange with pre-built downstream connectors. Demo a SAP-to-Salesforce real-time sync in 15 min using existing templates. Show API analytics and governance</td><td>SAP BTP integration is SAP-centric only. Dell Boomi lacks governance layer. Competitors don't have the API-led connectivity methodology that prevents point-to-point spaghetti</td></tr>
+        <tr><td><strong>Revenue Cloud Advanced CPQ</strong></td><td>Fuel pricing is multi-variable (base cost + tax per state + FX + biofuel + freight + margin rules + contract index). No standard CPQ handles this without heavy customization</td><td>Configure a real fuel pricing scenario: Petrobras base → ICMS by state → ethanol blend → competitor-indexed contract. Show auto-approval with guardrails. Show audit trail</td><td>SAP CPQ is basic (simple product bundles). Oracle CPQ requires months of custom development. Only Revenue Cloud has native margin guardrails + AI-recommended pricing</td></tr>
+        <tr><td><strong>Einstein Predictive + Generative AI (Trust Layer)</strong></td><td>Churn prediction needs CRM + transactional + behavioral data. Generative AI needs grounding in real business data with full audit trail. Trust Layer = zero data leakage guarantee</td><td>Show churn model training on Data Cloud → score appearing in Sales Cloud → Agentforce consuming score → generative proposal creation grounded in account data. All with Trust Layer audit</td><td>SAP AI has no equivalent Trust Layer. Microsoft Copilot doesn't ground in CRM data natively. Google Vertex requires custom RAG pipeline. Only Salesforce combines predictive + generative + trust in one platform</td></tr>
+        <tr><td><strong>3 Releases/Year — Zero Upgrade Tax</strong></td><td>Downstream moves fast (regulatory changes, market dynamics). Need platform that evolves without multi-million upgrade projects. SAP S/4HANA upgrade = 12-18 months, $5-20M</td><td>Show Spring '26 release features automatically available. Show sandbox preview. Compare to SAP upgrade timeline and cost</td><td>SAP major upgrades: $5-20M, 12-18 months. Oracle quarterly patches require regression testing. Salesforce: automatic, backward-compatible, zero-downtime</td></tr>
+      </table>
+    </div>
+
+    <h4 style="margin-top:20px;">Demo Playbook — What to Show by Audience</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Audience</th><th>Demo Duration</th><th>What to Show</th><th>Key "Aha" Moment</th></tr>
+        <tr><td><strong>VP Commercial + Sales Team</strong></td><td>45 min</td><td>Sales Cloud pipeline → Revenue Cloud CPQ with margin guardrails → Agentforce Deal Desk auto-approval → Tableau win/loss analytics</td><td>When Agentforce auto-approves a standard deal in seconds that currently takes 5-10 days in email chains</td></tr>
+        <tr><td><strong>VP Operations / Supply Chain</strong></td><td>45 min</td><td>Data Cloud ingesting IoT tank telemetry → Einstein demand forecast → Agentforce Predictive Delivery → Service Cloud SLA dashboard</td><td>When the system predicts a dealer needs delivery 48h before the dealer knows it themselves</td></tr>
+        <tr><td><strong>CTO / Architecture Team</strong></td><td>60 min</td><td>MuleSoft integration architecture → Data Cloud unification → Agentforce agent builder (live) → Trust Layer audit → Platform governance (Salesforce Shield)</td><td>Building a working autonomous agent in 20 minutes — live, not slides — that connects to their real data patterns</td></tr>
+        <tr><td><strong>CFO / Finance</strong></td><td>30 min</td><td>Revenue Cloud margin guardrails → Tableau executive dashboard → Salesforce Shield audit trail → ROI calculator with their numbers</td><td>Showing that every deal below target margin required explicit VP approval with full reasoning logged. "This is the governance your board is asking for."</td></tr>
+        <tr><td><strong>CEO / Board</strong></td><td>20 min executive briefing</td><td>High-level platform vision → 3 industry-specific use cases → Agentforce "day in the life" → competitive positioning vs. peers who are already adopting</td><td>"Your competitor just deployed autonomous pricing. When their cost changes at 6am, their system responds by 6:15. Yours responds Tuesday afternoon."</td></tr>
+      </table>
+    </div>
+
+    <h4 style="margin-top:20px;">Integration Architecture — The Technical Truth</h4>
+    <div class="arch-enhanced">
+      <div class="arch-title">End-to-End Data Flow — Downstream Fuel Distribution</div>
+      <div class="arch-row" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <div class="arch-node" style="border-top:3px solid #666;flex:1;min-width:140px;"><div class="arch-node-label">Source Systems</div><small>SAP ECC/S4 · TMS · WMS · ANP · SEFAZ · Banks · IoT · FX Feeds</small></div>
+      </div>
+      <div class="arch-connector">↓ MuleSoft APIs (real-time + batch)</div>
+      <div class="arch-row" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <div class="arch-node" style="border-top:3px solid #6b21a8;flex:1;min-width:140px;"><div class="arch-node-label">Data Cloud</div><small>Identity Resolution · Data Harmonization · Streaming Ingestion · Calculated Insights · Vector Store</small></div>
+      </div>
+      <div class="arch-connector">↓ Unified Customer Profile + Market Signals</div>
+      <div class="arch-row" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <div class="arch-node" style="border-top:3px solid #006272;flex:1;min-width:120px;"><div class="arch-node-label">Agentforce</div><small>12 Autonomous Agents</small></div>
+        <div class="arch-node" style="border-top:3px solid #00695c;flex:1;min-width:120px;"><div class="arch-node-label">Einstein AI</div><small>Predictive + Generative</small></div>
+        <div class="arch-node" style="border-top:3px solid #e97300;flex:1;min-width:120px;"><div class="arch-node-label">Tableau</div><small>Intelligence & Dashboards</small></div>
+      </div>
+      <div class="arch-connector">↓ Decisions + Recommendations + Insights</div>
+      <div class="arch-row" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <div class="arch-node" style="border-top:3px solid #0176D3;flex:1;min-width:100px;"><div class="arch-node-label">Sales Cloud</div><small>Pipeline & Deals</small></div>
+        <div class="arch-node" style="border-top:3px solid #1b5e20;flex:1;min-width:100px;"><div class="arch-node-label">Revenue Cloud</div><small>Pricing & Contracts</small></div>
+        <div class="arch-node" style="border-top:3px solid #b71c1c;flex:1;min-width:100px;"><div class="arch-node-label">Service Cloud</div><small>Support & SLA</small></div>
+        <div class="arch-node" style="border-top:3px solid #e65100;flex:1;min-width:100px;"><div class="arch-node-label">Experience Cloud</div><small>Dealer Portal</small></div>
+      </div>
+      <div class="arch-connector">↓ Omnichannel Engagement</div>
+      <div class="arch-row" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <div class="arch-node" style="border-top:3px solid #2E844A;flex:1;min-width:140px;"><div class="arch-node-label">End Users</div><small>Sales Reps · Pricing Committee · Logistics · Dealers · End Consumers (B2C loyalty)</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EA SECTION -->
+  <div class="card" style="border-top:4px solid #6b21a8;">
+    <h3>🏗️ For the Enterprise Architect — Architecture Principles & Governance</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Your audience is the client's architecture team. They need to understand WHY this architecture, not just WHAT it does. Here are the principles, patterns, and governance arguments that win architecture review boards.</p>
+
+    <h4 style="margin-top:20px;">Architecture Decision Records (ADRs) — Key Choices</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Decision</th><th>Context</th><th>Rationale</th><th>Consequence</th></tr>
+        <tr><td><strong>Salesforce as System of Engagement, not System of Record</strong></td><td>Client has SAP ECC (or S/4HANA) as ERP. $100M+ invested. 500+ custom ABAPers. Not going anywhere</td><td>Complement, don't compete. SAP excels at transactions (order-to-cash, procure-to-pay). Salesforce excels at relationships, decisions, and engagement. Trying to make SAP do both creates ungovernable complexity</td><td>Clear system boundaries. SAP owns FATO (financial truth). Salesforce owns DECISÃO (customer-facing decisions). MuleSoft mediates. No data sovereignty conflicts</td></tr>
+        <tr><td><strong>MuleSoft as Integration Layer (API-Led Connectivity)</strong></td><td>15-25 systems need to talk. Current state: point-to-point integrations, file drops, manual data entry, ETL batch jobs</td><td>API-led connectivity (System → Process → Experience layers) creates reusable assets. Each integration accelerates the next. Governance via Anypoint Platform. Total cost decreases over time, not increases</td><td>First 3 integrations are slower (building reusable APIs). Integrations 4-25 are 3-5x faster. After year 1, new business capabilities deploy in weeks not months</td></tr>
+        <tr><td><strong>Data Cloud as Customer Data Platform (not data lake)</strong></td><td>Client has data lake (BigQuery/Azure DL/Snowflake). Why another data platform?</td><td>Data Cloud is not a replacement for the data lake. It's the OPERATIONAL layer that creates real-time customer profiles for ACTION — not analytics. Data lake = historical truth for BI. Data Cloud = real-time truth for decisions. Different purposes, complementary</td><td>No rip-and-replace of existing data infrastructure. Data Cloud sits between lake and applications, adding identity resolution, real-time streaming, and calculated insights. Client keeps their analytics stack intact</td></tr>
+        <tr><td><strong>Agentforce for Autonomous Operations (not just chatbots)</strong></td><td>Client has "AI initiatives" — usually GPT wrappers or chatbot pilots with low adoption</td><td>Agentforce agents are different: they have TOPICS (bounded domain), ACTIONS (connected to real systems), GUARDRAILS (business rules), and ESCALATION (human-in-the-loop). This is operationalized AI, not experimentation</td><td>Requires clear business process mapping first. Agent effectiveness depends on data quality (Data Cloud) and integration completeness (MuleSoft). Phased rollout: start with human-supervised agents, graduate to autonomous</td></tr>
+        <tr><td><strong>Salesforce Shield for Governance & Compliance</strong></td><td>Brazilian regulatory environment (LGPD, ANP, SEFAZ, CVM). Energy sector = critical infrastructure with audit requirements</td><td>Platform-native encryption at rest + field audit trail + event monitoring. Not a bolt-on — baked into every object, every field, every interaction. LGPD compliance without custom development</td><td>Every pricing decision, every deal approval, every customer data access is logged, auditable, and encrypted. Board-level governance without custom audit system</td></tr>
+      </table>
+    </div>
+
+    <h4 style="margin-top:20px;">Architecture Principles for Downstream</h4>
+    <div class="pillar-grid" style="grid-template-columns:repeat(2,1fr);">
+      <div class="pillar-card" style="border-top-color:#0176D3;">
+        <h4>1. Composable, Not Monolithic</h4>
+        <p>Each Salesforce cloud is independently deployable. Start with Pricing (Revenue Cloud + Data 360 + MuleSoft). Add Commercial later. Add Operations later. No big-bang required. Each phase delivers standalone value.</p>
+      </div>
+      <div class="pillar-card" style="border-top-color:#006272;">
+        <h4>2. Event-Driven, Not Batch</h4>
+        <p>Platform Events + Change Data Capture + MuleSoft streaming. Pricing reacts in minutes. Logistics reacts to IoT signals. No more waiting for nightly batch to discover yesterday's problems.</p>
+      </div>
+      <div class="pillar-card" style="border-top-color:#1b5e20;">
+        <h4>3. AI-Native, Not AI-Bolted</h4>
+        <p>Einstein and Agentforce are not add-ons — they're embedded in every object, every flow, every decision point. Data Cloud's vector store enables RAG without external infrastructure. Trust Layer governs all AI interactions natively.</p>
+      </div>
+      <div class="pillar-card" style="border-top-color:#e97300;">
+        <h4>4. Governed by Design</h4>
+        <p>Salesforce Shield (encryption + audit + monitoring) + Trust Layer (AI governance) + Revenue Cloud guardrails (margin floors) + MuleSoft API governance (Anypoint). Security is not a layer — it's woven into every decision point.</p>
+      </div>
+      <div class="pillar-card" style="border-top-color:#6b21a8;">
+        <h4>5. Customer-Centric Data Model</h4>
+        <p>SAP data model: material → plant → order → invoice (product-centric). Salesforce data model: account → contact → opportunity → case → interaction (customer-centric). Both needed. Different purposes. Not redundant.</p>
+      </div>
+      <div class="pillar-card" style="border-top-color:#b71c1c;">
+        <h4>6. Future-Proof Platform</h4>
+        <p>3 releases/year, backward-compatible. Multi-tenant forces Salesforce to maintain compatibility. No vendor lock-in to specific version. New capabilities (Agentforce, Data Cloud, AI) delivered automatically — not as upgrade projects.</p>
+      </div>
+    </div>
+
+    <h4 style="margin-top:20px;">Governance & Compliance — Brazilian Regulatory Landscape</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Regulation</th><th>Requirement</th><th>How Salesforce Addresses It</th></tr>
+        <tr><td><strong>LGPD (Lei Geral de Proteção de Dados)</strong></td><td>Data subject rights (access, deletion, portability), consent management, DPO reporting, breach notification in 72h</td><td>Data Cloud consent management + Salesforce Shield event monitoring + Privacy Center (automated subject requests) + data residency in São Paulo region</td></tr>
+        <tr><td><strong>ANP Regulations</strong></td><td>Price transparency, volume reporting, fuel quality tracking, distributor compliance certificates</td><td>Tableau dashboards for regulatory reporting + MuleSoft integration with ANP systems + automated compliance workflows in Flow</td></tr>
+        <tr><td><strong>SEFAZ (State Tax Authorities)</strong></td><td>NF-e (electronic invoice) integration, ICMS calculation accuracy, tax substitution compliance, real-time fiscal reporting</td><td>MuleSoft integration with state SEFAZ systems + Revenue Cloud tax engine integration + audit trail for every tax calculation</td></tr>
+        <tr><td><strong>CVM (Securities Commission)</strong></td><td>For publicly-traded distributors: material fact disclosure, insider trading controls, financial reporting accuracy</td><td>Salesforce Shield encryption + field audit trail + event monitoring ensures all customer-facing data changes are traceable and auditable for SOX compliance</td></tr>
+        <tr><td><strong>ANTT (Transport Regulation)</strong></td><td>Dangerous goods transport compliance, driver hours, vehicle inspection, route documentation</td><td>Service Cloud + Field Service for compliance workflow + MuleSoft integration with fleet management systems + automated documentation generation</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- COMPETITIVE POSITIONING -->
+  <div class="card" style="border-top:4px solid #b71c1c;">
+    <h3>⚔️ Competitive Positioning — How to Win Against Alternatives</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Every deal will face alternatives. Here's how to position against each, with specific downstream context.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Competitor</th><th>Their Pitch</th><th>Their Weakness in Downstream</th><th>Our Counter</th></tr>
+        <tr><td><strong>SAP CX (C/4HANA)</strong></td><td>"Keep everything in one ecosystem. Single vendor. Integrated with ERP."</td><td>SAP CX is lagging in market share and innovation (Gartner downgrades since 2022). CRM is not SAP's DNA — their AI (Joule) is copilot-only (no autonomous agents). Implementation complexity is 2-3x Salesforce. SAP CRM in Brazil has very limited SI ecosystem</td><td>"SAP is world-class at transactions. But CRM is about relationships and decisions — fundamentally different DNA. And autonomous AI agents? SAP is 2-3 years behind. Ask them to build what Agentforce does today — they'll quote you a custom project."</td></tr>
+        <tr><td><strong>Microsoft Dynamics 365</strong></td><td>"You already have Microsoft stack. Teams + Azure + Dynamics = integrated."</td><td>Dynamics has weak CPQ for complex pricing (fuel indexing requires heavy customization). No equivalent to Data Cloud real-time unification. Copilot is assistant-only (no autonomous agents). Very limited downstream O&G references in Brazil. Azure integration strength doesn't compensate for CRM feature gap</td><td>"Microsoft is great for collaboration. But for a downstream distributor managing 8,000 dealer relationships, R$200B in transactions, and real-time pricing — you need a platform built for that complexity, not a productivity suite extended into CRM."</td></tr>
+        <tr><td><strong>Oracle CX</strong></td><td>"Oracle for complex industries. We understand enterprise at scale."</td><td>Oracle CX lost significant market share 2020-2025 (multiple Gartner leader exits). Oracle AI strategy is fragmented (OCI AI vs. Fusion AI). Integration story weak outside Oracle ecosystem. Brazilian SI ecosystem for Oracle CX is thin. Oracle CPQ is strong but expensive and slow to implement</td><td>"Oracle was the enterprise CRM 15 years ago. Today, look at where the innovation is happening — Agentforce, Data Cloud, Trust Layer. Oracle is maintaining; Salesforce is inventing. And in Brazil, find me 5 Oracle CX SIs with downstream experience. We'll bring you 15 Salesforce partners."</td></tr>
+        <tr><td><strong>"Build Custom" (Internal Dev Team)</strong></td><td>"We'll build exactly what we need on AWS/Azure/GCP. No vendor dependency."</td><td>Custom CRM projects in downstream have a 60-70% failure rate (Standish Group data). Timeline: 2-3 years to reach feature parity with commercial platform. Maintenance burden grows exponentially. AI capabilities require dedicated ML team. Key person risk when developers leave</td><td>"How many custom CRM projects have you seen succeed in this industry? What happens when the 3 developers who built it leave? Salesforce has 150,000 customers validating every feature. Your custom build has you."</td></tr>
+        <tr><td><strong>Vertical Niche Players (StayInFront, Petrodata)</strong></td><td>"Built specifically for fuel distribution. We know your industry."</td><td>Niche players lack platform breadth (no marketing, no service, no integration, no AI). Can't scale to multi-BU complexity. No ecosystem of SIs and ISVs. Single point of failure — if vendor is acquired or pivots, you're stranded</td><td>"They know one piece of the puzzle. But you don't need a point solution — you need a platform that grows with you through the consolidation wave. When you acquire the next company, does your CRM scale to absorb them in weeks? Ours does."</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- OBJECTION HANDLING -->
+  <div class="card" style="border-top:4px solid var(--oil-gold);">
+    <h3>🛡️ Objection Handling — Prepared Responses</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Every deal faces objections. The best teams prepare for them before they surface. Here are the most common objections in downstream O&G and how to address them.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Objection</th><th>Real Concern Behind It</th><th>Response Framework</th></tr>
+        <tr><td><strong>"Salesforce is too expensive for our industry"</strong></td><td>They're comparing license cost to the cost of maintaining status quo (spreadsheets + custom scripts)</td><td>Reframe to cost of inaction: "You're spending R$50-150M/year in margin leakage, churn, and inefficiency. Salesforce costs a fraction of that. The question isn't 'can we afford Salesforce?' — it's 'can we afford NOT to fix this?'" Show ROI model with their numbers. Compare to custom dev TCO (typically 3-5x higher over 5 years)</td></tr>
+        <tr><td><strong>"We already have SAP — why do we need another system?"</strong></td><td>Fear of complexity, integration burden, change management fatigue</td><td>"We're not adding complexity — we're extracting it from SAP. Right now your SAP has customer-facing customizations that don't belong there, making upgrades expensive and risky. Salesforce takes that burden off SAP, letting both systems do what they're best at. MuleSoft makes the connection seamless."</td></tr>
+        <tr><td><strong>"Our data is too sensitive / we can't put customer data in the cloud"</strong></td><td>Regulatory concern (LGPD), data sovereignty, security team resistance</td><td>"Salesforce runs critical infrastructure for 25+ of the world's largest oil & gas companies. Hyperforce runs on AWS São Paulo — data never leaves Brazil. Salesforce Shield provides encryption that even Salesforce admins can't read. We pass every LGPD, SOX, and CVM audit."</td></tr>
+        <tr><td><strong>"AI sounds great but we're not ready for it"</strong></td><td>They've had failed AI pilots. They lack data quality confidence. They fear autonomous decisions</td><td>"Agentforce is not a science experiment — it's graduated AI with clear guardrails. Start supervised: agents recommend, humans approve. As confidence grows, increase autonomy. And it works with the data you have today — Data Cloud cleans and unifies it as a byproduct of using it."</td></tr>
+        <tr><td><strong>"Implementation will take too long / we've been burned before"</strong></td><td>Past CRM/ERP projects went over budget and timeline. Trust deficit with technology vendors</td><td>"Phase 1 in 6 months, not 18. Start with ONE engine (Pricing) — measurable ROI in Q1. No big-bang. No 200-page requirements doc. Agile delivery with business outcomes at every sprint. And 15+ implementation partners in Brazil with downstream experience."</td></tr>
+        <tr><td><strong>"Our IT team doesn't have Salesforce skills"</strong></td><td>Concern about dependency on external consultants and skill availability</td><td>"Salesforce has 500,000+ certified professionals globally and the largest CRM training ecosystem (Trailhead — free). In Brazil, 15+ SIs with energy practice. Low-code platform means business analysts can maintain it. Compare: how many ABAPers are you finding today? Salesforce talent pool is 10x larger."</td></tr>
+        <tr><td><strong>"We want to wait for SAP to catch up with AI"</strong></td><td>Inertia. Comfort with existing vendor. Fear of multi-vendor complexity</td><td>"While you wait, your competitors aren't. The consolidation wave doesn't pause. SAP's AI roadmap (Joule) is copilot-only — no autonomous agents until at minimum 2027. That's 2 years of competitive disadvantage. Agentforce is live today, in production, with Energy & Utilities references."</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- INDUSTRY VALIDATION -->
+  <div class="card" style="border-top:4px solid #2E844A;">
+    <h3>✅ Industry Validation — Why Energy Trusts Salesforce</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Global energy companies have already validated this architecture. Here's the evidence that builds confidence with architecture teams and procurement committees.</p>
+
+    <div class="value-prop">
+      <div class="value-prop-item"><div class="vp-metric">25+</div><div class="vp-label">Top Oil & Gas Companies</div><div class="vp-detail">Of the world's largest O&G companies use Salesforce as their engagement platform</div></div>
+      <div class="value-prop-item"><div class="vp-metric">#1</div><div class="vp-label">CRM Market Share</div><div class="vp-detail">23.8% global CRM market share — more than next 4 competitors combined (IDC 2024)</div></div>
+      <div class="value-prop-item"><div class="vp-metric">150K+</div><div class="vp-label">Customers Globally</div><div class="vp-detail">Platform validated by 150,000+ companies across every industry and geography</div></div>
+      <div class="value-prop-item"><div class="vp-metric">99.99%</div><div class="vp-label">Platform Uptime</div><div class="vp-detail">Multi-tenant architecture with Hyperforce on hyperscaler infrastructure (AWS São Paulo)</div></div>
+    </div>
+
+    <h4 style="margin-top:20px;">Analyst Recognition — Platform Leadership</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Analyst Firm</th><th>Category</th><th>Salesforce Position</th><th>Key Differentiator Cited</th></tr>
+        <tr><td><strong>Gartner</strong></td><td>Magic Quadrant — CRM Customer Engagement Center</td><td>Leader (17 consecutive years)</td><td>Platform breadth, AI integration, ecosystem maturity</td></tr>
+        <tr><td><strong>Gartner</strong></td><td>Magic Quadrant — Sales Force Automation</td><td>Leader</td><td>AI-native pipeline intelligence, Agentforce differentiation</td></tr>
+        <tr><td><strong>Forrester</strong></td><td>Wave — B2B CRM</td><td>Leader</td><td>Revenue lifecycle management, CPQ, partner ecosystems</td></tr>
+        <tr><td><strong>IDC</strong></td><td>MarketScape — AI in CRM</td><td>Leader</td><td>Einstein + Agentforce + Trust Layer as unique combination</td></tr>
+        <tr><td><strong>Gartner</strong></td><td>Magic Quadrant — Integration Platform as a Service (iPaaS)</td><td>Leader (MuleSoft)</td><td>API-led connectivity, governance, developer experience</td></tr>
+        <tr><td><strong>Gartner</strong></td><td>Magic Quadrant — Analytics & BI</td><td>Leader (Tableau)</td><td>Self-service analytics, governed data culture, AI-assisted insights</td></tr>
+      </table>
+    </div>
+
+    <h4 style="margin-top:20px;">Energy & Utilities — Platform Adoption Indicators</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Indicator</th><th>Data Point</th><th>What It Means for Brazilian Downstream</th></tr>
+        <tr><td><strong>Industry Cloud Adoption</strong></td><td>Energy & Utilities is one of Salesforce's top 5 industry verticals by revenue. Dedicated industry cloud with pre-built data model, processes, and AI models</td><td>Not building from scratch — leveraging an industry-specific foundation that other energy companies have already validated and refined</td></tr>
+        <tr><td><strong>FY26 CSM Metrics (E&U)</strong></td><td>n=150 Energy & Utilities customers measured. 28% revenue increase, 31% faster case resolution, 30% increase in customer retention (global averages)</td><td>These metrics directly map to Brazilian downstream challenges: revenue = churn reduction, case resolution = dealer satisfaction, retention = branded network defense</td></tr>
+        <tr><td><strong>AppExchange Energy ISVs</strong></td><td>100+ energy-specific AppExchange solutions covering compliance, field operations, asset management, regulatory reporting</td><td>Ecosystem effect: niche capabilities available off-the-shelf vs. custom development. Reduces implementation time and risk</td></tr>
+        <tr><td><strong>SI Ecosystem in Brazil</strong></td><td>15+ certified Salesforce implementation partners with energy practice in Brazil (Accenture, Deloitte, Wipro, Capgemini, local specialists)</td><td>No vendor lock-in to single implementer. Competitive SI market keeps prices fair and quality high. Skills available at scale</td></tr>
+        <tr><td><strong>Hyperforce Brazil</strong></td><td>Salesforce Hyperforce running on AWS São Paulo (sa-east-1). Full platform capabilities with data residency guarantees</td><td>LGPD compliance without compromise. Data sovereignty addressed. Same performance as global instances with local data storage</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- STRATEGIC NARRATIVE -->
+  <div class="card">
+    <h3>The Strategic Narrative — Tying It All Together</h3>
+    <p style="font-size:14px;color:var(--sf-text-sec);line-height:1.7;margin-bottom:16px;">When you walk into a downstream distributor, you're not selling software. You're selling the ability to compete in a consolidating market where the winners will be determined by who turns data into decisions fastest. Here's the narrative arc:</p>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="step-icon" style="background:#b71c1c;">1</div><div><strong>The Market Reality</strong> — 5 major players consolidating down from 12. R$400B+ industry with R$0.08-0.15/L gross margins. Every basis point matters. Speed kills — or saves.</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#e97300;">2</div><div><strong>The Technology Gap</strong> — These companies run world-class supply chains on SAP. But their customer-facing operations? Spreadsheets, WhatsApp, email chains, and gut feeling. The gap between back-office excellence and front-office chaos is where margin disappears.</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#006272;">3</div><div><strong>The AI Moment</strong> — For the first time, technology can make autonomous decisions at the speed the market demands. Not in 3 years — today. Agentforce is live, in production, with guardrails. The question is who deploys first.</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#0176D3;">4</div><div><strong>Why Salesforce</strong> — Not because we're the cheapest. Not because we're the simplest. Because we're the only platform that combines real-time data unification (Data Cloud), autonomous AI agents (Agentforce), enterprise integration (MuleSoft), and industry-validated architecture in one governed platform. And we can prove it works in 6 months, not 3 years.</div></div>
+      <div class="flow-step"><div class="step-icon" style="background:#2E844A;">5</div><div><strong>The Call to Action</strong> — "Your competitor is already building this. The consolidation wave doesn't wait. And the cost of waiting another year isn't zero — it's measured in lost stations, leaked margin, and competitive ground you'll never recover."</div></div>
     </div>
   </div>
 </div>
