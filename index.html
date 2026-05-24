@@ -1153,6 +1153,51 @@ tr.persona-dim { opacity: 0.35; }
   vertical-align: middle;
 }
 
+/* TEXT-TO-SPEECH PLAYER */
+.tts-player {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  background: var(--sf-white);
+  border: 1px solid var(--sf-border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow-lg);
+  display: none;
+  align-items: center;
+  gap: 10px;
+  z-index: 800;
+  font-size: 12px;
+  color: var(--sf-text);
+}
+.tts-player.active { display: flex; }
+.tts-player button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.tts-player button:hover { background: var(--sf-highlight); }
+.tts-player .tts-status {
+  font-size: 11px;
+  color: var(--sf-text-sec);
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tts-player select {
+  font-size: 11px;
+  padding: 2px 6px;
+  border: 1px solid var(--sf-border);
+  border-radius: 4px;
+  background: var(--sf-light-bg);
+  color: var(--sf-text);
+}
+
 /* READING PROGRESS BAR */
 .reading-progress {
   position: fixed;
@@ -1285,7 +1330,7 @@ tr.persona-dim { opacity: 0.35; }
 .topbar-tools button:hover { background: var(--sf-highlight); border-color: var(--sf-primary); color: var(--sf-primary); }
 
 @media print {
-  .sidebar, .topbar, .hamburger, .back-to-top, .copy-btn, .theme-toggle, .mini-toc, .search-container, #toggleNavBtn, .sidebar-overlay, .meeting-mode-bar, .meeting-panel, .meeting-overlay, .qr-modal, .section-note-toggle, .section-note-area, .topbar-tools, .persona-bar, .reading-progress { display: none !important; }
+  .sidebar, .topbar, .hamburger, .back-to-top, .copy-btn, .theme-toggle, .mini-toc, .search-container, #toggleNavBtn, .sidebar-overlay, .meeting-mode-bar, .meeting-panel, .meeting-overlay, .qr-modal, .tts-player, .section-note-toggle, .section-note-area, .topbar-tools, .persona-bar, .reading-progress { display: none !important; }
   .main-content { margin-left: 0 !important; margin-top: 0 !important; padding: 0 !important; }
   .section { display: block !important; page-break-inside: avoid; margin-bottom: 24px; }
   .section-hero { background: #032D60 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -1436,6 +1481,7 @@ tr.persona-dim { opacity: 0.35; }
   <div class="topbar-meta">v1.1 • May 2026</div>
   <div class="topbar-tools">
     <button id="helpBtn" title="Help — Feature Guide">❓ Help</button>
+    <button id="ttsBtn" title="Read aloud (Accessibility)">🔊 Listen</button>
     <button id="meetingModeBtn" title="Prepare for Meeting">📋 Meeting</button>
     <button id="qrBtn" title="Generate QR Code">📱 QR</button>
     <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
@@ -1528,6 +1574,13 @@ tr.persona-dim { opacity: 0.35; }
     </div>
   </div>
   <div class="help-feature">
+    <div class="help-icon">🔊</div>
+    <div class="help-text">
+      <h4>Listen (Text-to-Speech)</h4>
+      <p>Click "Listen" to have the current section read aloud — great for accessibility or multitasking. Control playback with play/pause/stop, adjust speed, and choose a voice. Supports Portuguese and English voices.</p>
+    </div>
+  </div>
+  <div class="help-feature">
     <div class="help-icon">▾</div>
     <div class="help-text">
       <h4>Collapse / Expand Menu</h4>
@@ -1544,6 +1597,22 @@ tr.persona-dim { opacity: 0.35; }
   <canvas id="qrCanvas" width="200" height="200"></canvas>
   <div class="qr-url" id="qrUrl"></div>
   <button id="qrClose">Close</button>
+</div>
+
+<!-- TEXT-TO-SPEECH PLAYER -->
+<div class="tts-player" id="ttsPlayer">
+  <button id="ttsPlay" title="Play">▶️</button>
+  <button id="ttsPause" title="Pause">⏸️</button>
+  <button id="ttsStop" title="Stop">⏹️</button>
+  <select id="ttsSpeed" title="Speed">
+    <option value="0.75">0.75×</option>
+    <option value="1" selected>1×</option>
+    <option value="1.25">1.25×</option>
+    <option value="1.5">1.5×</option>
+  </select>
+  <select id="ttsVoice" title="Voice"></select>
+  <span class="tts-status" id="ttsStatus">Ready</span>
+  <button id="ttsClose" title="Close player">✕</button>
 </div>
 
 <!-- BACK TO TOP -->
@@ -4799,6 +4868,104 @@ document.addEventListener('DOMContentLoaded', function() {
         y: { grid: { color: 'rgba(0,0,0,0.04)' }}
       }
     }
+  });
+
+  // TEXT-TO-SPEECH (Accessibility)
+  const ttsBtn = document.getElementById('ttsBtn');
+  const ttsPlayer = document.getElementById('ttsPlayer');
+  const ttsPlay = document.getElementById('ttsPlay');
+  const ttsPause = document.getElementById('ttsPause');
+  const ttsStop = document.getElementById('ttsStop');
+  const ttsSpeed = document.getElementById('ttsSpeed');
+  const ttsVoiceSelect = document.getElementById('ttsVoice');
+  const ttsStatus = document.getElementById('ttsStatus');
+  const ttsClose = document.getElementById('ttsClose');
+  let ttsUtterance = null;
+  let ttsVoices = [];
+  let ttsPaused = false;
+
+  function ttsLoadVoices() {
+    ttsVoices = speechSynthesis.getVoices();
+    ttsVoiceSelect.innerHTML = '';
+    const ptVoices = ttsVoices.filter(v => v.lang.startsWith('pt'));
+    const enVoices = ttsVoices.filter(v => v.lang.startsWith('en'));
+    const displayVoices = ptVoices.length ? ptVoices.concat(enVoices.slice(0, 3)) : enVoices.slice(0, 6);
+    if (!displayVoices.length) {
+      const opt = document.createElement('option');
+      opt.textContent = 'Default';
+      opt.value = '';
+      ttsVoiceSelect.appendChild(opt);
+      return;
+    }
+    displayVoices.forEach((v, i) => {
+      const opt = document.createElement('option');
+      opt.value = i < ptVoices.length ? ttsVoices.indexOf(v) : ttsVoices.indexOf(v);
+      opt.value = ttsVoices.indexOf(v);
+      opt.textContent = v.name.replace(/Microsoft |Google |Apple /, '').substring(0, 20) + ' (' + v.lang + ')';
+      if (i === 0) opt.selected = true;
+      ttsVoiceSelect.appendChild(opt);
+    });
+  }
+
+  if ('speechSynthesis' in window) {
+    speechSynthesis.onvoiceschanged = ttsLoadVoices;
+    ttsLoadVoices();
+  } else {
+    ttsBtn.style.display = 'none';
+  }
+
+  function ttsGetActiveText() {
+    const activeSection = document.querySelector('.section.active');
+    if (!activeSection) return '';
+    const clone = activeSection.cloneNode(true);
+    clone.querySelectorAll('script, style, .section-note-area, .copy-btn, .mini-toc, .section-note-toggle').forEach(el => el.remove());
+    return clone.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function ttsSpeak() {
+    const text = ttsGetActiveText();
+    if (!text) { ttsStatus.textContent = 'No content'; return; }
+    speechSynthesis.cancel();
+    ttsUtterance = new SpeechSynthesisUtterance(text);
+    ttsUtterance.rate = parseFloat(ttsSpeed.value);
+    const voiceIdx = parseInt(ttsVoiceSelect.value);
+    if (!isNaN(voiceIdx) && ttsVoices[voiceIdx]) ttsUtterance.voice = ttsVoices[voiceIdx];
+    ttsUtterance.onstart = () => { ttsStatus.textContent = 'Playing…'; };
+    ttsUtterance.onend = () => { ttsStatus.textContent = 'Done'; ttsPaused = false; };
+    ttsUtterance.onerror = () => { ttsStatus.textContent = 'Error'; };
+    speechSynthesis.speak(ttsUtterance);
+    ttsPaused = false;
+  }
+
+  ttsBtn.addEventListener('click', () => {
+    ttsPlayer.classList.add('active');
+    ttsSpeak();
+  });
+
+  ttsPlay.addEventListener('click', () => {
+    if (ttsPaused) { speechSynthesis.resume(); ttsPaused = false; ttsStatus.textContent = 'Playing…'; }
+    else { ttsSpeak(); }
+  });
+
+  ttsPause.addEventListener('click', () => {
+    if (speechSynthesis.speaking && !ttsPaused) { speechSynthesis.pause(); ttsPaused = true; ttsStatus.textContent = 'Paused'; }
+  });
+
+  ttsStop.addEventListener('click', () => {
+    speechSynthesis.cancel();
+    ttsPaused = false;
+    ttsStatus.textContent = 'Stopped';
+  });
+
+  ttsSpeed.addEventListener('change', () => {
+    if (speechSynthesis.speaking) { ttsSpeak(); }
+  });
+
+  ttsClose.addEventListener('click', () => {
+    speechSynthesis.cancel();
+    ttsPlayer.classList.remove('active');
+    ttsPaused = false;
+    ttsStatus.textContent = 'Ready';
   });
 
 });
