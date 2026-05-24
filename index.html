@@ -6,6 +6,7 @@
 <title>Salesforce Downstream Oil & Gas Brazil POV</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 <style>
 :root {
   --sf-primary: #0176D3;
@@ -945,8 +946,186 @@ table tr:hover { background: var(--sf-highlight); }
 .breadcrumb span { opacity: 0.5; margin: 0 6px; }
 
 /* PRINT STYLES */
+/* PREPARE FOR MEETING MODE */
+.meeting-mode-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: linear-gradient(90deg, #032D60, #0a3d6b);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 2000;
+  font-size: 13px;
+  box-shadow: var(--shadow-lg);
+}
+.meeting-mode-bar.active { display: flex; }
+.meeting-mode-bar button {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.meeting-mode-bar button:hover { background: rgba(255,255,255,0.25); }
+.meeting-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--sf-white);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  z-index: 3000;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: none;
+}
+.meeting-panel.active { display: block; }
+.meeting-panel h3 { font-size: 18px; margin-bottom: 16px; color: var(--sf-dark); }
+.meeting-panel label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.meeting-panel label:hover { background: var(--sf-highlight); }
+.meeting-panel input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--sf-primary); }
+.meeting-panel .panel-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+.meeting-panel .btn-primary {
+  background: var(--sf-primary);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.meeting-panel .btn-primary:hover { background: #015bb5; }
+.meeting-panel .btn-secondary {
+  background: none;
+  border: 1px solid var(--sf-border);
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--sf-text-sec);
+}
+.meeting-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2500;
+  display: none;
+}
+.meeting-overlay.active { display: block; }
+
+/* SECTION NOTES */
+.section-note-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid var(--sf-border);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--sf-text-sec);
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: all 0.15s;
+}
+.section-note-toggle:hover { border-color: var(--sf-primary); color: var(--sf-primary); }
+.section-note-toggle.has-note { border-color: var(--oil-gold); color: var(--oil-gold); }
+.section-note-area {
+  display: none;
+  margin-bottom: 16px;
+}
+.section-note-area.open { display: block; }
+.section-note-area textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px 12px;
+  border: 1px solid var(--sf-border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  resize: vertical;
+  transition: border-color 0.2s;
+  background: var(--sf-light-bg);
+  color: var(--sf-text);
+}
+.section-note-area textarea:focus { outline: none; border-color: var(--sf-primary); background: var(--sf-white); }
+.section-note-area .note-hint {
+  font-size: 10px;
+  color: var(--sf-text-sec);
+  margin-top: 4px;
+}
+
+/* QR CODE MODAL */
+.qr-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--sf-white);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  z-index: 3000;
+  text-align: center;
+  display: none;
+}
+.qr-modal.active { display: block; }
+.qr-modal h3 { margin-bottom: 16px; font-size: 16px; color: var(--sf-dark); }
+.qr-modal canvas { margin: 0 auto 16px; display: block; }
+.qr-modal .qr-url { font-size: 11px; color: var(--sf-text-sec); word-break: break-all; margin-bottom: 16px; }
+.qr-modal button { background: var(--sf-primary); color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+
+/* TOOLBAR ROW */
+.topbar-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.topbar-tools button {
+  background: none;
+  border: 1px solid var(--sf-border);
+  border-radius: 20px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+  color: var(--sf-text);
+  white-space: nowrap;
+}
+.topbar-tools button:hover { background: var(--sf-highlight); border-color: var(--sf-primary); color: var(--sf-primary); }
+
 @media print {
-  .sidebar, .topbar, .hamburger, .back-to-top, .copy-btn, .theme-toggle, .mini-toc, .search-container, #toggleNavBtn, .sidebar-overlay { display: none !important; }
+  .sidebar, .topbar, .hamburger, .back-to-top, .copy-btn, .theme-toggle, .mini-toc, .search-container, #toggleNavBtn, .sidebar-overlay, .meeting-mode-bar, .meeting-panel, .meeting-overlay, .qr-modal, .section-note-toggle, .section-note-area, .topbar-tools { display: none !important; }
   .main-content { margin-left: 0 !important; margin-top: 0 !important; padding: 0 !important; }
   .section { display: block !important; page-break-inside: avoid; margin-bottom: 24px; }
   .section-hero { background: #032D60 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -1089,8 +1268,39 @@ table tr:hover { background: var(--sf-highlight); }
     <div class="search-results" id="searchResults"></div>
   </div>
   <div class="topbar-meta">v1.1 • May 2026</div>
-  <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
+  <div class="topbar-tools">
+    <button id="meetingModeBtn" title="Prepare for Meeting">📋 Meeting</button>
+    <button id="qrBtn" title="Generate QR Code">📱 QR</button>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
+  </div>
 </header>
+
+<!-- MEETING MODE BAR -->
+<div class="meeting-mode-bar" id="meetingBar">
+  <span>📋 <strong>Meeting Mode</strong> — Showing selected sections only</span>
+  <button id="exitMeetingBtn">✕ Exit Meeting Mode</button>
+</div>
+
+<!-- MEETING PANEL -->
+<div class="meeting-overlay" id="meetingOverlay"></div>
+<div class="meeting-panel" id="meetingPanel">
+  <h3>📋 Prepare for Meeting</h3>
+  <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Select the sections you want to present. Unselected sections will be hidden during the meeting.</p>
+  <div id="meetingSections"></div>
+  <div class="panel-actions">
+    <button class="btn-secondary" id="meetingCancel">Cancel</button>
+    <button class="btn-primary" id="meetingStart">Start Meeting Mode</button>
+  </div>
+</div>
+
+<!-- QR CODE MODAL -->
+<div class="meeting-overlay" id="qrOverlay"></div>
+<div class="qr-modal" id="qrModal">
+  <h3>📱 Share this page</h3>
+  <canvas id="qrCanvas" width="200" height="200"></canvas>
+  <div class="qr-url" id="qrUrl"></div>
+  <button id="qrClose">Close</button>
+</div>
 
 <!-- BACK TO TOP -->
 <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
@@ -3638,6 +3848,146 @@ table tr:hover { background: var(--sf-highlight); }
     toc.appendChild(ul);
     const hero = section.querySelector('.section-hero');
     if (hero) hero.after(toc);
+  });
+
+  // SECTION NOTES (localStorage)
+  sections.forEach(section => {
+    const id = section.id;
+    if (!id) return;
+    const hero = section.querySelector('.section-hero');
+    if (!hero) return;
+    const noteKey = 'pov-note-' + id;
+    const saved = localStorage.getItem(noteKey) || '';
+    const toggle = document.createElement('button');
+    toggle.className = 'section-note-toggle' + (saved ? ' has-note' : '');
+    toggle.innerHTML = '📝 ' + (saved ? 'View Note' : 'Add Note');
+    const area = document.createElement('div');
+    area.className = 'section-note-area';
+    area.innerHTML = '<textarea placeholder="Add your notes about this section (e.g., client context, talking points)...">' + saved.replace(/</g, '&lt;') + '</textarea><div class="note-hint">Notes are saved locally in your browser — not shared.</div>';
+    toggle.addEventListener('click', () => {
+      area.classList.toggle('open');
+      const ta = area.querySelector('textarea');
+      if (area.classList.contains('open')) ta.focus();
+    });
+    const ta = area.querySelector('textarea');
+    ta.addEventListener('input', () => {
+      const val = ta.value.trim();
+      localStorage.setItem(noteKey, val);
+      toggle.className = 'section-note-toggle' + (val ? ' has-note' : '');
+      toggle.innerHTML = '📝 ' + (val ? 'View Note' : 'Add Note');
+    });
+    hero.after(area);
+    hero.after(toggle);
+  });
+
+  // PREPARE FOR MEETING MODE
+  const meetingBtn = document.getElementById('meetingModeBtn');
+  const meetingPanel = document.getElementById('meetingPanel');
+  const meetingOverlay = document.getElementById('meetingOverlay');
+  const meetingSections = document.getElementById('meetingSections');
+  const meetingBar = document.getElementById('meetingBar');
+  let meetingMode = false;
+
+  meetingBtn.addEventListener('click', () => {
+    meetingSections.innerHTML = '';
+    const sectionList = [];
+    links.forEach(link => {
+      const secId = link.dataset.section;
+      const label = link.textContent.trim();
+      sectionList.push({ id: secId, label });
+    });
+    const unique = [...new Map(sectionList.map(s => [s.id, s])).values()];
+    unique.forEach(s => {
+      const label = document.createElement('label');
+      label.innerHTML = '<input type="checkbox" value="' + s.id + '" checked> ' + s.label;
+      meetingSections.appendChild(label);
+    });
+    meetingPanel.classList.add('active');
+    meetingOverlay.classList.add('active');
+  });
+
+  document.getElementById('meetingCancel').addEventListener('click', () => {
+    meetingPanel.classList.remove('active');
+    meetingOverlay.classList.remove('active');
+  });
+  meetingOverlay.addEventListener('click', () => {
+    meetingPanel.classList.remove('active');
+    meetingOverlay.classList.remove('active');
+  });
+
+  document.getElementById('meetingStart').addEventListener('click', () => {
+    const checked = meetingSections.querySelectorAll('input:checked');
+    const allowedIds = new Set(Array.from(checked).map(cb => cb.value));
+    links.forEach(link => {
+      const secId = link.dataset.section;
+      if (!allowedIds.has(secId)) {
+        link.style.display = 'none';
+      } else {
+        link.style.display = '';
+      }
+    });
+    meetingPanel.classList.remove('active');
+    meetingOverlay.classList.remove('active');
+    meetingBar.classList.add('active');
+    meetingMode = true;
+    document.querySelector('.topbar').style.top = '44px';
+    document.querySelector('.main-content').style.marginTop = 'calc(var(--topbar-h) + 44px)';
+    // Show first allowed section
+    const firstAllowed = Array.from(checked)[0];
+    if (firstAllowed) showSection(firstAllowed.value);
+  });
+
+  document.getElementById('exitMeetingBtn').addEventListener('click', () => {
+    meetingBar.classList.remove('active');
+    meetingMode = false;
+    document.querySelector('.topbar').style.top = '';
+    document.querySelector('.main-content').style.marginTop = '';
+    links.forEach(link => { link.style.display = ''; });
+  });
+
+  // QR CODE GENERATOR
+  const qrBtn = document.getElementById('qrBtn');
+  const qrModal = document.getElementById('qrModal');
+  const qrOverlay = document.getElementById('qrOverlay');
+  const qrCanvas = document.getElementById('qrCanvas');
+  const qrUrl = document.getElementById('qrUrl');
+
+  function generateQR(text, canvas) {
+    const qr = qrcode(0, 'L');
+    qr.addData(text);
+    qr.make();
+    const size = 200;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, size, size);
+    const modCount = qr.getModuleCount();
+    const cellSize = Math.floor(size / (modCount + 4));
+    const offset = Math.floor((size - cellSize * modCount) / 2);
+    ctx.fillStyle = '#032D60';
+    for (let r = 0; r < modCount; r++) {
+      for (let c = 0; c < modCount; c++) {
+        if (qr.isDark(r, c)) {
+          ctx.fillRect(offset + c * cellSize, offset + r * cellSize, cellSize, cellSize);
+        }
+      }
+    }
+  }
+
+  qrBtn.addEventListener('click', () => {
+    const url = window.location.href;
+    qrUrl.textContent = url;
+    generateQR(url, qrCanvas);
+    qrModal.classList.add('active');
+    qrOverlay.classList.add('active');
+  });
+
+  document.getElementById('qrClose').addEventListener('click', () => {
+    qrModal.classList.remove('active');
+    qrOverlay.classList.remove('active');
+  });
+  qrOverlay.addEventListener('click', () => {
+    qrModal.classList.remove('active');
+    qrOverlay.classList.remove('active');
   });
 })();
 </script>
