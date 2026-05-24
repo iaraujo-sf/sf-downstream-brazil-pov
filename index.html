@@ -65,16 +65,11 @@ body {
   margin-bottom: 12px;
 }
 
-.sidebar-header .logo-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--sf-primary);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 14px;
+.sidebar-header .logo-img {
+  height: 24px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 .sidebar-header h1 {
@@ -661,11 +656,11 @@ table tr:hover { background: var(--sf-highlight); }
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <div class="logo-area">
-      <div class="logo-icon">SF</div>
-      <div>
-        <h1>Downstream O&G</h1>
-        <div class="subtitle">Brazil POV v1.1</div>
-      </div>
+      <img src="assets/salesforce-logo.png" alt="Salesforce" class="logo-img">
+    </div>
+    <div>
+      <h1>Downstream O&G</h1>
+      <div class="subtitle">Brazil POV v1.1</div>
     </div>
   </div>
   <div class="sidebar-nav" id="sidebarNav">
