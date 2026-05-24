@@ -917,10 +917,9 @@ table tr:hover { background: var(--sf-highlight); }
       </div>
     </div>
     <div class="nav-section">
-      <div class="nav-section-title">Roadmap & Impact <span class="chevron">▾</span></div>
+      <div class="nav-section-title">Impact <span class="chevron">▾</span></div>
       <div class="nav-items">
-        <a href="#" data-section="roadmap">Implementation Phases</a>
-        <a href="#" data-section="impact">Business Impact</a>
+        <a href="#" data-section="impact">Success Metrics & Business Impact</a>
         <a href="#" data-section="why-sf"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Why Salesforce</a>
       </div>
     </div>
@@ -2782,49 +2781,125 @@ table tr:hover { background: var(--sf-highlight); }
   </div>
 </div>
 
-<div class="section" id="sec-roadmap">
-  <div class="section-hero">
-    <h2>Implementation Roadmap</h2>
-    <p>Quick Wins to Full Transformation — phased approach with measurable ROI at each stage.</p>
-  </div>
-  <div class="card">
-    <div class="timeline">
-      <div class="timeline-item"><div class="timeline-meta">Phase 1: Foundation (0-6 months)</div><h4>MuleSoft + Data 360 + Sales Cloud (Dealer 360)</h4><p>Integration layer, customer data unification, retail network management</p><div class="callout callout-success" style="margin-top:8px;"><strong>Quick Win:</strong> Churn prediction reduces dealer losses by 15-20%</div></div>
-      <div class="timeline-item"><div class="timeline-meta">Phase 2: Commercial Acceleration (6-12 months)</div><h4>Revenue Cloud (CPQ) + Experience Cloud + Tableau</h4><p>B2B pricing automation, dealer portal, supply + pricing visibility</p><div class="callout callout-success" style="margin-top:8px;"><strong>Quick Win:</strong> B2B deal cycle reduction from 10 days to 3 days</div></div>
-      <div class="timeline-item"><div class="timeline-meta">Phase 3: Operational Intelligence (12-18 months)</div><h4>Field Service + Loyalty Management + FSC</h4><p>Logistics orchestration, loyalty migration, credit operations</p><div class="callout callout-success" style="margin-top:8px;"><strong>Quick Win:</strong> Predictive delivery reduces stockouts by 30%</div></div>
-      <div class="timeline-item"><div class="timeline-meta">Phase 4: Autonomous Operations (18-24 months)</div><h4>Agentforce Deployment Across All Five Engines</h4><p>Full AI-driven decision automation, end-to-end optimization</p><div class="callout callout-success" style="margin-top:8px;"><strong>Quick Win:</strong> Autonomous agents handle 60% of routine decisions</div></div>
-    </div>
-  </div>
-  <div class="chart-container">
-    <h3>Transformation Roadmap — Phase Duration & Value Realization</h3>
-    <canvas id="chartRoadmap"></canvas>
-  </div>
-</div>
-
 <!-- IMPACT -->
 <div class="section" id="sec-impact">
   <div class="section-hero">
-    <h2>Expected Business Impact</h2>
-    <p>The Value of Connected Operations — measurable KPIs across all five engines.</p>
+    <h2>Success Metrics & Business Impact</h2>
+    <p>Proven results from Salesforce deployments in Energy & Utilities — mapped to downstream fuel distribution business engines. Data from FY26 Customer Success Metrics Survey (n=3,061 global; n=150 Energy & Utilities).</p>
   </div>
+
+  <div class="metric-grid">
+    <div class="metric-card" style="border-top-color:#2E844A;"><div class="metric-value">97%</div><div class="metric-label">Achieved Positive ROI</div><div class="metric-sub">Energy & Utilities (n=150)</div></div>
+    <div class="metric-card" style="border-top-color:#0176D3;"><div class="metric-value">35%</div><div class="metric-label">ROI Achieved</div><div class="metric-sub">Return above investment cost</div></div>
+    <div class="metric-card" style="border-top-color:#e97300;"><div class="metric-value">10 mo</div><div class="metric-label">Time to ROI</div><div class="metric-sub">From deployment to positive return</div></div>
+    <div class="metric-card" style="border-top-color:#6b21a8;"><div class="metric-value">61%</div><div class="metric-label">User Adoption</div><div class="metric-sub">Regular active usage</div></div>
+    <div class="metric-card" style="border-top-color:#006272;"><div class="metric-value">54 days</div><div class="metric-label">Implementation Time</div><div class="metric-sub">To go-live</div></div>
+    <div class="metric-card" style="border-top-color:#c62828;"><div class="metric-value">97%</div><div class="metric-label">Satisfaction Rate</div><div class="metric-sub">Extremely/somewhat satisfied</div></div>
+  </div>
+
+  <div class="callout callout-success" style="margin-bottom:24px;"><strong>Source: FY26 Customer Success Metrics — Energy & Utilities Industry Report (Q3)</strong> Third-party survey of 150 Salesforce customers in Energy & Utilities sector. Results represent average improvements self-reported by respondents with Salesforce fully implemented. Global benchmark: n=3,061 across all industries.</div>
+
   <div class="card">
+    <h3>Sales Cloud Impact — Applied to Downstream Commercial Operations</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Global Sales Persona metrics (n=309) mapped to fuel distribution commercial motions — dealer management, B2B pipeline, territory execution.</p>
     <div class="table-wrap">
       <table>
-        <tr><th>KPI</th><th>Current State</th><th>With Salesforce</th><th>Impact</th></tr>
-        <tr><td>Dealer Churn Rate</td><td>8-12% annually</td><td>4-6% annually</td><td><span class="badge badge-green">~R$200M retention</span></td></tr>
-        <tr><td>B2B Deal Cycle</td><td>10-15 days</td><td>2-3 days</td><td><span class="badge badge-green">4x velocity</span></td></tr>
-        <tr><td>Pricing Response</td><td>24-48 hours</td><td>&lt; 1 hour</td><td><span class="badge badge-green">Margin protection</span></td></tr>
-        <tr><td>Delivery SLA</td><td>85-90%</td><td>97%+</td><td><span class="badge badge-green">Satisfaction</span></td></tr>
-        <tr><td>Credit Approval</td><td>5-10 days</td><td>Same-day</td><td><span class="badge badge-green">Win before competition</span></td></tr>
-        <tr><td>Loyalty Redemption</td><td>15-20%</td><td>35-45%</td><td><span class="badge badge-green">Engagement 2x</span></td></tr>
-        <tr><td>Commercial Productivity</td><td>8-10/week</td><td>20-25/week</td><td><span class="badge badge-green">2.5x effectiveness</span></td></tr>
+        <tr><th>Metric (FY26 CSM)</th><th>Measured Result</th><th>Downstream Application</th><th>Conversation Starter</th></tr>
+        <tr><td><strong>Increase in sales revenue</strong></td><td>+30%</td><td>Higher wallet share from existing dealers + faster B2B acquisition from white-flag conversion pipeline</td><td>"Your top reps grow accounts 30% when they have the right data. What if every rep performed like your top 10%?"</td></tr>
+        <tr><td><strong>Increase in sales productivity</strong></td><td>+30%</td><td>Reps managing 80-150 stations spend less time on admin, more on high-value visits and negotiations</td><td>"Your commercial team spends 40% of time on reports and data entry. What would 30% more selling time mean for your network?"</td></tr>
+        <tr><td><strong>Increase in sales pipeline</strong></td><td>+29%</td><td>White-flag conversion candidates identified by AI scoring + B2B leads from market signal detection (safra, new construction, fleet expansion)</td><td>"You have 18,000+ white-flag stations in your addressable market. How many does your pipeline cover today?"</td></tr>
+        <tr><td><strong>Time saved on sales tasks</strong></td><td>25 hours/week</td><td>Visit reports, deal approvals, pricing calculations, follow-up scheduling — all automated or AI-assisted</td><td>"25 hours per rep per week. That's 3 full days reclaimed for customer-facing activity instead of CRM data entry"</td></tr>
+        <tr><td><strong>Faster deal closure</strong></td><td>85% agree</td><td>Revenue Cloud auto-generates indexed B2B proposals (Petrobras + FX + freight) same-day vs. 10-day manual cycle</td><td>"Your competitors are closing B2B deals in days. If your cycle is still 2+ weeks, you're losing contracts before your proposal arrives"</td></tr>
+        <tr><td><strong>Improvement in forecast accuracy</strong></td><td>84% agree</td><td>Volume forecasting by station/product/season with AI models vs. spreadsheet guesswork. Critical for supply planning and working capital</td><td>"How accurate is your volume forecast by state/product? Because your supply team buys fuel based on that number"</td></tr>
+        <tr><td><strong>Increase in win rate</strong></td><td>87% agree</td><td>Competitive intelligence (ANP data + field surveys) surfaced in the deal context. Reps know competitor pricing before the meeting</td><td>"Do your reps know what the competitor is offering before they walk into a renewal meeting? Or do they find out after losing the deal?"</td></tr>
       </table>
     </div>
   </div>
+
+  <div class="card">
+    <h3>Service Cloud Impact — Applied to Downstream Customer Operations</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Global Service Persona metrics (n=338) mapped to fuel distribution service operations — dealer support, fleet cases, credit disputes, delivery issues.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Metric (FY26 CSM)</th><th>Measured Result</th><th>Downstream Application</th><th>Conversation Starter</th></tr>
+        <tr><td><strong>Improvement in CSAT</strong></td><td>+33%</td><td>Dealer satisfaction driven by faster delivery issue resolution, proactive communication, self-service portal access</td><td>"Your dealer NPS is ~40. Every point above 60 correlates with &lt;3% churn. What would 33% better satisfaction mean for your retention?"</td></tr>
+        <tr><td><strong>Decrease in service/support costs</strong></td><td>-26%</td><td>Self-service portals (Experience Cloud) handle 60%+ of routine queries: order status, financial statements, delivery tracking</td><td>"How many calls per day does your ops center take for 'where's my delivery?' and 'send me my invoice'? That's the 26% cost opportunity"</td></tr>
+        <tr><td><strong>Increase in customer service ROI</strong></td><td>+31%</td><td>Service interactions become revenue moments: resolving a delivery issue proactively prevents churn worth R$200K/year per dealer</td><td>"Service isn't just cost — it's retention. Each resolved case before the dealer escalates prevents the churn conversation later"</td></tr>
+        <tr><td><strong>First interaction resolution</strong></td><td>+32%</td><td>Knowledge base + AI-suggested answers enable first-contact resolution for delivery disputes, credit questions, and loyalty queries</td><td>"How many of your cases bounce between 3+ departments before resolution? Each bounce adds days and erodes trust"</td></tr>
+        <tr><td><strong>Cases resolved using AI</strong></td><td>72% agree increase</td><td>Agentforce handles routine queries autonomously: order status, delivery ETA, account statements, FAQ — escalating only complex issues to humans</td><td>"Your best agents handle 15 cases/day. AI handles 15 cases per minute. For the routine 60%, that's not replacing humans — it's freeing them for complex work"</td></tr>
+        <tr><td><strong>Cases resolved via Self-Service</strong></td><td>77% agree increase</td><td>Experience Cloud dealer portal + fleet portal: dealers check delivery schedules, download NFe, view credit limits, open cases — without calling anyone</td><td>"Your dealers want answers at 10pm when their tank is low. A portal that works 24/7 is better than a call center that closes at 6pm"</td></tr>
+        <tr><td><strong>Decrease in average handle time</strong></td><td>70% agree decrease</td><td>Unified case view (Sales Cloud + Service Cloud + FSC) gives agents complete context: dealer history, delivery SLA, credit status, recent visits — in one screen</td><td>"Your agents toggle between 4 systems per call. One unified view = faster resolution = happier dealer = lower cost"</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>AI & Agentforce Impact — Energy & Utilities Specific</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Energy & Utilities AI metrics (n=137-139) — the sector is among the highest in AI confidence and adoption.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>AI Metric (FY26 CSM — E&U)</th><th>Result</th><th>Downstream Application</th><th>Conversation Starter</th></tr>
+        <tr><td><strong>Productivity increase from GenAI/Agentic AI</strong></td><td>+32%</td><td>Agentforce agents handling pricing recommendations, delivery scheduling, churn alerts, and proposal generation autonomously</td><td>"32% productivity gain means your 200-person commercial team delivers like 264 — without a single new hire. That's R$15M+/year in equivalent capacity"</td></tr>
+        <tr><td><strong>AI investment generated strong ROI</strong></td><td>88% agree</td><td>Predictive models (churn, demand, credit) + generative capabilities (proposals, executive summaries, competitive briefs) delivering measurable value</td><td>"88% of Energy companies say their AI investment with Salesforce already shows strong ROI. The question isn't whether to invest — it's how fast you can deploy"</td></tr>
+        <tr><td><strong>AI increased customer satisfaction</strong></td><td>88% agree</td><td>Proactive delivery notifications, personalized offers, faster issue resolution — AI working for the customer, not just for the company</td><td>"Your competitors are using AI to predict when their dealers need fuel before they call. That's not a feature — it's a relationship advantage"</td></tr>
+        <tr><td><strong>AI improved human-AI handoffs</strong></td><td>82% agree</td><td>Agents handle routine (60-80% of volume) with seamless escalation to humans for complex decisions (pricing exceptions, credit disputes, churn intervention)</td><td>"The fear is 'AI replacing people'. The reality is 'AI handling the boring 70% so your people focus on the strategic 30% where judgment matters'"</td></tr>
+        <tr><td><strong>AI increased service productivity</strong></td><td>88% agree</td><td>AI-suggested responses, automated case routing, proactive case creation from IoT signals (tank level critical → auto-create delivery case)</td><td>"What if a service case was already created, routed, and half-resolved before your customer even noticed there was a problem?"</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Marketing Cloud & Data 360 Impact — Applied to Loyalty & Engagement</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Global Marketing Persona metrics (n=310) mapped to downstream loyalty programs (40M+ members), dealer communications, and data-driven segmentation.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Metric (FY26 CSM)</th><th>Measured Result</th><th>Downstream Application</th><th>Conversation Starter</th></tr>
+        <tr><td><strong>Increase in marketing ROI</strong></td><td>+32%</td><td>Personalized loyalty offers (segment-of-one) vs. mass campaigns. Right offer × right member × right moment = higher redemption rate</td><td>"Your loyalty program has 40M members getting the same offer. What if each got a personalized one? That's the difference between 15% and 40% redemption"</td></tr>
+        <tr><td><strong>Decrease in customer acquisition cost</strong></td><td>-30%</td><td>AI-scored white-flag conversion targets + lookalike modeling from successful conversions = lower cost per new branded station</td><td>"You spend R$500K-800K per station conversion. What if you could predict which ones will succeed and skip the ones that won't?"</td></tr>
+        <tr><td><strong>Increase in customer engagement</strong></td><td>+33%</td><td>Journey Builder triggering personalized touchpoints: points expiring, loyalty tier upgrade near, station-specific fuel promotions, seasonal offers</td><td>"Engaged loyalty members visit 2.3x more and spend 15% more. A 33% engagement lift at 40M members = billions of incremental liters"</td></tr>
+        <tr><td><strong>Increase in customer lifetime value</strong></td><td>+33%</td><td>Data 360 unifies loyalty behavior + payment data + station preference + product affinity → predictive LTV models drive retention investment decisions</td><td>"Do you know which of your 40M members will be worth R$50K lifetime vs. R$500? Because your retention budget should reflect that difference"</td></tr>
+        <tr><td><strong>Ability to take action on data</strong></td><td>89% agree improvement</td><td>Data 360 + Marketing Cloud: segment instantly, activate immediately. From "we have the data" to "we acted on it today"</td><td>"You have more data than most retailers. The question is: how fast can you go from insight to action? Days? Hours? Minutes?"</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Overall Operational Impact — Energy & Utilities (n=150)</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Cross-functional metrics that apply across all five downstream business engines.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Metric (FY26 CSM — E&U)</th><th>Result</th><th>Downstream Translation</th><th>Business Value at Scale</th></tr>
+        <tr><td><strong>Faster collaboration</strong></td><td>31% time saved</td><td>Commercial + logistics + credit teams aligned in one platform vs. siloed emails, WhatsApp, and spreadsheets</td><td>200-person commercial org × 31% saved on collaboration = 62 FTE-equivalent freed for revenue-generating activity</td></tr>
+        <tr><td><strong>Faster response to customers</strong></td><td>32% improvement</td><td>Dealer request → pricing → credit check → delivery schedule in hours vs. days when systems are unified</td><td>In a market where competitors respond in days, responding in hours wins the deal. 32% faster = first-mover advantage</td></tr>
+        <tr><td><strong>Faster resolution time</strong></td><td>30% improvement</td><td>Delivery disputes, pricing complaints, credit limit requests — all resolved faster with complete context</td><td>Each day of unresolved issue = risk of dealer frustration. 30% faster resolution directly correlates with lower churn</td></tr>
+        <tr><td><strong>Increase in employee productivity</strong></td><td>32% increase</td><td>Automation of manual processes: pricing calculations, delivery scheduling, report generation, approval routing</td><td>32% more productive commercial team without new hires = R$20-50M equivalent for a major distributor</td></tr>
+        <tr><td><strong>Speed of decision making</strong></td><td>87% agree improvement</td><td>Real-time dashboards (Tableau) + AI recommendations (Agentforce) + unified data (Data 360) = decisions in minutes not meetings</td><td>"We used to decide pricing in a weekly committee. Now the system recommends and the committee validates exceptions only"</td></tr>
+        <tr><td><strong>Organization accomplishes more in less time</strong></td><td>84% agree</td><td>End-to-end automation: from cost change detection → pricing adjustment → contract update → dealer notification — all without human intervention for standard flows</td><td>"The same team handling 30% more volume, 50% fewer manual steps, and 2x faster. That's what 'more in less time' means operationally"</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>IT & Integration Impact — Applied to MuleSoft + Platform</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Energy & Utilities IT metrics (n=52-53) — critical for conversations with CIO/CTO stakeholders about integration strategy and total cost of ownership.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Metric (FY26 CSM — E&U)</th><th>Result</th><th>Downstream Application</th><th>CIO/CTO Conversation</th></tr>
+        <tr><td><strong>Decrease in IT costs</strong></td><td>-33%</td><td>MuleSoft replaces point-to-point integrations (SAP ↔ legacy systems) with reusable APIs. Platform consolidation reduces tool sprawl</td><td>"How many unique integrations maintain your SAP ↔ CRM ↔ TMS ↔ loyalty connections today? Each one costs R$100-500K/year to maintain"</td></tr>
+        <tr><td><strong>Reduction in IT system downtime</strong></td><td>-33%</td><td>Cloud-native platform vs. on-premise custom solutions. 99.9%+ SLA vs. unplanned outages in legacy stack</td><td>"When your pricing system goes down for 4 hours, that's 4 hours of deals approved blind. What does that cost in margin risk?"</td></tr>
+        <tr><td><strong>Reduction in unique IT systems</strong></td><td>-34%</td><td>Salesforce consolidates CRM + portal + loyalty + service desk + field dispatch + analytics into one platform vs. 6-10 separate tools</td><td>"Every unique system is a maintenance cost, a training cost, and an integration risk. 34% fewer systems = 34% less complexity"</td></tr>
+        <tr><td><strong>Developer productivity increased</strong></td><td>91% agree</td><td>Low-code (Flow, Lightning) + pro-code (Apex, LWC) in one platform. Faster feature delivery, shorter sprint cycles</td><td>"Your IT backlog is 18 months deep. What if business teams could build 60% of what they need themselves with low-code + guardrails?"</td></tr>
+        <tr><td><strong>Deploy AI with confidence</strong></td><td>88% agree</td><td>Einstein Trust Layer: data governance, RBAC, audit trail, PII masking — AI with enterprise-grade security built in</td><td>"GenAI is exciting until the CFO asks 'who has access to our pricing data?' Salesforce AI governance answers that question natively"</td></tr>
+      </table>
+    </div>
+  </div>
+
   <div class="chart-container">
-    <h3>KPI Improvement — Current vs. With Salesforce</h3>
+    <h3>KPI Improvement — Current State vs. Salesforce-Enabled (Downstream)</h3>
     <canvas id="chartKPIComparison"></canvas>
   </div>
+
+  <div class="callout callout-info"><strong>How to Use These Metrics in Customer Conversations</strong> These are third-party validated results from Energy & Utilities Salesforce customers (FY26 Q3 survey, n=150). When presenting to downstream prospects: (1) Lead with the E&U-specific ROI story (97% achieved positive ROI, 10 months to value), (2) Map each persona metric to their specific pain point, (3) Use the "Conversation Starter" column as discovery questions, (4) Anchor to the $76B market scale — even small % improvements mean massive absolute value at downstream volumes.</div>
 </div>
 
 <!-- WHY SF -->
@@ -3402,36 +3477,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // CHART 10: Roadmap Gantt (Horizontal Stacked Bar)
-  new Chart(document.getElementById('chartRoadmap'), {
-    type: 'bar',
-    data: {
-      labels: ['Phase 1: Foundation', 'Phase 2: Commercial', 'Phase 3: Operational', 'Phase 4: Autonomous'],
-      datasets: [
-        { label: 'Start (months)', data: [0, 6, 12, 18], backgroundColor: 'transparent', borderWidth: 0 },
-        { label: 'Duration (months)', data: [6, 6, 6, 6], backgroundColor: [sfBlue, sfSuccess, sfGold, '#6b21a8'], borderRadius: 4 }
-      ]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-        tooltip: { callbacks: {
-          label: function(ctx) {
-            if (ctx.datasetIndex === 0) return '';
-            const starts = [0,6,12,18];
-            const s = starts[ctx.dataIndex];
-            return `Month ${s} → ${s+6}`;
-          }
-        }}
-      },
-      scales: {
-        x: { stacked: true, title: { display: true, text: 'Months' }, max: 24, grid: { color: 'rgba(0,0,0,0.04)' }},
-        y: { stacked: true, grid: { display: false }}
-      }
-    }
-  });
 });
 </script>
 </body>
