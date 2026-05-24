@@ -1419,40 +1419,173 @@ table tr:hover { background: var(--sf-highlight); }
 <div class="section" id="sec-competitive">
   <div class="section-hero">
     <h2>Competitive Landscape</h2>
-    <p>Three Giants Control >55% of a Highly Fragmented Market</p>
+    <p>Three giants control &gt;55% of volume in a highly fragmented market — but the battle is fought differently across segments, geographies, and product lines.</p>
   </div>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Distributor Market Share — Volume (%, 2024)</h3>
+      <canvas id="chartDistributorShare"></canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Market Share Evolution (2019–2024)</h3>
+      <canvas id="chartShareEvolution"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The Big Three — Competitive Profiles</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Player</th><th>Share</th><th>Stations</th><th>Strategic Focus</th><th>Key Advantage</th><th>Vulnerability</th></tr>
+        <tr><td><strong>Vibra (ex-BR)</strong></td><td>~23%</td><td>8,200</td><td>Energy transition + convenience retail + aviation. Post-privatization diversification into EV charging, solar, and marketplace</td><td>Largest network. Strongest in North/Northeast where logistics barriers protect position. Premmia loyalty (40M members)</td><td>Legacy brand perception. Slower decision-making from decades as SOE. Integration debt across acquisitions</td></tr>
+        <tr><td><strong>Raízen (Shell/Cosan)</strong></td><td>~20%</td><td>7,800</td><td>Vertical integration: ethanol production → distribution → retail. "From sugarcane to the pump." Strong ESG narrative</td><td>Only truly integrated player (produces fuel it distributes). Shell brand premium. Ethanol cost advantage. Strong B2B industrial</td><td>JV governance complexity. Shell brand cost. Less presence in North/Northeast rural markets</td></tr>
+        <tr><td><strong>Ipiranga (Ultra)</strong></td><td>~15%</td><td>7,100</td><td>Retail excellence + convenience (am/pm). Focus on station profitability, non-fuel revenue, and franchisor economics</td><td>Best convenience retail (am/pm is Brazil's largest c-store). Km de Vantagens loyalty. Strong franchise model</td><td>No upstream integration. Dependent on third-party supply. Lost volume share 2020-2022 during Ultra restructuring</td></tr>
+      </table>
+    </div>
+  </div>
+
   <div class="two-col">
     <div class="card">
-      <h3>The Big Three Dominance</h3>
-      <p style="font-size:13px;color:var(--sf-text-sec);">Vibra, Raízen, and Ipiranga leverage massive scale, nationwide infrastructure, and strong brand equity — controlling approximately 66% of the branded market.</p>
+      <h3>The Challenger Tier</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Player</th><th>Share</th><th>Profile</th></tr>
+          <tr><td><strong>ALE / Glencore</strong></td><td>~4%</td><td>Commodity trader backed. Strong in agribusiness B2B + ethanol trading. Growing in interior markets</td></tr>
+          <tr><td><strong>SIM Distribuidora</strong></td><td>~2%</td><td>Aggressive pricing. Fast-growing in Southeast/South. Technology-forward operations</td></tr>
+          <tr><td><strong>Rodoil</strong></td><td>~1.5%</td><td>Southern Brazil specialist. Fleet focus. Strong in RS/SC/PR markets</td></tr>
+          <tr><td><strong>Ativa / Zema</strong></td><td>~2%</td><td>Minas Gerais base. Vertical retail model (stations + c-stores). Regional loyalty</td></tr>
+          <tr><td><strong>Gran Petro</strong></td><td>~1%</td><td>Fast-growing independent. Aggressive commercial terms to convert white-flag stations</td></tr>
+          <tr><td><strong>Sabbá</strong></td><td>~1%</td><td>Amazon/North specialist. Logistics moat in river-based distribution. No competitor can match</td></tr>
+        </table>
+      </div>
     </div>
     <div class="card">
-      <h3>The "White-Flag" Challenge</h3>
-      <p style="font-size:13px;color:var(--sf-text-sec);">Regional distributors and unbranded stations capture ~34% of the market by competing aggressively on price, lower overhead, and hyper-local agility.</p>
+      <h3>The "White-Flag" Phenomenon</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:12px;">~42% of Brazilian stations operate without a branded flag — the highest unbranded share among major fuel markets globally. Understanding why reveals the competitive dynamics:</p>
+      <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
+        <li><strong>Price freedom:</strong> No brand-mandated pricing floor — can undercut branded by R$0.10-0.30/L</li>
+        <li><strong>No investment obligations:</strong> No image upgrades, no convenience mandates, no loyalty system fees</li>
+        <li><strong>Multi-supplier flexibility:</strong> Buy from whoever offers the lowest spot price that week</li>
+        <li><strong>Tax optimization:</strong> Smaller operators often have lower compliance overhead</li>
+        <li><strong>Consumer perception shift:</strong> ANP quality enforcement reduced trust gap vs. branded</li>
+      </ul>
+      <div class="callout callout-warning"><strong>Implication for Distributors</strong> Every branded station that defects to white-flag represents lost volume AND lost customer data. The CRM challenge: make the brand relationship valuable enough to justify the margin compression.</div>
     </div>
   </div>
-  <div class="chart-container">
-    <h3>Distributor Market Share — Volume (%, 2024)</h3>
-    <canvas id="chartDistributorShare"></canvas>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Competitive Intensity by Region</h3>
+      <canvas id="chartRegionalCompetition"></canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Margin Profile by Player Type</h3>
+      <canvas id="chartMarginProfile"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <h3>Margin vs. Volume Battle</h3>
-    <p style="font-size:13px;color:var(--sf-text-sec);">Market share shifts are hard-fought. Giants focus on premium products, B2B contracts, and convenience retail to protect margins, while regional players constantly pressure base volumes.</p>
+    <h3>The Margin vs. Volume Battle — Strategic Trade-offs</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Market share shifts are hard-fought. Each basis point of share represents ~1.4B liters and ~$760M in revenue. The competitive playbook differs radically by segment:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Competitive Lever</th><th>Big Three Strategy</th><th>Challenger/Regional Strategy</th><th>Winner Determined By</th></tr>
+        <tr><td><strong>Pricing</strong></td><td>Premium positioning + bundled value (loyalty, convenience, credit)</td><td>Aggressive spot pricing, lower overhead passed as discount</td><td>Customer sophistication: price-only buyers vs. relationship buyers</td></tr>
+        <tr><td><strong>B2B Contracts</strong></td><td>Long-term (12-36mo), indexed, with credit + logistics bundled</td><td>Shorter term, flexible, faster approval, less bureaucracy</td><td>Contract size: large accounts need scale; mid-market values agility</td></tr>
+        <tr><td><strong>Logistics</strong></td><td>Owned fleet + bases → guaranteed SLA + priority during shortage</td><td>Outsourced, flexible, lower cost but variable reliability</td><td>Geography: interior/rural favors whoever has closest base</td></tr>
+        <tr><td><strong>Loyalty</strong></td><td>Massive programs (40M+ members), marketplace, banking integrations</td><td>Simple discounts, punch cards, local partnerships</td><td>Consumer segment: urban millennials vs. price-focused drivers</td></tr>
+        <tr><td><strong>Non-Fuel Revenue</strong></td><td>C-stores (am/pm, Shell Select), EV charging, financial services</td><td>Minimal non-fuel. Station as pure fueling point</td><td>Location: urban high-traffic vs. highway/rural</td></tr>
+      </table>
+    </div>
   </div>
+
+  <div class="callout callout-info"><strong>Where Salesforce Changes the Game</strong> In this competitive environment, the distributors that can fastest translate market signals into commercial action win. Salesforce enables: (1) real-time churn detection before a dealer defects, (2) dynamic pricing within guardrails, (3) proactive delivery before stockout, (4) personalized loyalty that justifies the brand premium. The Big Three need orchestration; challengers need scalable intelligence without Big Three headcount.</div>
 </div>
 
 <!-- STRATEGIC SHIFTS -->
 <div class="section" id="sec-strategic-shifts">
   <div class="section-hero">
     <h2>Strategic Shifts</h2>
-    <p>Four shifts are reshaping the profit pool. Profit is moving from volume management to decision orchestration.</p>
+    <p>Four structural forces are reshaping where profit pools form and how they're captured. The market is moving from volume management to decision orchestration — and the winners will be those who detect, decide, and act fastest.</p>
   </div>
-  <div class="pillar-grid" style="grid-template-columns:repeat(2,1fr);">
-    <div class="pillar-card" style="border-top-color:var(--oil-gold);"><div class="pillar-num">01</div><h4>Fuel Mix Divergence</h4><p>Each product requires its own elasticity, inventory and margin playbook. Pricing must operate below national averages.</p></div>
-    <div class="pillar-card" style="border-top-color:var(--sf-success);"><div class="pillar-num">02</div><h4>Biofuel Acceleration</h4><p>Customer segmentation must connect fuel preference, location and offer economics.</p></div>
-    <div class="pillar-card" style="border-top-color:var(--sf-warning);"><div class="pillar-num">03</div><h4>Channel Fragmentation</h4><p>One CRM model must support multiple commercial motions: retail, TRR, fleets, agribusiness, mining.</p></div>
-    <div class="pillar-card" style="border-top-color:var(--sf-error);"><div class="pillar-num">04</div><h4>Logistics as Commercial Weapon</h4><p>Supply-chain events must become customer-facing actions. Delivery reliability influences retention.</p></div>
+
+  <div class="chart-container" style="max-width:700px;margin:0 auto 24px;">
+    <h3>Profit Pool Migration (Indexed Value, 2019=100)</h3>
+    <canvas id="chartProfitPool"></canvas>
   </div>
+
+  <div class="two-col">
+    <div class="card" style="border-top:3px solid var(--oil-gold);">
+      <h3>01 · Fuel Mix Divergence</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:12px;">Each product now requires its own elasticity model, inventory strategy, and margin playbook. The "one price fits all" era is over.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Product</th><th>Margin Profile</th><th>Key Dynamic</th></tr>
+          <tr><td><strong>Gasoline C</strong></td><td>R$0.08-0.12/L</td><td>Ethanol parity (70% rule) makes demand elastic daily. Consumer switches at pump based on price ratio</td></tr>
+          <tr><td><strong>Diesel S10/S500</strong></td><td>R$0.10-0.18/L</td><td>Inelastic demand (freight must move). Margin captured via B2B contracts + logistics SLA premium</td></tr>
+          <tr><td><strong>Hydrated Ethanol</strong></td><td>R$0.05-0.10/L</td><td>Seasonal (inter-safra drives scarcity). Price correlated to sugar international price. Margin = timing</td></tr>
+          <tr><td><strong>Biodiesel</strong></td><td>Mandated blend</td><td>15% mandatory blend → captive demand. Margin captured at producer level, not distribution</td></tr>
+          <tr><td><strong>Aviation (QAV)</strong></td><td>R$0.15-0.25/L</td><td>Highest margin per liter. Concentrated buyers (airlines). Airport logistics = barrier. Few players</td></tr>
+        </table>
+      </div>
+      <div class="callout callout-warning"><strong>CRM Implication</strong> Pricing, forecasting, and margin governance must be product-specific. A single "fuel price" field in CRM is insufficient — need product × region × customer segment × contract type matrices.</div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--sf-success);">
+      <h3>02 · Biofuel Acceleration</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:12px;">Regulatory mandates + consumer behavior + carbon markets are accelerating the biofuel share of the energy matrix. This isn't gradual — it's policy-driven and accelerating.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Driver</th><th>Impact</th><th>Timeline</th></tr>
+          <tr><td><strong>Ethanol mandate increase</strong></td><td>27% → 30% in gasoline (Fuel of the Future Law)</td><td>2025-2027</td></tr>
+          <tr><td><strong>Biodiesel B20</strong></td><td>15% → 20% in diesel. +3B liters demand/year</td><td>By 2030</td></tr>
+          <tr><td><strong>RenovaBio (CBIOs)</strong></td><td>Carbon credits mandatory for distributors. R$80-120/CBIO</td><td>Active, growing annually</td></tr>
+          <tr><td><strong>SAF (Sustainable Aviation Fuel)</strong></td><td>Mandate expected. Brazil positioned as global leader (sugarcane feedstock)</td><td>2027-2030</td></tr>
+          <tr><td><strong>Green Diesel (HVO)</strong></td><td>Drop-in replacement. Premium pricing. New revenue stream for distributors</td><td>2026+</td></tr>
+        </table>
+      </div>
+      <div class="callout callout-success"><strong>CRM Implication</strong> Customer segmentation must connect fuel preference, sustainability positioning, and CBIO compliance. Data 360 unifies consumption patterns with carbon credit obligations for proactive offer optimization.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card" style="border-top:3px solid var(--sf-warning);">
+      <h3>03 · Channel Fragmentation</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:12px;">One distributor now serves radically different customer archetypes through distinct commercial motions. The "one-size-fits-all" sales model is breaking.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Channel</th><th>Buyer Profile</th><th>Cycle</th><th>Key Motion</th></tr>
+          <tr><td><strong>Branded Retail</strong></td><td>Dealer/franchisee (entrepreneur)</td><td>3-5yr contract</td><td>Relationship + brand investment + churn prevention</td></tr>
+          <tr><td><strong>White-Flag Conversion</strong></td><td>Independent station owner</td><td>Transactional → contract</td><td>Outbound prospecting + value proposition + onboarding</td></tr>
+          <tr><td><strong>B2B Industrial</strong></td><td>Mining, thermoelectric, factory</td><td>12-36mo indexed</td><td>Technical sale + logistics + credit + long procurement cycle</td></tr>
+          <tr><td><strong>Agribusiness</strong></td><td>Farms, cooperatives, sugar mills</td><td>Seasonal (safra-linked)</td><td>Seasonal pre-sell + storage logistics + credit flexibility</td></tr>
+          <tr><td><strong>Fleet / Transport</strong></td><td>Trucking companies, logistics operators</td><td>Monthly volume commitment</td><td>Card management + route-based supply + SLA guarantees</td></tr>
+          <tr><td><strong>TRR (Resellers)</strong></td><td>Small distributors buying wholesale</td><td>Spot / short-term</td><td>Price + availability + credit terms. Highly price-sensitive</td></tr>
+          <tr><td><strong>Government / Public</strong></td><td>Military, public fleet, agencies</td><td>Auction-based (licitação)</td><td>Compliance-heavy. Low margin but volume guaranteed</td></tr>
+        </table>
+      </div>
+      <div class="callout callout-warning"><strong>CRM Implication</strong> Sales Cloud must support 7+ distinct selling motions simultaneously — each with different pipeline stages, approval flows, pricing logic, and success metrics. One Opportunity object, radically different processes per record type.</div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--sf-error);">
+      <h3>04 · Logistics as Commercial Weapon</h3>
+      <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:12px;">In a market where the product is commoditized, delivery reliability becomes the differentiator. Supply chain events must become customer-facing actions.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Logistics Dimension</th><th>Competitive Impact</th><th>Data Signal</th></tr>
+          <tr><td><strong>Delivery SLA</strong></td><td>Stations that stockout lose customers permanently. 24h without diesel = fleet customers switch</td><td>Tank telemetry (IoT) + consumption patterns</td></tr>
+          <tr><td><strong>Route Density</strong></td><td>More stations per route = lower cost per liter delivered. Drives geographic clustering strategy</td><td>Field Service + geo-optimization</td></tr>
+          <tr><td><strong>Shortage Management</strong></td><td>During supply disruptions, who gets fuel first determines who keeps customers</td><td>Priority scoring (margin × volume × contract tier)</td></tr>
+          <tr><td><strong>Compartmented Fleet</strong></td><td>Multi-product trucks serve more stations per trip — but require sequencing intelligence</td><td>Order optimization + demand forecasting</td></tr>
+          <tr><td><strong>Seasonal Surge</strong></td><td>Harvest season (safra) spikes diesel +20% in agri states. Pre-positioning is competitive advantage</td><td>Historical patterns + crop calendar + weather</td></tr>
+        </table>
+      </div>
+      <div class="callout callout-error"><strong>CRM Implication</strong> Field Service + Data 360 + Agentforce transform logistics from reactive dispatch to predictive commercial action. A delivery isn't a logistics event — it's a customer experience moment that determines retention.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-info"><strong>The Convergence</strong> These four shifts don't operate in isolation — they compound. A fleet customer (Channel Fragmentation) buying biodiesel-blended diesel (Fuel Mix) needs proactive delivery before harvest (Logistics as Weapon) with CBIO-compliant tracking (Biofuel Acceleration). Only a platform that unifies all four dimensions can capture the decision advantage. This is the Salesforce thesis.</div>
 </div>
 
 <!-- PRICING WHY -->
@@ -2957,6 +3090,108 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       scales: {
         y: { beginAtZero: true, title: { display: true, text: 'Billion liters' }, grid: { color: 'rgba(0,0,0,0.04)' }},
+        x: { grid: { display: false }}
+      }
+    }
+  });
+
+  // CHART: Market Share Evolution (Multi-line)
+  new Chart(document.getElementById('chartShareEvolution'), {
+    type: 'line',
+    data: {
+      labels: ['2019','2020','2021','2022','2023','2024'],
+      datasets: [
+        { label: 'Vibra', data: [25, 24.5, 24, 23.5, 23.2, 23], borderColor: sfBlue, backgroundColor: sfBlue, tension: 0.3, pointRadius: 4 },
+        { label: 'Raízen', data: [18, 18.5, 19, 19.5, 19.8, 20], borderColor: sfDark, backgroundColor: sfDark, tension: 0.3, pointRadius: 4 },
+        { label: 'Ipiranga', data: [17, 16.5, 15.5, 15, 15, 15], borderColor: sfSuccess, backgroundColor: sfSuccess, tension: 0.3, pointRadius: 4 },
+        { label: 'Challengers', data: [8, 9, 10, 11, 11.5, 12], borderColor: sfGold, backgroundColor: sfGold, tension: 0.3, pointRadius: 4, borderDash: [5,3] },
+        { label: 'White-Flag', data: [32, 31.5, 31.5, 31, 30.5, 30], borderColor: '#DDDBDA', backgroundColor: '#DDDBDA', tension: 0.3, pointRadius: 4, borderDash: [2,2] }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true, font: { size: 10 } } },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.raw}%` }}
+      },
+      scales: {
+        y: { min: 0, max: 40, title: { display: true, text: '% Volume Share' }, grid: { color: 'rgba(0,0,0,0.04)' }},
+        x: { grid: { display: false }}
+      }
+    }
+  });
+
+  // CHART: Regional Competition Intensity (Stacked Bar)
+  new Chart(document.getElementById('chartRegionalCompetition'), {
+    type: 'bar',
+    data: {
+      labels: ['Southeast', 'South', 'Northeast', 'Midwest', 'North'],
+      datasets: [
+        { label: 'Vibra', data: [20, 18, 32, 22, 35], backgroundColor: sfBlue },
+        { label: 'Raízen', data: [24, 22, 15, 20, 10], backgroundColor: sfDark },
+        { label: 'Ipiranga', data: [18, 22, 10, 15, 8], backgroundColor: sfSuccess },
+        { label: 'Challengers', data: [13, 15, 8, 18, 7], backgroundColor: sfGold },
+        { label: 'White-Flag', data: [25, 23, 35, 25, 40], backgroundColor: '#DDDBDA' }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true, font: { size: 10 } } },
+        tooltip: { mode: 'index', callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.raw}%` }}
+      },
+      scales: {
+        x: { stacked: true, grid: { display: false }},
+        y: { stacked: true, max: 100, title: { display: true, text: '% Share' }, grid: { color: 'rgba(0,0,0,0.04)' }}
+      }
+    }
+  });
+
+  // CHART: Margin Profile by Player Type (Grouped Bar)
+  new Chart(document.getElementById('chartMarginProfile'), {
+    type: 'bar',
+    data: {
+      labels: ['Gross Margin\n(R¢/L)', 'EBITDA Margin\n(%)', 'Non-Fuel Rev\n(%)', 'Logistics Cost\n(% Rev)', 'Credit Loss\n(% Rev)'],
+      datasets: [
+        { label: 'Big Three', data: [12, 4.2, 8, 3.5, 0.8], backgroundColor: sfBlue, borderRadius: 4 },
+        { label: 'Challengers', data: [9, 3.1, 3, 4.2, 1.2], backgroundColor: sfGold, borderRadius: 4 },
+        { label: 'White-Flag', data: [15, 5.5, 1, 5.8, 2.1], backgroundColor: '#DDDBDA', borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true } },
+        tooltip: { mode: 'index' }
+      },
+      scales: {
+        x: { grid: { display: false }},
+        y: { grid: { color: 'rgba(0,0,0,0.04)' }}
+      }
+    }
+  });
+
+  // CHART: Profit Pool Migration (Line - indexed)
+  new Chart(document.getElementById('chartProfitPool'), {
+    type: 'line',
+    data: {
+      labels: ['2019','2020','2021','2022','2023','2024','2025E'],
+      datasets: [
+        { label: 'Base Fuel Volume', data: [100, 92, 96, 102, 106, 110, 113], borderColor: '#DDDBDA', backgroundColor: 'rgba(221,219,218,0.1)', fill: true, tension: 0.3, pointRadius: 3 },
+        { label: 'B2B / Fleet Contracts', data: [100, 95, 108, 118, 130, 142, 155], borderColor: sfDark, backgroundColor: 'rgba(3,45,96,0.05)', fill: true, tension: 0.3, pointRadius: 3 },
+        { label: 'Non-Fuel / Convenience', data: [100, 88, 105, 125, 148, 170, 190], borderColor: '#c62828', backgroundColor: 'rgba(198,40,40,0.05)', fill: true, tension: 0.3, pointRadius: 3 },
+        { label: 'Loyalty / Data Monetization', data: [100, 110, 130, 160, 195, 240, 290], borderColor: '#6b21a8', backgroundColor: 'rgba(107,33,168,0.05)', fill: true, tension: 0.3, pointRadius: 3 },
+        { label: 'Biofuel / Carbon Credits', data: [100, 105, 125, 155, 200, 260, 330], borderColor: sfSuccess, backgroundColor: 'rgba(46,132,74,0.05)', fill: true, tension: 0.3, pointRadius: 3 }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true, font: { size: 10 } } },
+        tooltip: { mode: 'index', callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.raw} (indexed)` }}
+      },
+      scales: {
+        y: { title: { display: true, text: 'Value Index (2019 = 100)' }, grid: { color: 'rgba(0,0,0,0.04)' }},
         x: { grid: { display: false }}
       }
     }
