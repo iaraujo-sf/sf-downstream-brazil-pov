@@ -1480,7 +1480,7 @@ tr.persona-dim { opacity: 0.35; }
   </div>
   <div class="topbar-meta">v1.1 • May 2026</div>
   <div class="topbar-tools">
-    <button id="homeBtn" title="Back to About This POV" onclick="showSection('sec-intro')">🏠 About</button>
+    <button id="homeBtn" title="Back to About This POV">🏠 About</button>
     <button id="helpBtn" title="Help — Feature Guide">❓ Help</button>
     <button id="ttsBtn" title="Read aloud (Accessibility)">🔊 Listen</button>
     <button id="meetingModeBtn" title="Prepare for Meeting">📋 Meeting</button>
@@ -4311,6 +4311,8 @@ tr.persona-dim { opacity: 0.35; }
   });
 
   // HELP MODAL
+  document.getElementById('homeBtn').addEventListener('click', () => { showSection('sec-intro'); });
+
   const helpBtn = document.getElementById('helpBtn');
   const helpModal = document.getElementById('helpModal');
   const helpOverlay = document.getElementById('helpOverlay');
