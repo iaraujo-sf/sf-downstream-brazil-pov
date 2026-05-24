@@ -910,7 +910,7 @@ table tr:hover { background: var(--sf-highlight); }
       <div class="nav-section-title">Architecture <span class="chevron">▾</span></div>
       <div class="nav-items">
         <a href="#" data-section="arch-platform"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Complete Platform</a>
-        <a href="#" data-section="arch-datacloud"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Data 360 — Visão 360°</a>
+        <a href="#" data-section="arch-datacloud"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M8 12l2.5 2.5L16 9" stroke="#0176D3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Data 360 — 360° View</a>
         <a href="#" data-section="arch-agentforce"><svg class="sf-badge" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#fff" opacity="0.9"/><path d="M12 7v4l3 2" stroke="#006272" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="5" stroke="#006272" stroke-width="1.5" fill="none"/></svg>Agentforce — AI Deep Dive</a>
       </div>
     </div>
@@ -1327,7 +1327,7 @@ table tr:hover { background: var(--sf-highlight); }
         <tr><th>Factor</th><th>Impact</th></tr>
         <tr><td><strong>PPI Abandonment (2022)</strong></td><td>Petrobras no longer follows International Parity Price — creates opacity and unpredictability in cost basis</td></tr>
         <tr><td><strong>FX Exposure</strong></td><td>BRL/USD volatility directly impacts import costs, with distributors absorbing timing risk</td></tr>
-        <tr><td><strong>Tax Labyrinth</strong></td><td>ICMS monofásico + PIS/COFINS + CIDE + state substituição tributária — each product/state is different</td></tr>
+        <tr><td><strong>Tax Labyrinth</strong></td><td>ICMS monofásico + PIS/COFINS + CIDE + state tax substitution (substituição tributária) — each product/state is different</td></tr>
         <tr><td><strong>Biofuel Mandates</strong></td><td>Ethanol (27%) and Biodiesel (15%) blend ratios shift effective cost per liter</td></tr>
         <tr><td><strong>Competitive Pressure</strong></td><td>White-flag stations undercut branded networks on price — constant volume vs margin trade-off</td></tr>
       </table>
@@ -2067,41 +2067,41 @@ table tr:hover { background: var(--sf-highlight); }
   </div>
 
   <div class="card">
-    <h3>Matriz Completa — Cloud × Feature × Engine de Negócio × Casos de Uso</h3>
+    <h3>Complete Matrix — Cloud × Feature × Business Engine × Use Cases</h3>
     <div class="table-wrap">
       <table>
-        <tr><th>Salesforce Cloud</th><th>Feature / Capacidade</th><th>Engine de Negócio</th><th>Caso de Uso Downstream</th></tr>
-        <tr><td rowspan="4"><span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></td><td>Account 360° + Territory Management</td><td>Commercial (Retail)</td><td>Gestão de 44K+ postos com segmentação por volume, risco e potencial de crescimento</td></tr>
-        <tr><td>Opportunity Management + Forecasting</td><td>Commercial (B2B)</td><td>Pipeline B2B com forecast por segmento (agro, mineração, frotas, termelétricas)</td></tr>
-        <tr><td>Mobile Offline + Visit Plans</td><td>Commercial (Retail)</td><td>Visitas estruturadas com checklist, fotos, GPS — mesmo sem conexão no campo</td></tr>
-        <tr><td>Lead Scoring + Assignment</td><td>Commercial (B2B)</td><td>Qualificação automática de leads por potencial de volume + localização vs. infraestrutura</td></tr>
-        <tr><td rowspan="3"><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span></td><td>CPQ (Configure, Price, Quote)</td><td>Pricing + Commercial</td><td>Propostas B2B com preço indexado (Petrobras + FX + frete) geradas em minutos</td></tr>
-        <tr><td>Contract Lifecycle Management</td><td>Commercial (B2B)</td><td>Gestão de renovação, triggers de reajuste, alertas de vencimento</td></tr>
-        <tr><td>Margin Guardrails + Approvals</td><td>Pricing</td><td>Nenhum deal fecha abaixo do floor sem VP override + audit trail completo</td></tr>
-        <tr><td rowspan="3"><span class="product-logo pl-service"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2E844A"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Service Cloud</span></td><td>Case Management + Omnichannel</td><td>Customer Ops (Fleet)</td><td>Portal de frotas com abertura de chamados por driver, tracking em tempo real</td></tr>
-        <tr><td>Knowledge Base + AI Assist</td><td>Customer Ops (All)</td><td>Base de conhecimento para atendimento a dealers + B2B com respostas AI-assistidas</td></tr>
-        <tr><td>Entitlements + SLA Tracking</td><td>Logistics + Customer Ops</td><td>Monitoramento de SLA de entrega por contrato com penalidades automáticas</td></tr>
-        <tr><td rowspan="3"><span class="product-logo pl-field"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service</span></td><td>AI-Optimized Scheduling + Dispatch</td><td>Logistics</td><td>Roteirização inteligente de entregas baseada em telemetria de tanques + prioridade comercial</td></tr>
-        <tr><td>Mobile Execution + Proof of Delivery</td><td>Logistics</td><td>App motorista com comprovante digital de entrega + reconciliação volumétrica</td></tr>
-        <tr><td>Route Optimization</td><td>Customer Ops (TRR)</td><td>Otimização de rotas last-mile para TRRs em áreas rurais (fazendas, geradores)</td></tr>
-        <tr><td rowspan="3"><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data 360</span></td><td>Identity Resolution</td><td>All Engines</td><td>Resolver mesmo cliente em SAP (conta), loyalty (CPF), fleet card (driver ID), CRM (SF ID)</td></tr>
-        <tr><td>Calculated Insights + Streaming</td><td>Pricing + Logistics</td><td>Custo-por-litro em tempo real + previsão de stockout via telemetria IoT streaming</td></tr>
-        <tr><td>Segmentation + Activation</td><td>Customer Ops (Loyalty)</td><td>Segmentos dinâmicos de 40M+ membros para campanhas personalizadas no Marketing Cloud</td></tr>
-        <tr><td rowspan="2"><span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span></td><td>Partner Portal (Dealer)</td><td>Commercial (Retail)</td><td>Self-service: tracking pedidos, extrato financeiro, materiais marketing, abertura de cases</td></tr>
-        <tr><td>Customer Portal (Fleet)</td><td>Customer Ops (Fleet)</td><td>Dashboard de consumo por veículo, gerenciamento de cards, relatórios de compliance ANTT</td></tr>
-        <tr><td rowspan="2"><span class="product-logo pl-marketing"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f57f17"/><path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5z" fill="#fff"/></svg>Marketing Cloud</span></td><td>Journey Builder + Personalization</td><td>Customer Ops (Loyalty)</td><td>Jornadas personalizadas para 40M+ membros: reativação, upsell premium, pontos expirando</td></tr>
-        <tr><td>Data-Driven Campaigns</td><td>Commercial (Retail)</td><td>Campanhas geo-targeted para conversão de bandeira branca em regiões específicas</td></tr>
-        <tr><td rowspan="2"><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span></td><td>Interactive Dashboards + AI Analytics</td><td>All Engines</td><td>Dashboards de margem realizada, SLA de entrega, performance de território, uso de crédito</td></tr>
-        <tr><td>Predictive Models + What-If</td><td>Pricing + Supply</td><td>Simulação de cenários de preço: "se Petrobras subir 5%, impacto em margem por estado"</td></tr>
-        <tr><td rowspan="2"><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span></td><td>API-Led Connectivity</td><td>All Engines</td><td>Barramento de integração: SAP ↔ SF bidirecional para pedidos, estoque, financeiro</td></tr>
-        <tr><td>Event-Driven Architecture</td><td>Pricing + Logistics</td><td>Eventos de mudança de preço Petrobras + telemetria IoT como triggers em tempo real</td></tr>
-        <tr><td rowspan="2"><span class="product-logo pl-fsc"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#0277bd"/><path d="M7 12h10M7 8h6M7 16h8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Financial Services Cloud</span></td><td>Credit Assessment + Portfolio Mgmt</td><td>Customer Ops (Credit)</td><td>Scoring automático (Serasa + dados internos), limites dinâmicos, monitoramento de exposição</td></tr>
-        <tr><td>Collection Workflows</td><td>Customer Ops (Credit)</td><td>Dunning automatizado, fluxos de renegociação, escalação legal com histórico completo</td></tr>
-        <tr><td rowspan="2"><span class="product-logo pl-loyalty"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#c62828"/><path d="M12 8l1 2h2l-1.5 1.5.5 2.5-2-1.5-2 1.5.5-2.5L9 10h2z" fill="#fff"/></svg>Loyalty Management</span></td><td>Points Engine + Redemption</td><td>Customer Ops (Loyalty)</td><td>Motor de pontos flexível: acúmulo por litro, multiplicadores parceiro, redemption marketplace</td></tr>
-        <tr><td>Tier Management + Gamification</td><td>Customer Ops (Loyalty)</td><td>Tiers por frequência + volume com benefícios progressivos que incentivam fidelização</td></tr>
+        <tr><th>Salesforce Cloud</th><th>Feature / Capability</th><th>Business Engine</th><th>Downstream Use Case</th></tr>
+        <tr><td rowspan="4"><span class="product-logo pl-sales"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0176D3"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Cloud</span></td><td>Account 360° + Territory Management</td><td>Commercial (Retail)</td><td>Management of 44K+ stations with segmentation by volume, risk, and growth potential</td></tr>
+        <tr><td>Opportunity Management + Forecasting</td><td>Commercial (B2B)</td><td>B2B pipeline with forecasting by segment (agro, mining, fleets, thermoelectric)</td></tr>
+        <tr><td>Mobile Offline + Visit Plans</td><td>Commercial (Retail)</td><td>Structured visits with checklist, photos, GPS — even offline in the field</td></tr>
+        <tr><td>Lead Scoring + Assignment</td><td>Commercial (B2B)</td><td>Automatic lead qualification by volume potential + location vs. infrastructure</td></tr>
+        <tr><td rowspan="3"><span class="product-logo pl-revenue"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#1b5e20"/><path d="M7 14l3-4 3 2 4-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Revenue Cloud</span></td><td>CPQ (Configure, Price, Quote)</td><td>Pricing + Commercial</td><td>B2B proposals with indexed pricing (Petrobras + FX + freight) generated in minutes</td></tr>
+        <tr><td>Contract Lifecycle Management</td><td>Commercial (B2B)</td><td>Renewal management, adjustment triggers, expiration alerts</td></tr>
+        <tr><td>Margin Guardrails + Approvals</td><td>Pricing</td><td>No deal closes below floor without VP override + complete audit trail</td></tr>
+        <tr><td rowspan="3"><span class="product-logo pl-service"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2E844A"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Service Cloud</span></td><td>Case Management + Omnichannel</td><td>Customer Ops (Fleet)</td><td>Fleet portal with driver-initiated cases, real-time tracking</td></tr>
+        <tr><td>Knowledge Base + AI Assist</td><td>Customer Ops (All)</td><td>Knowledge base for dealer + B2B support with AI-assisted responses</td></tr>
+        <tr><td>Entitlements + SLA Tracking</td><td>Logistics + Customer Ops</td><td>Delivery SLA monitoring per contract with automatic penalties</td></tr>
+        <tr><td rowspan="3"><span class="product-logo pl-field"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#283593"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Field Service</span></td><td>AI-Optimized Scheduling + Dispatch</td><td>Logistics</td><td>Intelligent delivery routing based on tank telemetry + commercial priority</td></tr>
+        <tr><td>Mobile Execution + Proof of Delivery</td><td>Logistics</td><td>Driver app with digital proof of delivery + volumetric reconciliation</td></tr>
+        <tr><td>Route Optimization</td><td>Customer Ops (TRR)</td><td>Last-mile route optimization for TRRs in rural areas (farms, generators)</td></tr>
+        <tr><td rowspan="3"><span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data 360</span></td><td>Identity Resolution</td><td>All Engines</td><td>Resolve same customer across SAP (account), loyalty (CPF), fleet card (driver ID), CRM (SF ID)</td></tr>
+        <tr><td>Calculated Insights + Streaming</td><td>Pricing + Logistics</td><td>Real-time cost-per-liter + stockout prediction via IoT streaming telemetry</td></tr>
+        <tr><td>Segmentation + Activation</td><td>Customer Ops (Loyalty)</td><td>Dynamic segments of 40M+ members for personalized campaigns in Marketing Cloud</td></tr>
+        <tr><td rowspan="2"><span class="product-logo pl-experience"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e65100"/><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M7 18c0-3 2.2-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Experience Cloud</span></td><td>Partner Portal (Dealer)</td><td>Commercial (Retail)</td><td>Self-service: order tracking, financial statements, marketing materials, case creation</td></tr>
+        <tr><td>Customer Portal (Fleet)</td><td>Customer Ops (Fleet)</td><td>Consumption dashboard per vehicle, card management, ANTT compliance reports</td></tr>
+        <tr><td rowspan="2"><span class="product-logo pl-marketing"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f57f17"/><path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5z" fill="#fff"/></svg>Marketing Cloud</span></td><td>Journey Builder + Personalization</td><td>Customer Ops (Loyalty)</td><td>Personalized journeys for 40M+ members: reactivation, premium upsell, expiring points</td></tr>
+        <tr><td>Data-Driven Campaigns</td><td>Commercial (Retail)</td><td>Geo-targeted campaigns for white-label station conversion in specific regions</td></tr>
+        <tr><td rowspan="2"><span class="product-logo pl-tableau"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#e97300"/><rect x="6" y="10" width="3" height="8" fill="#fff"/><rect x="10.5" y="6" width="3" height="12" fill="#fff"/><rect x="15" y="8" width="3" height="10" fill="#fff"/></svg>Tableau</span></td><td>Interactive Dashboards + AI Analytics</td><td>All Engines</td><td>Dashboards for realized margin, delivery SLA, territory performance, credit utilization</td></tr>
+        <tr><td>Predictive Models + What-If</td><td>Pricing + Supply</td><td>Price scenario simulation: "if Petrobras raises 5%, margin impact per state"</td></tr>
+        <tr><td rowspan="2"><span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span></td><td>API-Led Connectivity</td><td>All Engines</td><td>Integration bus: SAP ↔ SF bidirectional for orders, inventory, financials</td></tr>
+        <tr><td>Event-Driven Architecture</td><td>Pricing + Logistics</td><td>Petrobras price change events + IoT telemetry as real-time triggers</td></tr>
+        <tr><td rowspan="2"><span class="product-logo pl-fsc"><svg class="p-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#0277bd"/><path d="M7 12h10M7 8h6M7 16h8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>Financial Services Cloud</span></td><td>Credit Assessment + Portfolio Mgmt</td><td>Customer Ops (Credit)</td><td>Automatic scoring (Serasa + internal data), dynamic limits, exposure monitoring</td></tr>
+        <tr><td>Collection Workflows</td><td>Customer Ops (Credit)</td><td>Automated dunning, renegotiation workflows, legal escalation with complete history</td></tr>
+        <tr><td rowspan="2"><span class="product-logo pl-loyalty"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#c62828"/><path d="M12 8l1 2h2l-1.5 1.5.5 2.5-2-1.5-2 1.5.5-2.5L9 10h2z" fill="#fff"/></svg>Loyalty Management</span></td><td>Points Engine + Redemption</td><td>Customer Ops (Loyalty)</td><td>Flexible points engine: accumulation per liter, partner multipliers, redemption marketplace</td></tr>
+        <tr><td>Tier Management + Gamification</td><td>Customer Ops (Loyalty)</td><td>Tiers by frequency + volume with progressive benefits that drive retention</td></tr>
         <tr><td rowspan="3"><span class="product-logo pl-agentforce"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#006272"/><path d="M12 7v4l3 2M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Agentforce</span></td><td>Predictive AI (Einstein Models)</td><td>All Engines</td><td>Churn prediction, demand forecasting, credit risk scoring, route optimization ML</td></tr>
-        <tr><td>Generative AI (LLM Reasoning)</td><td>Pricing + Commercial</td><td>Geração de propostas, análise de cenários competitivos, resumos executivos de deals</td></tr>
-        <tr><td>Autonomous Agents (Multi-step)</td><td>All Engines</td><td>12 agents autônomos operando 24/7: monitoramento → decisão → ação → escalação</td></tr>
+        <tr><td>Generative AI (LLM Reasoning)</td><td>Pricing + Commercial</td><td>Proposal generation, competitive scenario analysis, executive deal summaries</td></tr>
+        <tr><td>Autonomous Agents (Multi-step)</td><td>All Engines</td><td>12 autonomous agents operating 24/7: monitoring → decision → action → escalation</td></tr>
       </table>
     </div>
   </div>
@@ -2147,16 +2147,16 @@ table tr:hover { background: var(--sf-highlight); }
   </div>
 
   <div class="card">
-    <h3>Visão 360° — Modelo de Dados Unificado por Entidade</h3>
-    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Data 360 resolve a identidade e constrói um perfil completo para cada tipo de entidade no downstream, combinando dados de múltiplas fontes em tempo real.</p>
+    <h3>360° View — Unified Data Model by Entity</h3>
+    <p style="font-size:13px;color:var(--sf-text-sec);margin-bottom:16px;">Data 360 resolves identity and builds a complete profile for each entity type in downstream, combining data from multiple sources in real time.</p>
     <div class="table-wrap">
       <table>
-        <tr><th>Entidade 360°</th><th>Fontes Integradas</th><th>Atributos Unificados</th><th>Calculated Insights (real-time)</th></tr>
-        <tr><td><strong>Dealer 360°</strong><br><small>Posto / Revendedor</small></td><td>SAP (volume, financeiro) · CRM (visitas, cases) · Loyalty (performance) · Credit (exposure) · GPS/Geo</td><td>Contrato · Volume mensal · Mix produtos · Margem contribuição · Score financeiro · Região · Bandeira · Loja conveniência</td><td>Churn Risk Score · Growth Velocity · Wallet Share · Visit Effectiveness Index · Credit Health</td></tr>
-        <tr><td><strong>Consumer 360°</strong><br><small>Membro Fidelidade</small></td><td>Loyalty platform (transações) · App (behavior) · Marketing Cloud (engagement) · Payment (card data)</td><td>CPF · Postos preferidos · Frequência · Valor médio · Produtos · Canal preferido · Pontos acumulados · Tier</td><td>Lifetime Value · Churn Probability · Next Best Offer · Preferred Station × Time × Day pattern</td></tr>
-        <tr><td><strong>Fleet Account 360°</strong><br><small>Empresa de Frotas</small></td><td>Fleet card system · SAP (contratos) · CRM (Account) · Service Cloud (cases) · Toll integration</td><td>CNPJ · # veículos · Volume mensal · Contrato vigente · SLA · Desconto tier · Compliance ANTT · Rotas principais</td><td>Expansion Signal · Contract Utilization % · Growth Trend · Competitor Vulnerability · Upsell Readiness</td></tr>
-        <tr><td><strong>B2B Account 360°</strong><br><small>Agro/Mining/Industrial</small></td><td>SAP (pedidos) · CRM (opportunities) · Revenue Cloud (contratos) · Credit (FSC) · Field Service (entregas)</td><td>Segmento · Volume anual · Sazonalidade · Margem · Crédito aprovado · SLA de entrega · Stakeholder map</td><td>Share of Wallet · Renewal Risk · Price Sensitivity · Delivery Satisfaction · Cross-sell Score</td></tr>
-        <tr><td><strong>Station Asset 360°</strong><br><small>Infraestrutura Física</small></td><td>IoT (telemetria tanques) · TMS (entregas) · SAP (estoque) · Geo (localização) · ANP (licenças)</td><td>Localização · Capacidade tanques · Produtos · Última entrega · Consumo médio/dia · Equipamentos · Licenças</td><td>Stockout Prediction · Optimal Delivery Window · Consumption Anomaly · Capacity Utilization</td></tr>
+        <tr><th>360° Entity</th><th>Integrated Sources</th><th>Unified Attributes</th><th>Calculated Insights (real-time)</th></tr>
+        <tr><td><strong>Dealer 360°</strong><br><small>Station / Reseller</small></td><td>SAP (volume, financial) · CRM (visits, cases) · Loyalty (performance) · Credit (exposure) · GPS/Geo</td><td>Contract · Monthly volume · Product mix · Contribution margin · Financial score · Region · Brand flag · Convenience store</td><td>Churn Risk Score · Growth Velocity · Wallet Share · Visit Effectiveness Index · Credit Health</td></tr>
+        <tr><td><strong>Consumer 360°</strong><br><small>Loyalty Member</small></td><td>Loyalty platform (transactions) · App (behavior) · Marketing Cloud (engagement) · Payment (card data)</td><td>CPF · Preferred stations · Frequency · Average ticket · Products · Preferred channel · Accumulated points · Tier</td><td>Lifetime Value · Churn Probability · Next Best Offer · Preferred Station × Time × Day pattern</td></tr>
+        <tr><td><strong>Fleet Account 360°</strong><br><small>Fleet Company</small></td><td>Fleet card system · SAP (contracts) · CRM (Account) · Service Cloud (cases) · Toll integration</td><td>CNPJ · # vehicles · Monthly volume · Active contract · SLA · Tier discount · ANTT compliance · Primary routes</td><td>Expansion Signal · Contract Utilization % · Growth Trend · Competitor Vulnerability · Upsell Readiness</td></tr>
+        <tr><td><strong>B2B Account 360°</strong><br><small>Agro/Mining/Industrial</small></td><td>SAP (orders) · CRM (opportunities) · Revenue Cloud (contracts) · Credit (FSC) · Field Service (deliveries)</td><td>Segment · Annual volume · Seasonality · Margin · Approved credit · Delivery SLA · Stakeholder map</td><td>Share of Wallet · Renewal Risk · Price Sensitivity · Delivery Satisfaction · Cross-sell Score</td></tr>
+        <tr><td><strong>Station Asset 360°</strong><br><small>Physical Infrastructure</small></td><td>IoT (tank telemetry) · TMS (deliveries) · SAP (inventory) · Geo (location) · ANP (licenses)</td><td>Location · Tank capacity · Products · Last delivery · Average consumption/day · Equipment · Licenses</td><td>Stockout Prediction · Optimal Delivery Window · Consumption Anomaly · Capacity Utilization</td></tr>
       </table>
     </div>
   </div>
@@ -2205,9 +2205,9 @@ table tr:hover { background: var(--sf-highlight); }
         <li><strong>Data Harmonization (DMO)</strong> — Normalizes 15+ source formats into unified Data Model Objects with canonical schema</li>
         <li><strong>Calculated Insights</strong> — Real-time KPIs computed on streaming data: churn score, growth velocity, margin contribution, credit health</li>
         <li><strong>Segmentation</strong> — Dynamic segments that auto-update and feed Marketing Cloud journeys + Agentforce triggers</li>
-        <li><strong>Vector Store</strong> — Embeddings de documentos, contratos, e histórico para RAG (Retrieval-Augmented Generation) dos LLMs</li>
+        <li><strong>Vector Store</strong> — Embeddings of documents, contracts, and history for RAG (Retrieval-Augmented Generation) powering LLMs</li>
         <li><strong>Streaming Ingestion</strong> — IoT telemetry (tank levels), market price feeds, and payment events ingested in sub-second latency</li>
-        <li><strong>Data Actions</strong> — Quando insight calculado cruza threshold, dispara ação automática (agent trigger, flow, notification)</li>
+        <li><strong>Data Actions</strong> — When a calculated insight crosses a threshold, triggers automatic action (agent trigger, flow, notification)</li>
       </ul>
     </div>
     <div class="card">
@@ -2225,7 +2225,7 @@ table tr:hover { background: var(--sf-highlight); }
     </div>
   </div>
 
-  <div class="callout callout-info"><strong>Data 360 como fundação para Agentforce</strong> Sem Data 360, agents operam cegos — cada um vê apenas sua fonte de dados. Com Data 360, qualquer agent acessa o perfil 360° completo da entidade, correlaciona sinais de múltiplas fontes, e toma decisões contextuais que seriam impossíveis com dados fragmentados. É a diferença entre "alertar que volume caiu" e "explicar por que caiu, prever impacto, e recomendar ação específica baseada no perfil completo do dealer".</div>
+  <div class="callout callout-info"><strong>Data 360 as Foundation for Agentforce</strong> Without Data 360, agents operate blind — each sees only its own data source. With Data 360, any agent accesses the complete 360° entity profile, correlates signals from multiple sources, and makes contextual decisions that would be impossible with fragmented data. It's the difference between "alerting that volume dropped" and "explaining why it dropped, predicting impact, and recommending specific action based on the dealer's complete profile".</div>
 </div>
 
 <!-- ROADMAP -->
@@ -2233,118 +2233,118 @@ table tr:hover { background: var(--sf-highlight); }
 <div class="section" id="sec-arch-agentforce">
   <div class="section-hero">
     <h2>Agentforce — AI Deep Dive</h2>
-    <p>Além dos casos de uso: a fundamentação técnica de como IA preditiva e generativa transformam operações downstream. Três camadas de inteligência operando em conjunto para decisões autônomas com guardrails humanos.</p>
+    <p>Beyond use cases: the technical foundation of how predictive and generative AI transform downstream operations. Three intelligence layers working together for autonomous decisions with human guardrails.</p>
   </div>
 
   <div class="arch-enhanced">
-    <div class="arch-title">Arquitetura Técnica — Três Camadas de IA</div>
+    <div class="arch-title">Technical Architecture — Three AI Layers</div>
     <div class="arch-row">
       <div class="arch-node" style="border-top:3px solid #006272;flex:1;">
-        <div class="arch-node-label">Camada 3 — Agentes Autônomos</div>
+        <div class="arch-node-label">Layer 3 — Autonomous Agents</div>
         <strong style="color:#006272;">Multi-Step Reasoning + Action</strong><br>
         <small style="color:var(--sf-text-sec);">LLM orchestration · Tool use · Memory · Guardrails · Human-in-the-loop escalation<br>
-        <em>12 agents autônomos operando 24/7 com decision boundaries claros</em></small>
+        <em>12 autonomous agents operating 24/7 with clear decision boundaries</em></small>
       </div>
     </div>
-    <div class="arch-connector">↕ alimenta / aciona</div>
+    <div class="arch-connector">↕ feeds / triggers</div>
     <div class="arch-row">
       <div class="arch-node" style="border-top:3px solid #00695c;flex:1;">
-        <div class="arch-node-label">Camada 2 — IA Generativa (LLMs)</div>
+        <div class="arch-node-label">Layer 2 — Generative AI (LLMs)</div>
         <strong style="color:#00695c;">Natural Language Understanding + Generation</strong><br>
-        <small style="color:var(--sf-text-sec);">Geração de propostas · Análise de cenários · Summarization · Prompt Grounding com Data 360<br>
-        <em>Trusted AI: grounding em dados reais, citação de fontes, zero alucinação via RAG</em></small>
+        <small style="color:var(--sf-text-sec);">Proposal generation · Scenario analysis · Summarization · Prompt Grounding with Data 360<br>
+        <em>Trusted AI: grounding in real data, source citation, zero hallucination via RAG</em></small>
       </div>
       <div class="arch-node" style="border-top:3px solid #e97300;flex:1;">
-        <div class="arch-node-label">Camada 2 — IA Preditiva (Einstein)</div>
+        <div class="arch-node-label">Layer 2 — Predictive AI (Einstein)</div>
         <strong style="color:#e97300;">Machine Learning + Statistical Models</strong><br>
         <small style="color:var(--sf-text-sec);">Churn prediction · Demand forecasting · Credit scoring · Route optimization · Anomaly detection<br>
-        <em>Modelos treinados em dados históricos + atualizados continuamente via Data 360 streaming</em></small>
+        <em>Models trained on historical data + continuously updated via Data 360 streaming</em></small>
       </div>
     </div>
-    <div class="arch-connector">↕ dados + contexto</div>
+    <div class="arch-connector">↕ data + context</div>
     <div class="arch-row">
       <div class="arch-node" style="border-top:3px solid #6b21a8;">
-        <div class="arch-node-label">Camada 1 — Data Foundation</div>
+        <div class="arch-node-label">Layer 1 — Data Foundation</div>
         <span class="product-logo pl-data"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#6b21a8"/><ellipse cx="12" cy="9" rx="6" ry="3" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M6 9v6c0 1.7 2.7 3 6 3s6-1.3 6-3V9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>Data 360</span> + <span class="product-logo pl-mulesoft"><svg class="p-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1565c0"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>MuleSoft</span><br>
-        <small style="color:var(--sf-text-sec);">Identidade unificada · Data harmonization · Vector embeddings · Streaming ingestion · 15+ fontes</small>
+        <small style="color:var(--sf-text-sec);">Unified identity · Data harmonization · Vector embeddings · Streaming ingestion · 15+ sources</small>
       </div>
     </div>
   </div>
 
   <div class="two-col">
     <div class="card">
-      <h3>IA Preditiva — Como Funciona no Downstream</h3>
-      <h4>Modelos Supervisionados (Einstein)</h4>
+      <h3>Predictive AI — How It Works in Downstream</h3>
+      <h4>Supervised Models (Einstein)</h4>
       <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
-        <li><strong>Churn Prediction:</strong> Modelo treinado em 3+ anos de dados de churn real. Features: variação volume (7/14/30d rolling), atrasos pagamento, mix de produtos, engagement score, proximidade de concorrente. Acurácia target: >85% recall em 60d antecedência</li>
-        <li><strong>Demand Forecasting:</strong> Time-series com sazonalidade (safra, feriados, clima) + variáveis exógenas (preço etanol vs. gasolina, dia de pagamento). Granularidade: por posto × produto × dia</li>
-        <li><strong>Credit Scoring:</strong> Ensemble model (bureau externo Serasa + comportamento interno: pontualidade, volume, tempo de relacionamento). Score atualizado diariamente com streaming de pagamentos</li>
-        <li><strong>Route Optimization:</strong> Constraint-based optimization: minimizar custo total (km + tempo + prioridade comercial) sujeito a janelas de entrega, capacidade compartimentada, e regulações ANTT</li>
-        <li><strong>Anomaly Detection:</strong> Detecção de outliers em consumo de posto (possível fraude), variações atípicas de preço regional (possível erro), e padrões de pagamento fora do perfil (risco de crédito)</li>
+        <li><strong>Churn Prediction:</strong> Model trained on 3+ years of real churn data. Features: volume variation (7/14/30d rolling), payment delays, product mix, engagement score, competitor proximity. Target accuracy: >85% recall at 60d advance notice</li>
+        <li><strong>Demand Forecasting:</strong> Time-series with seasonality (harvest, holidays, weather) + exogenous variables (ethanol vs. gasoline price, payday). Granularity: per station × product × day</li>
+        <li><strong>Credit Scoring:</strong> Ensemble model (external bureau Serasa + internal behavior: punctuality, volume, relationship tenure). Score updated daily with payment streaming</li>
+        <li><strong>Route Optimization:</strong> Constraint-based optimization: minimize total cost (km + time + commercial priority) subject to delivery windows, compartmented capacity, and ANTT regulations</li>
+        <li><strong>Anomaly Detection:</strong> Outlier detection in station consumption (possible fraud), atypical regional price variations (possible error), and payment patterns outside profile (credit risk)</li>
       </ul>
 
-      <h4 style="margin-top:16px;">Ciclo de Vida do Modelo</h4>
+      <h4 style="margin-top:16px;">Model Lifecycle</h4>
       <div class="flow-steps" style="margin-top:8px;">
-        <div class="flow-step"><div class="step-icon" style="background:#6b21a8;">1</div><div><strong>Data 360</strong> — Dados históricos harmonizados + features calculadas</div></div>
-        <div class="flow-step"><div class="step-icon" style="background:#e97300;">2</div><div><strong>Einstein</strong> — Treinamento + validação + deployment automático</div></div>
-        <div class="flow-step"><div class="step-icon" style="background:#006272;">3</div><div><strong>Agentforce</strong> — Consome scores como input para decisões autônomas</div></div>
-        <div class="flow-step"><div class="step-icon" style="background:#2E844A;">4</div><div><strong>Feedback Loop</strong> — Outcomes alimentam re-treinamento contínuo</div></div>
+        <div class="flow-step"><div class="step-icon" style="background:#6b21a8;">1</div><div><strong>Data 360</strong> — Harmonized historical data + calculated features</div></div>
+        <div class="flow-step"><div class="step-icon" style="background:#e97300;">2</div><div><strong>Einstein</strong> — Training + validation + automatic deployment</div></div>
+        <div class="flow-step"><div class="step-icon" style="background:#006272;">3</div><div><strong>Agentforce</strong> — Consumes scores as input for autonomous decisions</div></div>
+        <div class="flow-step"><div class="step-icon" style="background:#2E844A;">4</div><div><strong>Feedback Loop</strong> — Outcomes feed continuous retraining</div></div>
       </div>
     </div>
 
     <div class="card">
-      <h3>IA Generativa — Como Funciona no Downstream</h3>
-      <h4>Capacidades LLM com Grounding (Trusted AI)</h4>
+      <h3>Generative AI — How It Works in Downstream</h3>
+      <h4>LLM Capabilities with Grounding (Trusted AI)</h4>
       <ul style="font-size:13px;padding-left:16px;color:var(--sf-text-sec);">
-        <li><strong>Geração de Propostas B2B:</strong> LLM gera contrato completo com termos indexados, cláusulas de reajuste, e condições logísticas — grounded em templates aprovados pelo jurídico + dados reais do deal em Revenue Cloud</li>
-        <li><strong>Análise Competitiva:</strong> Sumariza inteligência de mercado (ANP, campo, notícias) em briefing acionável para pricing committee. Cita fontes, destaca mudanças vs. semana anterior</li>
-        <li><strong>Resumos Executivos:</strong> Gera one-pagers de conta para reuniões (volume, margem, SLA, riscos, oportunidades) consolidando dados de 5+ sistemas em linguagem natural</li>
-        <li><strong>Atendimento AI-Assisted:</strong> Agente de chat/voz para dealer portal responde 80% das perguntas (status pedido, extrato, FAQ) com escalação automática para humano em casos complexos</li>
-        <li><strong>Reasoning sobre Dados:</strong> "Por que o volume da estação X caiu 15%?" — LLM correlaciona: novo concorrente a 500m (geo), preço 3% acima da média regional (ANP), e 2 visitas do consultor canceladas (CRM)</li>
+        <li><strong>B2B Proposal Generation:</strong> LLM generates complete contract with indexed terms, adjustment clauses, and logistics conditions — grounded in legal-approved templates + real deal data from Revenue Cloud</li>
+        <li><strong>Competitive Analysis:</strong> Summarizes market intelligence (ANP, field, news) into actionable briefing for pricing committee. Cites sources, highlights changes vs. previous week</li>
+        <li><strong>Executive Summaries:</strong> Generates account one-pagers for meetings (volume, margin, SLA, risks, opportunities) consolidating data from 5+ systems in natural language</li>
+        <li><strong>AI-Assisted Support:</strong> Chat/voice agent for dealer portal answers 80% of queries (order status, statements, FAQ) with automatic escalation to human for complex cases</li>
+        <li><strong>Data Reasoning:</strong> "Why did station X volume drop 15%?" — LLM correlates: new competitor at 500m (geo), price 3% above regional average (ANP), and 2 consultant visits cancelled (CRM)</li>
       </ul>
 
-      <h4 style="margin-top:16px;">Trust Layer — Segurança e Governança</h4>
+      <h4 style="margin-top:16px;">Trust Layer — Security & Governance</h4>
       <div class="flow-steps" style="margin-top:8px;">
-        <div class="flow-step"><div class="step-icon" style="background:#032D60;">T</div><div><strong>Prompt Grounding</strong> — LLM só acessa dados que o usuário tem permissão (RBAC)</div></div>
-        <div class="flow-step"><div class="step-icon" style="background:#032D60;">T</div><div><strong>Citation</strong> — Toda resposta cita registro fonte (Account, Opportunity, Case)</div></div>
-        <div class="flow-step"><div class="step-icon" style="background:#032D60;">T</div><div><strong>Audit Trail</strong> — Cada decisão de agent logada com input/output/reasoning</div></div>
-        <div class="flow-step"><div class="step-icon" style="background:#032D60;">T</div><div><strong>Toxicity Guard</strong> — Filtros anti-bias + PII masking em todas as interações</div></div>
+        <div class="flow-step"><div class="step-icon" style="background:#032D60;">T</div><div><strong>Prompt Grounding</strong> — LLM only accesses data the user has permission for (RBAC)</div></div>
+        <div class="flow-step"><div class="step-icon" style="background:#032D60;">T</div><div><strong>Citation</strong> — Every response cites source record (Account, Opportunity, Case)</div></div>
+        <div class="flow-step"><div class="step-icon" style="background:#032D60;">T</div><div><strong>Audit Trail</strong> — Every agent decision logged with input/output/reasoning</div></div>
+        <div class="flow-step"><div class="step-icon" style="background:#032D60;">T</div><div><strong>Toxicity Guard</strong> — Anti-bias filters + PII masking in all interactions</div></div>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <h3>12 Agentes Autônomos — Visão Consolidada</h3>
+    <h3>12 Autonomous Agents — Consolidated View</h3>
     <div class="table-wrap">
       <table>
-        <tr><th>Agent</th><th>Engine</th><th>Tipo de IA</th><th>Trigger</th><th>Autonomia</th><th>Escalação</th></tr>
-        <tr><td><strong>Cost Monitor</strong></td><td>Pricing</td><td>Preditiva + Generativa</td><td>Variação Petrobras/FX/biofuel</td><td>Recalcula custo + sugere bandas</td><td>Pricing committee se impacto &gt;5%</td></tr>
-        <tr><td><strong>Margin Guardian</strong></td><td>Pricing</td><td>Rules + Preditiva</td><td>Deal submetido para aprovação</td><td>Auto-aprova dentro de guardrails</td><td>VP se abaixo do floor</td></tr>
-        <tr><td><strong>Competitive Response</strong></td><td>Pricing</td><td>Preditiva + Generativa</td><td>Movimento de preço ANP regional</td><td>Gera recomendação + simulação</td><td>Gestor regional para ação</td></tr>
-        <tr><td><strong>Predictive Delivery</strong></td><td>Logistics</td><td>Preditiva (time-series)</td><td>Tank level + consumption pattern</td><td>Auto-agenda entrega proativa</td><td>Dispatcher se conflito de rota</td></tr>
-        <tr><td><strong>Route Optimizer</strong></td><td>Logistics</td><td>Optimization ML</td><td>Nova demanda + fleet disponível</td><td>Recompõe rotas em tempo real</td><td>Coordenador se capacity &gt;95%</td></tr>
-        <tr><td><strong>Churn Prevention</strong></td><td>Commercial</td><td>Preditiva (classification)</td><td>Score de risco atinge threshold</td><td>Alerta gerente de território</td><td>Diretor se High-Value at risk</td></tr>
-        <tr><td><strong>Opportunity Spotter</strong></td><td>Commercial</td><td>Generativa + Preditiva</td><td>Sinais de mercado (safra, CAPEX)</td><td>Cria lead qualificado com sizing</td><td>Nenhuma (sugestão only)</td></tr>
-        <tr><td><strong>Deal Desk</strong></td><td>Commercial</td><td>Rules + Generativa</td><td>Proposta B2B em pipeline</td><td>Auto-aprova standard deals</td><td>Deal Desk humano se exceção</td></tr>
-        <tr><td><strong>Credit Risk Monitor</strong></td><td>Customer Ops</td><td>Preditiva (ensemble)</td><td>Bureau update + payment pattern</td><td>Ajusta limite + pausa pedidos</td><td>Gestor de crédito se alto valor</td></tr>
-        <tr><td><strong>Loyalty Engagement</strong></td><td>Customer Ops</td><td>Generativa + Preditiva</td><td>Inatividade + pontos expirando</td><td>Envia oferta personalizada</td><td>Marketing se campaign budget</td></tr>
-        <tr><td><strong>Fleet Expansion</strong></td><td>Customer Ops</td><td>Preditiva (trend)</td><td>Consumo crescente sustentado</td><td>Gera proposta de upgrade</td><td>Account manager para negociação</td></tr>
-        <tr><td><strong>TRR Graduation</strong></td><td>Customer Ops</td><td>Rules + Preditiva</td><td>Volume acima do threshold 3 meses</td><td>Qualifica para B2B direto</td><td>Comercial para approach strategy</td></tr>
+        <tr><th>Agent</th><th>Engine</th><th>AI Type</th><th>Trigger</th><th>Autonomy</th><th>Escalation</th></tr>
+        <tr><td><strong>Cost Monitor</strong></td><td>Pricing</td><td>Predictive + Generative</td><td>Petrobras/FX/biofuel variation</td><td>Recalculates cost + suggests bands</td><td>Pricing committee if impact &gt;5%</td></tr>
+        <tr><td><strong>Margin Guardian</strong></td><td>Pricing</td><td>Rules + Predictive</td><td>Deal submitted for approval</td><td>Auto-approves within guardrails</td><td>VP if below floor</td></tr>
+        <tr><td><strong>Competitive Response</strong></td><td>Pricing</td><td>Predictive + Generative</td><td>Regional ANP price movement</td><td>Generates recommendation + simulation</td><td>Regional manager for action</td></tr>
+        <tr><td><strong>Predictive Delivery</strong></td><td>Logistics</td><td>Predictive (time-series)</td><td>Tank level + consumption pattern</td><td>Auto-schedules proactive delivery</td><td>Dispatcher if route conflict</td></tr>
+        <tr><td><strong>Route Optimizer</strong></td><td>Logistics</td><td>Optimization ML</td><td>New demand + available fleet</td><td>Recomposes routes in real-time</td><td>Coordinator if capacity &gt;95%</td></tr>
+        <tr><td><strong>Churn Prevention</strong></td><td>Commercial</td><td>Predictive (classification)</td><td>Risk score reaches threshold</td><td>Alerts territory manager</td><td>Director if High-Value at risk</td></tr>
+        <tr><td><strong>Opportunity Spotter</strong></td><td>Commercial</td><td>Generative + Predictive</td><td>Market signals (harvest, CAPEX)</td><td>Creates qualified lead with sizing</td><td>None (suggestion only)</td></tr>
+        <tr><td><strong>Deal Desk</strong></td><td>Commercial</td><td>Rules + Generative</td><td>B2B proposal in pipeline</td><td>Auto-approves standard deals</td><td>Human Deal Desk if exception</td></tr>
+        <tr><td><strong>Credit Risk Monitor</strong></td><td>Customer Ops</td><td>Predictive (ensemble)</td><td>Bureau update + payment pattern</td><td>Adjusts limit + pauses orders</td><td>Credit manager if high value</td></tr>
+        <tr><td><strong>Loyalty Engagement</strong></td><td>Customer Ops</td><td>Generative + Predictive</td><td>Inactivity + expiring points</td><td>Sends personalized offer</td><td>Marketing if campaign budget</td></tr>
+        <tr><td><strong>Fleet Expansion</strong></td><td>Customer Ops</td><td>Predictive (trend)</td><td>Sustained consumption growth</td><td>Generates upgrade proposal</td><td>Account manager for negotiation</td></tr>
+        <tr><td><strong>TRR Graduation</strong></td><td>Customer Ops</td><td>Rules + Predictive</td><td>Volume above threshold for 3 months</td><td>Qualifies for direct B2B</td><td>Commercial for approach strategy</td></tr>
       </table>
     </div>
   </div>
 
-  <div class="callout callout-success"><strong>O Diferencial Agentforce vs. "AI Features"</strong> Diferente de "AI features" acopladas a cada produto (chatbots simples, auto-complete), Agentforce opera como camada orquestradora que: (1) combina IA preditiva + generativa no mesmo workflow, (2) mantém memória de contexto entre interações, (3) executa ações multi-step com tools (APIs, records, aprovações), (4) respeita guardrails configuráveis por role/deal-size/risk-level, e (5) escala para humano com contexto completo quando atinge boundary. É a diferença entre "sugestão passiva" e "operação autônoma com supervisão".</div>
+  <div class="callout callout-success"><strong>The Agentforce Differentiator vs. "AI Features"</strong> Unlike "AI features" coupled to each product (simple chatbots, auto-complete), Agentforce operates as an orchestration layer that: (1) combines predictive + generative AI in the same workflow, (2) maintains context memory between interactions, (3) executes multi-step actions with tools (APIs, records, approvals), (4) respects configurable guardrails by role/deal-size/risk-level, and (5) escalates to human with full context when reaching boundaries. It's the difference between "passive suggestion" and "autonomous operation with oversight".</div>
 
   <div class="card">
-    <h3>Benefícios Mensuráveis da Combinação Preditiva + Generativa</h3>
+    <h3>Measurable Benefits of Predictive + Generative Combination</h3>
     <div class="table-wrap">
       <table>
-        <tr><th>Cenário</th><th>Só Preditiva (ML)</th><th>Só Generativa (LLM)</th><th>Combinação (Agentforce)</th></tr>
-        <tr><td>Churn de dealer detectado</td><td>Score numérico: 78% risco</td><td>"Possíveis razões: concorrência, preço..."</td><td>Score 78% + análise contextual + plano de ação específico + alerta ao gerente com histórico de intervenções similares bem-sucedidas</td></tr>
-        <tr><td>Proposta B2B complexa</td><td>Preço ótimo calculado: R$4.23/L</td><td>Gera texto do contrato</td><td>Preço otimizado + contrato gerado com cláusulas indexadas + validação de margem + logística confirmada + aprovação automática se dentro de policy</td></tr>
-        <tr><td>Anomalia de custo</td><td>Alerta: custo subiu 3.2%</td><td>"Possível causa: FX + Petrobras"</td><td>Detecta anomalia + identifica causa raiz (FX 2.1% + Petrobras 1.1%) + recalcula impacto por contrato + gera briefing para committee + sugere ações por cenário</td></tr>
-        <tr><td>Delivery scheduling</td><td>Previsão: stockout em 36h</td><td>"Recomendo priorizar por margem"</td><td>Prediz stockout + auto-agenda delivery + otimiza rota incluindo 3 postos vizinhos + notifica dealer + atualiza KPIs em real-time</td></tr>
+        <tr><th>Scenario</th><th>Predictive Only (ML)</th><th>Generative Only (LLM)</th><th>Combined (Agentforce)</th></tr>
+        <tr><td>Dealer churn detected</td><td>Numeric score: 78% risk</td><td>"Possible reasons: competition, price..."</td><td>Score 78% + contextual analysis + specific action plan + manager alert with history of similar successful interventions</td></tr>
+        <tr><td>Complex B2B proposal</td><td>Optimal price calculated: R$4.23/L</td><td>Generates contract text</td><td>Optimized price + generated contract with indexed clauses + margin validation + logistics confirmed + automatic approval if within policy</td></tr>
+        <tr><td>Cost anomaly</td><td>Alert: cost increased 3.2%</td><td>"Possible cause: FX + Petrobras"</td><td>Detects anomaly + identifies root cause (FX 2.1% + Petrobras 1.1%) + recalculates impact per contract + generates committee briefing + suggests actions per scenario</td></tr>
+        <tr><td>Delivery scheduling</td><td>Prediction: stockout in 36h</td><td>"Recommend prioritizing by margin"</td><td>Predicts stockout + auto-schedules delivery + optimizes route including 3 nearby stations + notifies dealer + updates KPIs in real-time</td></tr>
       </table>
     </div>
   </div>
